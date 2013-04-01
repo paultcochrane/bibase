@@ -5,8 +5,7 @@ use DB_File;
 $bibErrMsg = "field is required for BibTeX\n\n";
 
 if ($^O eq "linux" || $^O eq "dec_osf") {
-	$HOME = $ENV{'HOME'};
-	$settingsFname = "$HOME/.bibase.settings";
+	$settingsFname = "bibase.settings";
 	print "This is bibase version 1.0 on $^O\n\n";
 }
 elsif ($^O eq "MacOS") {
