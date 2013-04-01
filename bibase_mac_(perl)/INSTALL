@@ -1,0 +1,1 @@
+To install, go to the command line and type (commands specific to Bourne shell)chmod +x configure./configureand then follow the prompts.
