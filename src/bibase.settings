@@ -1,1 +1,3 @@
-dbfilepath = bibfilename = bibase.bibdbfilename = bibase.db
+dbfilepath = 
+bibfilename = bibase.bib
+dbfilename = bibase.db

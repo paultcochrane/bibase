@@ -1,1 +1,3 @@
-#!perlprint "$^O";
+#!perl
+
+print "$^O";
