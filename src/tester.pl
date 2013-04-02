@@ -71,9 +71,9 @@ END { $dlg->dispose() if (defined($dlg)) }
 
 while ($dlg->window()) {
 $dlg->modal();
-										
+                                        
 
-	
+    
 
 # $style = documentProc();
 # $title = 'Mooooo';
@@ -81,14 +81,14 @@ $dlg->modal();
 # $win = MacWindow->new($winr, $title, 1, $style, 1);
 # $win->sethook('redraw' => \&draw_it);
 # while($win->window()) {
-# 	WaitNextEvent();
-# 	}
+#     WaitNextEvent();
+#     }
 # 
 # END {
-# 	$win->dispose() if (defined($win));
-# 	}
+#     $win->dispose() if (defined($win));
+#     }
 # 
 # sub draw_it {
-# 	}
+#     }
 
 # vim: expandtab shiftwidth=4:

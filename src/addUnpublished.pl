@@ -1,7 +1,7 @@
 sub addUnpublished{
 
-	local ($title, $author, $ref, $year, $keywords, $dummy, $dummyOld, $answer,
-		$NumLines, $bibInFile, @InArray, $checkNum, $count, $bibkey, $bibFile);	
+    local ($title, $author, $ref, $year, $keywords, $dummy, $dummyOld, $answer,
+        $NumLines, $bibInFile, @InArray, $checkNum, $count, $bibkey, $bibFile);    
 
     open(bibFile,">> $DBFile") or die "$!";
     open(bibInFile,"< $DBFile") or die "$!";
@@ -11,70 +11,70 @@ sub addUnpublished{
     chop($title = <>);
 
     if ( $title eq "" ){
-	print "Title $bibErrMsg";
-	&add;
+    print "Title $bibErrMsg";
+    &add;
     }
 
     print("Author(s): ");
     chop($author = <>);
 
     if ( $author eq "" ){
-	print "Author $bibErrMsg";
-	&add;
+    print "Author $bibErrMsg";
+    &add;
     }
     
     print("Reference (eg: quant-ph/): ");
     chop($ref = <>);
 
     if ( $ref eq "" ){
-	print "Reference $bibErrMsg";
-	&add;
+    print "Reference $bibErrMsg";
+    &add;
     }
 
     print("Year: ");
     chop($year = <>);
     
     if ( $year eq "" ){
-	print "Year needed for proper referencing\n";
-	&add;
+    print "Year needed for proper referencing\n";
+    &add;
     }
 
     print("Keywords: ");
     chop($keywords = <>);
 
     if ( $keywords eq "" ){
-	print "you need to add a keyword or keywords";
-	&add;
+    print "you need to add a keyword or keywords";
+    &add;
     }
 
     $dummy = $author;
     $dummy =~ s/\sand[\w\W]*//;
     $dummyOld = zzzzzzzz;
     while ( $dummyOld ne $dummy ){
-	$dummyOld = $dummy;
-	$dummy =~ s/[^\s]\S*\s//;
+    $dummyOld = $dummy;
+    $dummy =~ s/[^\s]\S*\s//;
     }
 
     $NumLines = 0;
     while ( <bibInFile> ){
-	@InArray [$NumLines] = $_;
-	$NumLines++;
+    @InArray [$NumLines] = $_;
+    $NumLines++;
     }
 
     $checkNum = grep(/\{$title\}/, @InArray);
     
     if ( $checkNum > 0 ){
-	print "This title already exists in database\n";
-	print "Add anyway? (y/n) ";
-	chop($answer = <>);
-	if ($answer eq "y"){
-	}
-	elsif ($answer eq "n"){
-	    &add;
-	}
-	else {
-	    print "something weird happened\n";
-	}
+    print "This title already exists in database\n";
+    print "Add anyway? (y/n) ";
+    chop($answer = <>);
+    if ($answer eq "y"){
+    }
+    elsif ($answer eq "n"){
+        &add;
+    }
+    else {
+        print "something weird happened\n";
+    }
     }
     
     $count = grep(/\{$dummy:$year/i, @InArray);
@@ -94,13 +94,13 @@ sub addUnpublished{
     close(bibInFile);
 
 # @Unpublished{,
-#   author = 	 {},
-#   title = 	 {},
-#   note = 	 {},
-#   OPTkey = 	 {},
-#   OPTyear = 	 {},
-#   OPTmonth = 	 {},
-#   OPTannote = 	 {}
+#   author =      {},
+#   title =      {},
+#   note =      {},
+#   OPTkey =      {},
+#   OPTyear =      {},
+#   OPTmonth =      {},
+#   OPTannote =      {}
 # }
 
     &add;

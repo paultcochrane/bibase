@@ -5,47 +5,47 @@ use DB_File;
 $bibErrMsg = "field is required for BibTeX\n\n";
 
 if ($^O eq "linux" || $^O eq "dec_osf") {
-	$settingsFname = "bibase.settings";
-	print "This is bibase version 1.0 on $^O\n\n";
+    $settingsFname = "bibase.settings";
+    print "This is bibase version 1.0 on $^O\n\n";
 }
 elsif ($^O eq "MacOS") {
-	$settingsFname = "bibase.settings";
-	print "This is bibase version 1.0 on $^O\n\n";
+    $settingsFname = "bibase.settings";
+    print "This is bibase version 1.0 on $^O\n\n";
 } else {
-	$settingsFname = "bibase.settings";
+    $settingsFname = "bibase.settings";
 }
 
 open(setFH, "< $settingsFname") || die $!;
 $numLines = 0;
 while(<setFH>) {
-		@settingsArray[$numLines] = $_;
-		$numLines++;
-	}
+        @settingsArray[$numLines] = $_;
+        $numLines++;
+    }
 close(setFH);
 
 $settingsFileLen = @settingsArray;
 for ($i=0; $i<$settingsFileLen; $i++) {
-	@line = split('=', @settingsArray[$i]);
-	$dbpathMatch = grep(/dbfilepath/i, @line);
-	$bibfileMatch = grep(/bibfilename/i, @line);
-	$dbfileMatch = grep(/dbfilename/i, @line);
-	
-	if ($dbpathMatch != 0) {
-		$dbfilepath = @line[1];
-		$dbfilepath =~ s/ //g;
-		chop($dbfilepath);
-	}
-	elsif ($bibfileMatch != 0) {
-		$bibFname = @line[1];
-		$bibFname =~ s/ //g;
-		chop($bibFname);
-	}
-	elsif ($dbfileMatch != 0) {
-		$dbFname = @line[1];
-		$dbFname =~ s/ //g;
-		chop($dbFname);
-	}
-	
+    @line = split('=', @settingsArray[$i]);
+    $dbpathMatch = grep(/dbfilepath/i, @line);
+    $bibfileMatch = grep(/bibfilename/i, @line);
+    $dbfileMatch = grep(/dbfilename/i, @line);
+    
+    if ($dbpathMatch != 0) {
+        $dbfilepath = @line[1];
+        $dbfilepath =~ s/ //g;
+        chop($dbfilepath);
+    }
+    elsif ($bibfileMatch != 0) {
+        $bibFname = @line[1];
+        $bibFname =~ s/ //g;
+        chop($bibFname);
+    }
+    elsif ($dbfileMatch != 0) {
+        $dbFname = @line[1];
+        $dbFname =~ s/ //g;
+        chop($dbFname);
+    }
+    
 }
 
 $DBFile = join('',$dbfilepath,$bibFname);
@@ -93,8 +93,6 @@ require "printToEdit.pl";
 require "editField.pl";
 require "entriesFoundDecide.pl";
 require "editingEntry.pl";
-
-
 
 &startup;
 &mainMenu;

@@ -1,8 +1,8 @@
 sub addArticle{
 
-	local ($bibFile, $bibInFile, $title, $author, $journal, $year, $volume, 
-			$number, $month, $page, $keywords, $dummy, $dummyOld, $NumLines,
-			@InArray, $checkNum, $answer, $count, $bibkey);
+    local ($bibFile, $bibInFile, $title, $author, $journal, $year, $volume, 
+            $number, $month, $page, $keywords, $dummy, $dummyOld, $NumLines,
+            @InArray, $checkNum, $answer, $count, $bibkey);
 
     open(bibFile,">> $DBFile") or die "$!";
     open(bibInFile,"< $DBFile") or die "$!";
@@ -12,32 +12,32 @@ sub addArticle{
     chop($title = <>);
 
     if ( $title eq "" ){
-	print "Title $bibErrMsg";
-	&add;
+    print "Title $bibErrMsg";
+    &add;
     }
 
     print("Author(s): ");
     chop($author = <>);
 
     if ( $author eq "" ){
-	print "Author $bibErrMsg";
-	&add;
+    print "Author $bibErrMsg";
+    &add;
     }
 
     print("Journal: ");
     chop($journal = <>);
 
     if ( $journal eq "" ){
-	print "Journal $bibErrMsg";
-	&add;
+    print "Journal $bibErrMsg";
+    &add;
     }
 
     print("Year: ");
     chop($year = <>);
 
     if ( $year eq "" ){
-	print "Year $bibErrMsg";
-	&add;
+    print "Year $bibErrMsg";
+    &add;
     }
 
     print("Volume: ");
@@ -56,8 +56,8 @@ sub addArticle{
     chop($keywords = <>);
 
     if ( $keywords eq "" ){
-	print "you need to add a keyword or keywords";
-	&add;
+    print "you need to add a keyword or keywords";
+    &add;
     }
 
     &bibkeyMake($author);
@@ -71,16 +71,16 @@ sub addArticle{
     print(bibFile "year = {$year},\n");
 
     if ( $volume ne "" ){
-	print(bibFile "volume = {$volume},\n");
+    print(bibFile "volume = {$volume},\n");
     }
     if ( $number ne "" ){
-	print(bibFile "number = {$number},\n");
+    print(bibFile "number = {$number},\n");
     }
     if ( $month ne "" ){
-	print(bibFile "month = {$month},\n");
+    print(bibFile "month = {$month},\n");
     }
     if ( $page ne "" ){
-	print(bibFile "pages = {$page},\n");
+    print(bibFile "pages = {$page},\n");
     }
     print(bibFile "keywords = {$keywords}\n");
     print(bibFile "}\n\n");
@@ -89,17 +89,17 @@ sub addArticle{
     close(bibInFile);
 
 # @Article{,
-#   author = 	 {},
-#   title = 	 {},
-#   journal = 	 {},
-#   year = 	 {},
-#   OPTkey = 	 {},
-#   OPTvolume = 	 {},
-#   OPTnumber = 	 {},
-#   OPTmonth = 	 {},
-#   OPTpages = 	 {},
-#   OPTnote = 	 {},
-#   OPTannote = 	 {}
+#   author =      {},
+#   title =      {},
+#   journal =      {},
+#   year =      {},
+#   OPTkey =      {},
+#   OPTvolume =      {},
+#   OPTnumber =      {},
+#   OPTmonth =      {},
+#   OPTpages =      {},
+#   OPTnote =      {},
+#   OPTannote =      {}
 # }
 
     &add;

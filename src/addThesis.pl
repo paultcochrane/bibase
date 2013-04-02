@@ -1,8 +1,8 @@
 sub addThesis{
 
-	local ($bibFile, $bibInFile, $title, $author, $school, $year, $address, 
-			$type, $month, $keywords, $dummy, $dummyOld, $NumLines, @InArray,
-			$checkNum, $answer, $count, $bibkey);
+    local ($bibFile, $bibInFile, $title, $author, $school, $year, $address, 
+            $type, $month, $keywords, $dummy, $dummyOld, $NumLines, @InArray,
+            $checkNum, $answer, $count, $bibkey);
 
     open(bibFile,">> $DBFile") or die "$!";
     open(bibInFile,"< $DBFile") or die "$!";
@@ -12,32 +12,32 @@ sub addThesis{
     chop($title = <>);
 
     if ( $title eq "" ){
-	print "Title $bibErrMsg";
-	&add;
+    print "Title $bibErrMsg";
+    &add;
     }
 
     print("Author: ");
     chop($author = <>);
 
     if ( $author eq "" ){
-	print "Author $bibErrMsg";
-	&add;
+    print "Author $bibErrMsg";
+    &add;
     }
 
     print("University: ");
     chop($school = <>);
 
     if ( $school eq "" ){
-	print "University $bibErrMsg";
-	&add;
+    print "University $bibErrMsg";
+    &add;
     }
 
     print("Year: ");
     chop($year = <>);
 
     if ( $year eq "" ){
-	print "Year $bibErrMsg";
-	&add;
+    print "Year $bibErrMsg";
+    &add;
     }
 
     print("Address: ");
@@ -53,38 +53,38 @@ sub addThesis{
     chop($keywords = <>);
 
     if ( $keywords eq "" ){
-	print "you need to add a keyword or keywords";
-	&add;
+    print "you need to add a keyword or keywords";
+    &add;
     }
 
     $dummy = $author;
     $dummy =~ s/\sand[\w\W]*//;
     $dummyOld = zzzzzzzz;
     while ( $dummyOld ne $dummy ){
-	$dummyOld = $dummy;
-	$dummy =~ s/[^\s]\S*\s//;
+    $dummyOld = $dummy;
+    $dummy =~ s/[^\s]\S*\s//;
     }
 
     $NumLines = 0;
     while ( <bibInFile> ){
-	@InArray [$NumLines] = $_;
-	$NumLines++;
+    @InArray [$NumLines] = $_;
+    $NumLines++;
     }
 
     $checkNum = grep(/\{$title\}/, @InArray);
     
     if ( $checkNum > 0 ){
-	print "This title already exists in database\n";
-	print "Add anyway? (y/n) ";
-	chop($answer = <>);
-	if ($answer eq "y"){
-	}
-	elsif ($answer eq "n"){
-	    &add;
-	}
-	else {
-	    print "something weird happened\n";
-	}
+    print "This title already exists in database\n";
+    print "Add anyway? (y/n) ";
+    chop($answer = <>);
+    if ($answer eq "y"){
+    }
+    elsif ($answer eq "n"){
+        &add;
+    }
+    else {
+        print "something weird happened\n";
+    }
     }
 
     $count = grep(/\{$dummy:$year/i, @InArray);
@@ -98,13 +98,13 @@ sub addThesis{
     print(bibFile "school = {$school},\n");
     print(bibFile "year = {$year},\n");
     if ( $address ne "" ){
-	print(bibFile "address = {$address},\n");
+    print(bibFile "address = {$address},\n");
     }
     if ( $type ne "" ){
-	print(bibFile "type = {$type},\n");
+    print(bibFile "type = {$type},\n");
     }
     if ( $month ne "" ){
-	print(bibFile "month = {$month},\n");
+    print(bibFile "month = {$month},\n");
     }
     print(bibFile "keywords = {$keywords}\n");
     print(bibFile "}\n\n");
@@ -113,16 +113,16 @@ sub addThesis{
     close(bibInFile);
 
 # @PhdThesis{,
-#   author = 	 {},
-#   title = 	 {},
-#   school = 	 {},
-#   year = 	 {},
-#   OPTkey = 	 {},
-#   OPTaddress = 	 {},
-#   OPTtype = 	 {},
-#   OPTmonth = 	 {},
-#   OPTnote = 	 {},
-#   OPTannote = 	 {}
+#   author =      {},
+#   title =      {},
+#   school =      {},
+#   year =      {},
+#   OPTkey =      {},
+#   OPTaddress =      {},
+#   OPTtype =      {},
+#   OPTmonth =      {},
+#   OPTnote =      {},
+#   OPTannote =      {}
 # }
 
     &add;

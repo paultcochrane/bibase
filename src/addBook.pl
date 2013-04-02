@@ -1,9 +1,9 @@
 sub addBook{
 
-	local ($bibFile, $bibInFile, $title, $authro, $publisher, $year, $editor, 
-			$volume, $number, $series, $address, $edition, $month, $keywords,
-			$dummy, $dummyOld, $NumLines, @InArray, $checkNum, $answer, $count,
-			$bibkey);
+    local ($bibFile, $bibInFile, $title, $authro, $publisher, $year, $editor, 
+            $volume, $number, $series, $address, $edition, $month, $keywords,
+            $dummy, $dummyOld, $NumLines, @InArray, $checkNum, $answer, $count,
+            $bibkey);
 
     open(bibFile,">> $DBFile") or die "$!";
     open(bibInFile,"< $DBFile") or die "$!";
@@ -13,32 +13,32 @@ sub addBook{
     chop($title = <>);
 
     if ( $title eq "" ){
-	print "Title $bibErrMsg";
-	&add;
+    print "Title $bibErrMsg";
+    &add;
     }
 
     print("Author(s): ");
     chop($author = <>);
 
     if ( $author eq "" ){
-	print "Author $bibErrMsg";
-	&add;
+    print "Author $bibErrMsg";
+    &add;
     }
 
     print("Publisher: ");
     chop($publisher = <>);
 
     if ( $publisher eq "" ){
-	print "Publisher $bibErrMsg";
-	&add;
+    print "Publisher $bibErrMsg";
+    &add;
     }
 
     print("Year: ");
     chop($year = <>);
 
     if ( $year eq "" ){
-	print "Year $bibErrMsg";
-	&add;
+    print "Year $bibErrMsg";
+    &add;
     }
 
     print("Editor: ");
@@ -66,38 +66,38 @@ sub addBook{
     chop($keywords = <>);
 
     if ( $keywords eq "" ){
-	print "you need to add a keyword or keywords";
-	&add;
+    print "you need to add a keyword or keywords";
+    &add;
     }
 
     $dummy = $author;
     $dummy =~ s/\sand[\w\W]*//;
     $dummyOld = zzzzzzzz;
     while ( $dummyOld ne $dummy ){
-	$dummyOld = $dummy;
-	$dummy =~ s/[^\s]\S*\s//;
+    $dummyOld = $dummy;
+    $dummy =~ s/[^\s]\S*\s//;
     }
 
     $NumLines = 0;
     while ( <bibInFile> ){
-	@InArray [$NumLines] = $_;
-	$NumLines++;
+    @InArray [$NumLines] = $_;
+    $NumLines++;
     }
 
     $checkNum = grep(/\{$title\}/, @InArray);
     
     if ( $checkNum > 0 ){
-	print "This title already exists in database\n";
-	print "Add anyway? (y/n) ";
-	chop($answer = <>);
-	if ($answer eq "y"){
-	}
-	elsif ($answer eq "n"){
-	    &add;
-	}
-	else {
-	    print "something weird happened\n";
-	}
+    print "This title already exists in database\n";
+    print "Add anyway? (y/n) ";
+    chop($answer = <>);
+    if ($answer eq "y"){
+    }
+    elsif ($answer eq "n"){
+        &add;
+    }
+    else {
+        print "something weird happened\n";
+    }
     }
     
     $count = grep(/\{$dummy:$year/i, @InArray);
@@ -112,25 +112,25 @@ sub addBook{
     print(bibFile "year = {$year},\n");
 
     if ( $editor ne "" ){
-	print(bibFile "editor = {$editor},\n");
+    print(bibFile "editor = {$editor},\n");
     }
     if ( $volume ne "" ){
-	print(bibFile "volume = {$volume},\n");
+    print(bibFile "volume = {$volume},\n");
     }
     if ( $number ne "" ){
-	print(bibFile "number = {$number},\n");
+    print(bibFile "number = {$number},\n");
     }
     if ( $series ne "" ){
-	print(bibFile "series = {$series},\n");
+    print(bibFile "series = {$series},\n");
     }
     if ( $address ne "" ){
-	print(bibFile "address = {$address},\n");
+    print(bibFile "address = {$address},\n");
     }
     if ( $edition ne "" ){
-	print(bibFile "edition = {$edition},\n");
+    print(bibFile "edition = {$edition},\n");
     }
     if ( $month ne "" ){
-	print(bibFile "month = {$month},\n");
+    print(bibFile "month = {$month},\n");
     }
     print(bibFile "keywords = {$keywords}\n");
     print(bibFile "}\n\n");
@@ -139,20 +139,20 @@ sub addBook{
     close(bibInFile);
 
 # @Book{,
-#   author = 	 {},
-#   title = 	 {},
-#   publisher = 	 {},
-#   year = 	 {},
-#   OPTkey = 	 {},
-#   OPTeditor = 	 {},
-#   OPTvolume = 	 {},
-#   OPTnumber = 	 {},
-#   OPTseries = 	 {},
-#   OPTaddress = 	 {},
-#   OPTedition = 	 {},
-#   OPTmonth = 	 {},
-#   OPTnote = 	 {},
-#   OPTannote = 	 {}
+#   author =      {},
+#   title =      {},
+#   publisher =      {},
+#   year =      {},
+#   OPTkey =      {},
+#   OPTeditor =      {},
+#   OPTvolume =      {},
+#   OPTnumber =      {},
+#   OPTseries =      {},
+#   OPTaddress =      {},
+#   OPTedition =      {},
+#   OPTmonth =      {},
+#   OPTnote =      {},
+#   OPTannote =      {}
 # }
 
     &add;

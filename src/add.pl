@@ -1,6 +1,6 @@
 sub add{
 
-	local ($answer);
+    local ($answer);
 
     print("\n\nDo you want to add:\n\n");
     print("A journal (a)rticle\n");
@@ -25,37 +25,37 @@ sub add{
     &cleanup;
 
     if($answer eq 'a'){
-	&addArticle;}
+    &addArticle;}
     elsif($answer eq 'b'){
-	&addBook;}
+    &addBook;}
     elsif($answer eq 'u'){
-	&addUnpublished;}
+    &addUnpublished;}
     elsif($answer eq 'p'){
-	&addInProc;}
+    &addInProc;}
     elsif($answer eq 't'){
-	&addThesis;}
+    &addThesis;}
     elsif($answer eq 'c'){
-	&addProc;}
+    &addProc;}
     elsif($answer eq 'i'){
-	&addInBook;}
+    &addInBook;}
     elsif($answer eq 'misc'){
-	&addMisc;}
-	elsif($answer eq 'o'){
-	&addInColl;}
-	elsif($answer eq 'booklet'){
-	&addBooklet;}
-	elsif($answer eq 'man'){
-	&addManual;}
-	elsif($answer eq 'tech'){
-	&addTechReport;}
+    &addMisc;}
+    elsif($answer eq 'o'){
+    &addInColl;}
+    elsif($answer eq 'booklet'){
+    &addBooklet;}
+    elsif($answer eq 'man'){
+    &addManual;}
+    elsif($answer eq 'tech'){
+    &addTechReport;}
     elsif($answer eq 'm'){
-	&mainMenu;}
+    &mainMenu;}
     elsif($answer eq 'x' || $answer eq 'X' || $answer eq 'q' || $answer eq 'Q'){
-	&sortAndCompCheck;
-	exit(0);
-	}
+    &sortAndCompCheck;
+    exit(0);
+    }
     else{print("woah, something weird happened\n");
-	 exit(1);}
+     exit(1);}
     
 }
 1;

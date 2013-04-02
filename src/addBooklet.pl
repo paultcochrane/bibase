@@ -1,8 +1,8 @@
 sub addInColl{
 
-	local ($bibFile, $bibInFile, $title, $author, $year, $howpub, $address, $month,
-			$keywords, $dummy, $dummyOld, $NumLines, @InArray, $checkNum, $answer,
-			$count, $bibkey);
+    local ($bibFile, $bibInFile, $title, $author, $year, $howpub, $address, $month,
+            $keywords, $dummy, $dummyOld, $NumLines, @InArray, $checkNum, $answer,
+            $count, $bibkey);
 
     open(bibFile,">> $DBFile") or die "$!";
     open(bibInFile,"< $DBFile") or die "$!";
@@ -12,24 +12,24 @@ sub addInColl{
     chop($title = <>);
 
     if ( $title eq "" ){
-	print "Title $bibErrMsg";
-	&add;
+    print "Title $bibErrMsg";
+    &add;
     }
 
     print("Author(s): ");
     chop($author = <>);
 
     if ( $author eq "" ){
-	print "Author $bibErrMsg";
-	&add;
+    print "Author $bibErrMsg";
+    &add;
     }
 
     print("Year: ");
     chop($year = <>);
 
     if ( $year eq "" ){
-	print "Year $bibErrMsg";
-	&add;
+    print "Year $bibErrMsg";
+    &add;
     }
 
     print("How published: ");
@@ -45,39 +45,39 @@ sub addInColl{
     chop($keywords = <>);
 
     if ( $keywords eq "" ){
-	print "you need to add a keyword or keywords";
-	&add;
+    print "you need to add a keyword or keywords";
+    &add;
     }
 
     $dummy = $author;
     $dummy =~ s/\sand[\w\W]*//;
     $dummyOld = zzzzzzzz;
     while ( $dummyOld ne $dummy ){
-	$dummyOld = $dummy;
-	$dummy =~ s/[^\s]\S*\s//;
+    $dummyOld = $dummy;
+    $dummy =~ s/[^\s]\S*\s//;
     }
 
     $NumLines = 0;
     while ( <bibInFile> ){
-	@InArray [$NumLines] = $_;
-	$NumLines++;
+    @InArray [$NumLines] = $_;
+    $NumLines++;
     }
 
 
     $checkNum = grep(/\{$title\}/, @InArray);
     
     if ( $checkNum > 0 ){
-	print "This title already exists in database\n";
-	print "Add anyway? (y/n) ";
-	chop($answer = <>);
-	if ($answer eq "y"){
-	}
-	elsif ($answer eq "n"){
-	    &add;
-	}
-	else {
-	    print "something weird happened\n";
-	}
+    print "This title already exists in database\n";
+    print "Add anyway? (y/n) ";
+    chop($answer = <>);
+    if ($answer eq "y"){
+    }
+    elsif ($answer eq "n"){
+        &add;
+    }
+    else {
+        print "something weird happened\n";
+    }
     }
     
     $count = grep(/\{$dummy:$year/i, @InArray);
@@ -92,13 +92,13 @@ sub addInColl{
     print(bibFile "year = {$year},\n");
 
     if ( $address ne "" ){
-	print(bibFile "address = {$address},\n");
+    print(bibFile "address = {$address},\n");
     }
     if ( $month ne "" ){
-	print(bibFile "month = {$month},\n");
+    print(bibFile "month = {$month},\n");
     }
     if ( $page ne "" ){
-	print(bibFile "pages = {$page},\n");
+    print(bibFile "pages = {$page},\n");
     }
     print(bibFile "keywords = {$keywords}\n");
     print(bibFile "}\n\n");
@@ -107,15 +107,15 @@ sub addInColl{
     close(bibInFile);
 
 # @Booklet{,
-#   title = 	 {},
-#   OPTkey = 	 {},
-#   OPTauthor = 	 {},
+#   title =      {},
+#   OPTkey =      {},
+#   OPTauthor =      {},
 #   OPThowpublished = {},
-#   OPTaddress = 	 {},
-#   OPTmonth = 	 {},
-#   OPTyear = 	 {},
-#   OPTnote = 	 {},
-#   OPTannote = 	 {}
+#   OPTaddress =      {},
+#   OPTmonth =      {},
+#   OPTyear =      {},
+#   OPTnote =      {},
+#   OPTannote =      {}
 # }
 
     &add;

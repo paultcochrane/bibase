@@ -1,8 +1,8 @@
 sub addManual{
 
-	local ($bibFile, $bibInFile, $title, $author, $organisation, $year, $address,
-			$edition, $month, $keywords, $dummy, $dummyOld, $NumLines, @InArray,
-			$checkNum, $answer, $count, $bibkey);
+    local ($bibFile, $bibInFile, $title, $author, $organisation, $year, $address,
+            $edition, $month, $keywords, $dummy, $dummyOld, $NumLines, @InArray,
+            $checkNum, $answer, $count, $bibkey);
 
     open(bibFile,">> $DBFile") or die "$!";
     open(bibInFile,"< $DBFile") or die "$!";
@@ -12,16 +12,16 @@ sub addManual{
     chop($title = <>);
 
     if ( $title eq "" ){
-	print "Title $bibErrMsg";
-	&add;
+    print "Title $bibErrMsg";
+    &add;
     }
 
     print("Author(s): ");
     chop($author = <>);
 
     if ( $author eq "" ){
-	print "Author $bibErrMsg";
-	&add;
+    print "Author $bibErrMsg";
+    &add;
     }
 
     print("Organisation: ");
@@ -31,8 +31,8 @@ sub addManual{
     chop($year = <>);
 
     if ( $year eq "" ){
-	print "Year $bibErrMsg";
-	&add;
+    print "Year $bibErrMsg";
+    &add;
     }
 
     print("Address: ");
@@ -48,39 +48,39 @@ sub addManual{
     chop($keywords = <>);
 
     if ( $keywords eq "" ){
-	print "you need to add a keyword or keywords";
-	&add;
+    print "you need to add a keyword or keywords";
+    &add;
     }
 
     $dummy = $author;
     $dummy =~ s/\sand[\w\W]*//;
     $dummyOld = zzzzzzzz;
     while ( $dummyOld ne $dummy ){
-	$dummyOld = $dummy;
-	$dummy =~ s/[^\s]\S*\s//;
+    $dummyOld = $dummy;
+    $dummy =~ s/[^\s]\S*\s//;
     }
 
     $NumLines = 0;
     while ( <bibInFile> ){
-	@InArray [$NumLines] = $_;
-	$NumLines++;
+    @InArray [$NumLines] = $_;
+    $NumLines++;
     }
 
 
     $checkNum = grep(/\{$title\}/, @InArray);
     
     if ( $checkNum > 0 ){
-	print "This title already exists in database\n";
-	print "Add anyway? (y/n) ";
-	chop($answer = <>);
-	if ($answer eq "y"){
-	}
-	elsif ($answer eq "n"){
-	    &add;
-	}
-	else {
-	    print "something weird happened\n";
-	}
+    print "This title already exists in database\n";
+    print "Add anyway? (y/n) ";
+    chop($answer = <>);
+    if ($answer eq "y"){
+    }
+    elsif ($answer eq "n"){
+        &add;
+    }
+    else {
+        print "something weird happened\n";
+    }
     }
     
     $count = grep(/\{$dummy:$year/i, @InArray);
@@ -95,13 +95,13 @@ sub addManual{
     print(bibFile "year = {$year},\n");
 
     if ( $address ne "" ){
-	print(bibFile "address = {$address},\n");
+    print(bibFile "address = {$address},\n");
     }
     if ( $edition ne "" ){
-	print(bibFile "edition = {$edition},\n");
+    print(bibFile "edition = {$edition},\n");
     }
     if ( $month ne "" ){
-	print(bibFile "month = {$month},\n");
+    print(bibFile "month = {$month},\n");
     }
     print(bibFile "keywords = {$keywords}\n");
     print(bibFile "}\n\n");
@@ -110,16 +110,16 @@ sub addManual{
     close(bibInFile);
 
 # @Manual{,
-#   title = 	 {},
-#   OPTkey = 	 {},
-#   OPTauthor = 	 {},
+#   title =      {},
+#   OPTkey =      {},
+#   OPTauthor =      {},
 #   OPTorganization = {},
-#   OPTaddress = 	 {},
-#   OPTedition = 	 {},
-#   OPTmonth = 	 {},
-#   OPTyear = 	 {},
-#   OPTnote = 	 {},
-#   OPTannote = 	 {}
+#   OPTaddress =      {},
+#   OPTedition =      {},
+#   OPTmonth =      {},
+#   OPTyear =      {},
+#   OPTnote =      {},
+#   OPTannote =      {}
 # }
 
     &add;

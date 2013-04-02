@@ -13,28 +13,28 @@ sub mainMenu{
 
     if($answer eq 'l' || $answer eq 'L' || $answer eq 's' || $answer eq 'S')
     {
-    	&lookup;
+        &lookup;
     }
     elsif($answer eq 'a' || $answer eq 'A')
     {
-    	&add;
+        &add;
     }
     elsif($answer eq 'r' || $answer eq 'R')
     {
-		&remove;
-	}
+        &remove;
+    }
     elsif($answer eq 'c' || $answer eq 'C' || $answer eq 'e' || $answer eq 'E')
     {
-    	&edit;
+        &edit;
     }
     elsif($answer eq 'x' || $answer eq 'X' || $answer eq 'q' || $answer eq 'Q')
     {
-    	&sortAndCompCheck;
-    	exit(0);
+        &sortAndCompCheck;
+        exit(0);
     }
     else{
-    	print("woah, something weird must have happened\n");
-    	&mainMenu;
+        print("woah, something weird must have happened\n");
+        &mainMenu;
     }
     
 }

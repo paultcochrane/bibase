@@ -7,8 +7,8 @@ sub sortDB{
     @dbInArray = '';
     $dbNumLines = 0;
     while ( <dbInFile> ){
-	@dbInArray [$dbNumLines] = $_;
-	$dbNumLines++;
+    @dbInArray [$dbNumLines] = $_;
+    $dbNumLines++;
     }
 
     close(dbInFile);
