@@ -98,3 +98,5 @@ require "editingEntry.pl";
 
 &startup;
 &mainMenu;
+
+# vim: expandtab shiftwidth=4:

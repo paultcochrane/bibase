@@ -25,3 +25,5 @@ sub searchTitle {
 	
 }
 1;
+
+# vim: expandtab shiftwidth=4:

@@ -126,3 +126,5 @@ sub addManual{
 
 }
 1;
+
+# vim: expandtab shiftwidth=4:

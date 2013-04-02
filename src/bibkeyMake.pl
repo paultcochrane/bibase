@@ -23,3 +23,5 @@ sub bibkeyMake {
 
 }
 1;
+
+# vim: expandtab shiftwidth=4:

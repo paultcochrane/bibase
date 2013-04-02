@@ -47,3 +47,5 @@ open(inFile, "< entriesFoundDecide.pl"); while ( <inFile> ){print(outFile "$_");
 open(inFile, "< editingEntry.pl"); while ( <inFile> ){print(outFile "$_");} print(outFile "\n"); close(inFile);
 
 close(outFile);
+
+# vim: expandtab shiftwidth=4:

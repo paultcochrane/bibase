@@ -28,3 +28,4 @@ sub sortAndCompCheck{
 }
 1;
 
+# vim: expandtab shiftwidth=4:

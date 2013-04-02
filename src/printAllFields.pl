@@ -30,3 +30,5 @@ $j,$field,$fieldVal
 
 }
 1;
+
+# vim: expandtab shiftwidth=4:

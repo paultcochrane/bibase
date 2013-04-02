@@ -27,3 +27,4 @@ sub editEntry {
 }
 1;
 
+# vim: expandtab shiftwidth=4:

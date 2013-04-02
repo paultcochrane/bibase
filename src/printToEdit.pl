@@ -8,3 +8,5 @@ sub printToEdit {
 
 }
 1;
+
+# vim: expandtab shiftwidth=4:
