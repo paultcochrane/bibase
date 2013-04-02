@@ -1,25 +1,22 @@
-sub startup{
+sub startup {
 
-local ($moo, $startHandle);
+    local ( $moo, $startHandle );
 
-$moo = open(startHandle, "< $DBFile");
+    $moo = open( startHandle, "< $DBFile" );
 
-if (!$moo) 
-    {
-    open(startHandle, "> $DBFile");
-    print("opening new file $DBFile\n");
+    if ( !$moo ) {
+        open( startHandle, "> $DBFile" );
+        print("opening new file $DBFile\n");
     }
-close(startHandle); 
+    close(startHandle);
 
-$moo = open(startHandle, "< $altDBFile");
+    $moo = open( startHandle, "< $altDBFile" );
 
-if (!$moo) 
-    {
-    open(startHandle, "> $altDBFile");
-    print("opening new file $altDBFile\n");
+    if ( !$moo ) {
+        open( startHandle, "> $altDBFile" );
+        print("opening new file $altDBFile\n");
     }
-close(startHandle); 
-
+    close(startHandle);
 
 }
 1;

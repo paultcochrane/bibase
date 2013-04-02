@@ -2,27 +2,26 @@ sub searchAll {
 
     print "Searching in all fields\n";
     print "What do you wish to search for? ";
-    chop($answer = <>);
+    chop( $answer = <> );
     print "\n";
-    if ($answer eq '') {
+    if ( $answer eq '' ) {
         print "Please enter a search item\n";
         &searchAll;
     }
-    
+
     @grepArray = '';
-    @indArray = '';
-    $ind = 0;
-    for ($i=0; $i<$dbNumLines; $i++) {
-        $matchFlag = grep(/$answer/i, @dbInArray[$i]);
-        if ($matchFlag != 0) {
+    @indArray  = '';
+    $ind       = 0;
+    for ( $i = 0 ; $i < $dbNumLines ; $i++ ) {
+        $matchFlag = grep( /$answer/i, @dbInArray[$i] );
+        if ( $matchFlag != 0 ) {
             @grepArray[$ind] = @dbInArray[$i];
-            @indArray[$ind] = $i;
+            @indArray[$ind]  = $i;
             $ind++;
         }
     }
-    
-    
-    &entriesFoundDecide;    
+
+    &entriesFoundDecide;
 
 }
 1;

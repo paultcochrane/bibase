@@ -4,52 +4,53 @@ use DB_File;
 
 $bibErrMsg = "field is required for BibTeX\n\n";
 
-if ($^O eq "linux" || $^O eq "dec_osf") {
+if ( $^O eq "linux" || $^O eq "dec_osf" ) {
     $settingsFname = "bibase.settings";
     print "This is bibase version 1.0 on $^O\n\n";
 }
-elsif ($^O eq "MacOS") {
+elsif ( $^O eq "MacOS" ) {
     $settingsFname = "bibase.settings";
     print "This is bibase version 1.0 on $^O\n\n";
-} else {
+}
+else {
     $settingsFname = "bibase.settings";
 }
 
-open(setFH, "< $settingsFname") || die $!;
+open( setFH, "< $settingsFname" ) || die $!;
 $numLines = 0;
-while(<setFH>) {
-        @settingsArray[$numLines] = $_;
-        $numLines++;
-    }
+while (<setFH>) {
+    @settingsArray[$numLines] = $_;
+    $numLines++;
+}
 close(setFH);
 
 $settingsFileLen = @settingsArray;
-for ($i=0; $i<$settingsFileLen; $i++) {
-    @line = split('=', @settingsArray[$i]);
-    $dbpathMatch = grep(/dbfilepath/i, @line);
-    $bibfileMatch = grep(/bibfilename/i, @line);
-    $dbfileMatch = grep(/dbfilename/i, @line);
-    
-    if ($dbpathMatch != 0) {
+for ( $i = 0 ; $i < $settingsFileLen ; $i++ ) {
+    @line = split( '=', @settingsArray[$i] );
+    $dbpathMatch  = grep( /dbfilepath/i,  @line );
+    $bibfileMatch = grep( /bibfilename/i, @line );
+    $dbfileMatch  = grep( /dbfilename/i,  @line );
+
+    if ( $dbpathMatch != 0 ) {
         $dbfilepath = @line[1];
         $dbfilepath =~ s/ //g;
         chop($dbfilepath);
     }
-    elsif ($bibfileMatch != 0) {
+    elsif ( $bibfileMatch != 0 ) {
         $bibFname = @line[1];
         $bibFname =~ s/ //g;
         chop($bibFname);
     }
-    elsif ($dbfileMatch != 0) {
+    elsif ( $dbfileMatch != 0 ) {
         $dbFname = @line[1];
         $dbFname =~ s/ //g;
         chop($dbFname);
     }
-    
+
 }
 
-$DBFile = join('',$dbfilepath,$bibFname);
-$altDBFile = join('',$dbfilepath,$dbFname);
+$DBFile    = join( '', $dbfilepath, $bibFname );
+$altDBFile = join( '', $dbfilepath, $dbFname );
 
 require "mainMenu.pl";
 require "lookup.pl";

@@ -1,30 +1,30 @@
-sub sortDB{
+sub sortDB {
 
     print("Sorting $altDBFile...");
 
-    open(dbInFile, "< $altDBFile");
+    open( dbInFile, "< $altDBFile" );
 
-    @dbInArray = '';
+    @dbInArray  = '';
     $dbNumLines = 0;
-    while ( <dbInFile> ){
-    @dbInArray [$dbNumLines] = $_;
-    $dbNumLines++;
+    while (<dbInFile>) {
+        @dbInArray[$dbNumLines] = $_;
+        $dbNumLines++;
     }
 
     close(dbInFile);
 
     @newDBArray = sort(@dbInArray);
 
-    open(dbOutFile, "> $altDBFile");
+    open( dbOutFile, "> $altDBFile" );
 
-    print(dbOutFile @newDBArray);
+    print( dbOutFile @newDBArray );
 
     close(dbOutFile);
 
     print("done\n");
-    
+
     &dotBibWrite;
-    
+
 }
 1;
 

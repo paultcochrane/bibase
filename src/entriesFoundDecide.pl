@@ -1,32 +1,35 @@
 sub entriesFoundDecide {
 
-    $grepCount = @grepArray; # this construct gives the length of the array
-    
-    if ($ind == 0){
+    $grepCount = @grepArray;    # this construct gives the length of the array
+
+    if ( $ind == 0 ) {
         print "\n";
         print "No entries found\n";
-        if ($searchFlag == 1) {
+        if ( $searchFlag == 1 ) {
             &lookup;
         }
-        elsif ($removeFlag == 1) {
+        elsif ( $removeFlag == 1 ) {
             &remove;
         }
-        elsif ($editFlag == 1) {
+        elsif ( $editFlag == 1 ) {
             &edit;
-        } else {
+        }
+        else {
             print "something went wrong in entriesFoundDecide";
         }
-    } else {
-    
-        if ($searchFlag == 1) {
+    }
+    else {
+
+        if ( $searchFlag == 1 ) {
             &printSearchResults;
         }
-        elsif ($removeFlag == 1) {
+        elsif ( $removeFlag == 1 ) {
             &removeEntry;
         }
-        elsif ($editFlag == 1) {
+        elsif ( $editFlag == 1 ) {
             &editEntry;
-        } else {
+        }
+        else {
             print "something went wrong in entriesFoundDecide";
         }
     }

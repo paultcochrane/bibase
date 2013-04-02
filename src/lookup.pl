@@ -1,46 +1,44 @@
-sub lookup{
+sub lookup {
 
-    local ($dbInFile, $answer, @oldgrepArray, $grepCount,
-            $i, @paper);
+    local ( $dbInFile, $answer, @oldgrepArray, $grepCount, $i, @paper );
 
-            
     $searchFlag = 1;
     $removeFlag = 0;
-    $editFlag = 0;
-    
-    &sortAndCompCheck;
-    
-    @dbInArray = '';
-    @titleArray = '';
-    @authorArray = '';
-    @entryArray = '';
-    @bibkeyArray = '';
-    @journalArray = '';
-    @yearArray = '';
-    @keywordsArray = '';
-    @grepArray = '';
+    $editFlag   = 0;
 
-    open(dbInFile,"< $altDBFile");
+    &sortAndCompCheck;
+
+    @dbInArray     = '';
+    @titleArray    = '';
+    @authorArray   = '';
+    @entryArray    = '';
+    @bibkeyArray   = '';
+    @journalArray  = '';
+    @yearArray     = '';
+    @keywordsArray = '';
+    @grepArray     = '';
+
+    open( dbInFile, "< $altDBFile" );
 
     $dbNumLines = 0;
-    while ( <dbInFile> ){
-    @dbInArray [$dbNumLines] = $_;
-    @lineArray = split('@',@dbInArray[$dbNumLines]);
-    @titleArray[$dbNumLines] = @lineArray[3];
-    @authorArray[$dbNumLines] = @lineArray[2];
-    @entryArray[$dbNumLines] = @lineArray[1];
-    @bibkeyArray[$dbNumLines] = @lineArray[0];
-    @journalArray[$dbNumLines] = @lineArray[4];
-    @yearArray[$dbNumLines] = @lineArray[5];
-    @keywordsArray[$dbNumLines] = @lineArray[24];
-    
-    $dbNumLines++;
+    while (<dbInFile>) {
+        @dbInArray[$dbNumLines] = $_;
+        @lineArray = split( '@', @dbInArray[$dbNumLines] );
+        @titleArray[$dbNumLines]    = @lineArray[3];
+        @authorArray[$dbNumLines]   = @lineArray[2];
+        @entryArray[$dbNumLines]    = @lineArray[1];
+        @bibkeyArray[$dbNumLines]   = @lineArray[0];
+        @journalArray[$dbNumLines]  = @lineArray[4];
+        @yearArray[$dbNumLines]     = @lineArray[5];
+        @keywordsArray[$dbNumLines] = @lineArray[24];
+
+        $dbNumLines++;
     }
-    
+
     close(dbInFile);
 
     print "\nPossible search areas are:\n\n";
-    
+
     print "(A)ll fields\n";
     print "(T)itle field only\n";
     print "(Au)thor field only\n";
@@ -52,46 +50,50 @@ sub lookup{
     print "Return to (m)ain menu\n";
     print "\n";
     print "Enter an area within which to search: ";
-    
-    chop($answer = <>);
+
+    chop( $answer = <> );
 
     print "\n";
-    
-    if ($answer eq '') {
+
+    if ( $answer eq '' ) {
         print "Please make a selection\n";
         &lookup;
     }
-    elsif ($answer eq 'A' || $answer eq 'a') {
+    elsif ( $answer eq 'A' || $answer eq 'a' ) {
         &searchAll;
     }
-    elsif ($answer eq 'T' || $answer eq 't') {
+    elsif ( $answer eq 'T' || $answer eq 't' ) {
         &searchTitle;
     }
-    elsif ($answer eq 'Au' || $answer eq 'au' || $answer eq 'AU' || $answer eq 'aU') {
+    elsif ($answer eq 'Au'
+        || $answer eq 'au'
+        || $answer eq 'AU'
+        || $answer eq 'aU' )
+    {
         &searchAuthor;
     }
-    elsif ($answer eq 'K' || $answer eq 'k') {
+    elsif ( $answer eq 'K' || $answer eq 'k' ) {
         &searchKeywords;
     }
-    elsif ($answer eq 'Y' || $answer eq 'y') {
+    elsif ( $answer eq 'Y' || $answer eq 'y' ) {
         &searchYear;
     }
-    elsif ($answer eq 'J' || $answer eq 'j') {
+    elsif ( $answer eq 'J' || $answer eq 'j' ) {
         &searchJournal;
     }
-    elsif ($answer eq 'E' || $answer eq 'e') {
+    elsif ( $answer eq 'E' || $answer eq 'e' ) {
         &searchEntry;
     }
-    elsif ($answer eq 'B' || $answer eq 'b') {
+    elsif ( $answer eq 'B' || $answer eq 'b' ) {
         &searchBibkey;
     }
-    elsif ($answer eq 'm' || $answer eq 'M') {
+    elsif ( $answer eq 'm' || $answer eq 'M' ) {
         &mainMenu;
-    } else {
+    }
+    else {
         print "something went wrong in lookup.pl\n";
         &lookup;
     }
-    
 
     &mainMenu;
 }

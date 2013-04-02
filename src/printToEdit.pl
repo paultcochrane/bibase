@@ -4,7 +4,7 @@ sub printToEdit {
     &printAllFields;
     print("\nwhich field do you wish to edit?\n");
     print("(enter the number beside the field you wish to edit) ");
-    chop($fieldAns = <>);
+    chop( $fieldAns = <> );
 
 }
 1;
