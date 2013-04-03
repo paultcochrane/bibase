@@ -23,14 +23,14 @@ $bibErrMsg = "field is required for BibTeX\n\n";
 print "This is bibase version 1.0 on $^O\n\n";
 
 my $settingsFname = "bibase.settings";
-open( setFH, "< $settingsFname" ) || die $!;
+open my $setFH, "<", $settingsFname or die $!;
 my $numLines = 0;
 my @settingsArray;
-while (<setFH>) {
+while (<$setFH>) {
     @settingsArray[$numLines] = $_;
     $numLines++;
 }
-close(setFH);
+close $setFH;
 
 my $settingsFileLen = @settingsArray;
 my $dbfilepath;
