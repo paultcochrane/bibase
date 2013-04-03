@@ -36,8 +36,8 @@ my $settingsFileLen = @settingsArray;
 my $dbfilepath;
 my $dbFname;
 my $bibFname;
-for ( $i = 0 ; $i < $settingsFileLen ; $i++ ) {
-    @line = split( '=', @settingsArray[$i] );
+for ( my $i = 0 ; $i < $settingsFileLen ; $i++ ) {
+    my @line = split( '=', @settingsArray[$i] );
     my $dbpathMatch  = grep( /dbfilepath/i,  @line );
     my $bibfileMatch = grep( /bibfilename/i, @line );
     my $dbfileMatch  = grep( /dbfilename/i,  @line );
