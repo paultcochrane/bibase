@@ -20,6 +20,7 @@
 
 $bibErrMsg = "field is required for BibTeX\n\n";
 
+my $settingsFname;
 if ( $^O eq "linux" || $^O eq "dec_osf" ) {
     $settingsFname = "bibase.settings";
     print "This is bibase version 1.0 on $^O\n\n";
@@ -33,19 +34,23 @@ else {
 }
 
 open( setFH, "< $settingsFname" ) || die $!;
-$numLines = 0;
+my $numLines = 0;
+my @settingsArray;
 while (<setFH>) {
     @settingsArray[$numLines] = $_;
     $numLines++;
 }
 close(setFH);
 
-$settingsFileLen = @settingsArray;
+my $settingsFileLen = @settingsArray;
+my $dbfilepath;
+my $dbFname;
+my $bibFname;
 for ( $i = 0 ; $i < $settingsFileLen ; $i++ ) {
     @line = split( '=', @settingsArray[$i] );
-    $dbpathMatch  = grep( /dbfilepath/i,  @line );
-    $bibfileMatch = grep( /bibfilename/i, @line );
-    $dbfileMatch  = grep( /dbfilename/i,  @line );
+    my $dbpathMatch  = grep( /dbfilepath/i,  @line );
+    my $bibfileMatch = grep( /bibfilename/i, @line );
+    my $dbfileMatch  = grep( /dbfilename/i,  @line );
 
     if ( $dbpathMatch != 0 ) {
         $dbfilepath = @line[1];
