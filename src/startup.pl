@@ -16,21 +16,24 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub startup {
 
-    my $moo = open my $startHandle, "<", $DBFile;
+    my $moo = open my $startHandle, "<", $main::DBFile;
 
     if ( !$moo ) {
-        open $startHandle, ">", $DBFile;
-        print("opening new file $DBFile\n");
+        open $startHandle, ">", $main::DBFile;
+        print("opening new file $main::DBFile\n");
     }
     close $startHandle;
 
-    $moo = open $startHandle, "<", $altDBFile;
+    $moo = open $startHandle, "<", $main::altDBFile;
 
     if ( !$moo ) {
-        open $startHandle, ">", $altDBFile;
-        print("opening new file $altDBFile\n");
+        open $startHandle, ">", $main::altDBFile;
+        print("opening new file $main::altDBFile\n");
     }
     close $startHandle;
 
