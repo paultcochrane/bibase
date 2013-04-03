@@ -47,17 +47,17 @@ for ( my $i = 0 ; $i < $settingsFileLen ; $i++ ) {
     if ( $dbpathMatch != 0 ) {
         $dbfilepath = $line[1];
         $dbfilepath =~ s/ //g;
-        chop($dbfilepath);
+        chomp $dbfilepath;
     }
     elsif ( $bibfileMatch != 0 ) {
         $bibFname = $line[1];
         $bibFname =~ s/ //g;
-        chop($bibFname);
+        chomp $bibFname;
     }
     elsif ( $dbfileMatch != 0 ) {
         $dbFname = $line[1];
         $dbFname =~ s/ //g;
-        chop($dbFname);
+        chomp $dbFname;
     }
 
 }
