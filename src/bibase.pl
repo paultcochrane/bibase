@@ -18,6 +18,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+
 $bibErrMsg = "field is required for BibTeX\n\n";
 
 print "This is bibase version 1.0 on $^O\n\n";
@@ -27,7 +29,7 @@ open my $setFH, "<", $settingsFname or die $!;
 my $numLines = 0;
 my @settingsArray;
 while (<$setFH>) {
-    @settingsArray[$numLines] = $_;
+    $settingsArray[$numLines] = $_;
     $numLines++;
 }
 close $setFH;
@@ -37,23 +39,23 @@ my $dbfilepath;
 my $dbFname;
 my $bibFname;
 for ( my $i = 0 ; $i < $settingsFileLen ; $i++ ) {
-    my @line = split( '=', @settingsArray[$i] );
+    my @line = split( '=', $settingsArray[$i] );
     my $dbpathMatch  = grep( /dbfilepath/i,  @line );
     my $bibfileMatch = grep( /bibfilename/i, @line );
     my $dbfileMatch  = grep( /dbfilename/i,  @line );
 
     if ( $dbpathMatch != 0 ) {
-        $dbfilepath = @line[1];
+        $dbfilepath = $line[1];
         $dbfilepath =~ s/ //g;
         chop($dbfilepath);
     }
     elsif ( $bibfileMatch != 0 ) {
-        $bibFname = @line[1];
+        $bibFname = $line[1];
         $bibFname =~ s/ //g;
         chop($bibFname);
     }
     elsif ( $dbfileMatch != 0 ) {
-        $dbFname = @line[1];
+        $dbFname = $line[1];
         $dbFname =~ s/ //g;
         chop($dbFname);
     }
