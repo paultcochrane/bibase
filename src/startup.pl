@@ -18,23 +18,21 @@
 
 sub startup {
 
-    local ( $moo, $startHandle );
-
-    $moo = open( startHandle, "< $DBFile" );
+    my $moo = open my $startHandle, "<", $DBFile;
 
     if ( !$moo ) {
-        open( startHandle, "> $DBFile" );
+        open $startHandle, ">", $DBFile;
         print("opening new file $DBFile\n");
     }
-    close(startHandle);
+    close $startHandle;
 
-    $moo = open( startHandle, "< $altDBFile" );
+    $moo = open $startHandle, "<", $altDBFile;
 
     if ( !$moo ) {
-        open( startHandle, "> $altDBFile" );
+        open $startHandle, ">", $altDBFile;
         print("opening new file $altDBFile\n");
     }
-    close(startHandle);
+    close $startHandle;
 
 }
 1;
