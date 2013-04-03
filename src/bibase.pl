@@ -60,8 +60,8 @@ for ( $i = 0 ; $i < $settingsFileLen ; $i++ ) {
 
 }
 
-$DBFile    = join( '', $dbfilepath, $bibFname );
-$altDBFile = join( '', $dbfilepath, $dbFname );
+$DBFile    = $bibFname ? join( '', $dbfilepath, $bibFname ) : "bibase.bib" ;
+$altDBFile = $dbFname ? join( '', $dbfilepath, $dbFname ) : "bibase.db";
 
 require "mainMenu.pl";
 require "lookup.pl";
