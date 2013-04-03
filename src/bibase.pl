@@ -20,19 +20,9 @@
 
 $bibErrMsg = "field is required for BibTeX\n\n";
 
-my $settingsFname;
-if ( $^O eq "linux" || $^O eq "dec_osf" ) {
-    $settingsFname = "bibase.settings";
-    print "This is bibase version 1.0 on $^O\n\n";
-}
-elsif ( $^O eq "MacOS" ) {
-    $settingsFname = "bibase.settings";
-    print "This is bibase version 1.0 on $^O\n\n";
-}
-else {
-    $settingsFname = "bibase.settings";
-}
+print "This is bibase version 1.0 on $^O\n\n";
 
+my $settingsFname = "bibase.settings";
 open( setFH, "< $settingsFname" ) || die $!;
 my $numLines = 0;
 my @settingsArray;
