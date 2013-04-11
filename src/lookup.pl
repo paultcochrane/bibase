@@ -16,32 +16,33 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub lookup {
 
-    local ( $dbInFile, $answer, @oldgrepArray, $grepCount, $i, @paper );
-
-    $searchFlag = 1;
-    $removeFlag = 0;
-    $editFlag   = 0;
+    my $searchFlag = 1;
+    my $removeFlag = 0;
+    my $editFlag   = 0;
 
     &sortAndCompCheck;
 
-    @dbInArray     = '';
-    @titleArray    = '';
-    @authorArray   = '';
-    @entryArray    = '';
-    @bibkeyArray   = '';
-    @journalArray  = '';
-    @yearArray     = '';
-    @keywordsArray = '';
-    @grepArray     = '';
+    my @dbInArray     = '';
+    my @titleArray    = '';
+    my @authorArray   = '';
+    my @entryArray    = '';
+    my @bibkeyArray   = '';
+    my @journalArray  = '';
+    my @yearArray     = '';
+    my @keywordsArray = '';
+    my @grepArray     = '';
 
-    open( dbInFile, "< $altDBFile" );
+    open( my $dbInFile, "< $main::altDBFile" );
 
-    $dbNumLines = 0;
-    while (<dbInFile>) {
+    my $dbNumLines = 0;
+    while (<$dbInFile>) {
         @dbInArray[$dbNumLines] = $_;
-        @lineArray = split( '@', @dbInArray[$dbNumLines] );
+        my @lineArray = split( '@', @dbInArray[$dbNumLines] );
         @titleArray[$dbNumLines]    = @lineArray[3];
         @authorArray[$dbNumLines]   = @lineArray[2];
         @entryArray[$dbNumLines]    = @lineArray[1];
@@ -53,7 +54,7 @@ sub lookup {
         $dbNumLines++;
     }
 
-    close(dbInFile);
+    close($dbInFile);
 
     print "\nPossible search areas are:\n\n";
 
@@ -69,6 +70,7 @@ sub lookup {
     print "\n";
     print "Enter an area within which to search: ";
 
+    my $answer;
     chop( $answer = <> );
 
     print "\n";
