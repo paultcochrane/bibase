@@ -16,63 +16,68 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub addArticle {
 
-    local (
-        $bibFile,  $bibInFile, $title,    $author,   $journal,
-        $year,     $volume,    $number,   $month,    $page,
-        $keywords, $dummy,     $dummyOld, $NumLines, @InArray,
-        $checkNum, $answer,    $count,    $bibkey
-    );
-
-    open( bibFile,   ">> $DBFile" ) or die "$!";
-    open( bibInFile, "< $DBFile" )  or die "$!";
+    open( my $bibFile,   ">> $main::DBFile" ) or die "$!";
+    open( my $bibInFile, "< $main::DBFile" )  or die "$!";
     print("Choosing to add and a journal article\n\n");
 
+    my $title;
     print("Title: ");
     chop( $title = <> );
 
     if ( $title eq "" ) {
-        print "Title $bibErrMsg";
+        print "Title $main::bibErrMsg";
         &add;
     }
 
+    my $author;
     print("Author(s): ");
     chop( $author = <> );
 
     if ( $author eq "" ) {
-        print "Author $bibErrMsg";
+        print "Author $main::bibErrMsg";
         &add;
     }
 
+    my $journal;
     print("Journal: ");
     chop( $journal = <> );
 
     if ( $journal eq "" ) {
-        print "Journal $bibErrMsg";
+        print "Journal $main::bibErrMsg";
         &add;
     }
 
+    my $year;
     print("Year: ");
     chop( $year = <> );
 
     if ( $year eq "" ) {
-        print "Year $bibErrMsg";
+        print "Year $main::bibErrMsg";
         &add;
     }
 
+    my $volume;
     print("Volume: ");
     chop( $volume = <> );
 
+    my $number;
     print("Number: ");
     chop( $number = <> );
 
+    my $month;
     print("Month: ");
     chop( $month = <> );
 
+    my $page;
     print("Page: ");
     chop( $page = <> );
 
+    my $keywords;
     print("Keywords: ");
     chop( $keywords = <> );
 
@@ -85,29 +90,30 @@ sub addArticle {
 
     &titleCheck($title);
 
-    print( bibFile "\@Article{$bibkey,\n" );
-    print( bibFile "author = {$author},\n" );
-    print( bibFile "title = {$title},\n" );
-    print( bibFile "journal = {$journal},\n" );
-    print( bibFile "year = {$year},\n" );
+    my $bibkey;
+    print( $bibFile "\@Article{$bibkey,\n" );
+    print( $bibFile "author = {$author},\n" );
+    print( $bibFile "title = {$title},\n" );
+    print( $bibFile "journal = {$journal},\n" );
+    print( $bibFile "year = {$year},\n" );
 
     if ( $volume ne "" ) {
-        print( bibFile "volume = {$volume},\n" );
+        print( $bibFile "volume = {$volume},\n" );
     }
     if ( $number ne "" ) {
-        print( bibFile "number = {$number},\n" );
+        print( $bibFile "number = {$number},\n" );
     }
     if ( $month ne "" ) {
-        print( bibFile "month = {$month},\n" );
+        print( $bibFile "month = {$month},\n" );
     }
     if ( $page ne "" ) {
-        print( bibFile "pages = {$page},\n" );
+        print( $bibFile "pages = {$page},\n" );
     }
-    print( bibFile "keywords = {$keywords}\n" );
-    print( bibFile "}\n\n" );
+    print( $bibFile "keywords = {$keywords}\n" );
+    print( $bibFile "}\n\n" );
 
-    close(bibFile);
-    close(bibInFile);
+    close($bibFile);
+    close($bibInFile);
 
     # @Article{,
     #   author =      {},
