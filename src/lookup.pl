@@ -27,7 +27,7 @@ sub lookup {
 
     &sortAndCompCheck;
 
-    my @dbInArray     = '';
+    @main::dbInArray     = '';
     my @titleArray    = '';
     my @authorArray   = '';
     my @entryArray    = '';
@@ -39,19 +39,19 @@ sub lookup {
 
     open( my $dbInFile, "< $main::altDBFile" );
 
-    my $dbNumLines = 0;
+    $main::dbNumLines = 0;
     while (<$dbInFile>) {
-        $dbInArray[$dbNumLines] = $_;
-        my @lineArray = split( '@', $dbInArray[$dbNumLines] );
-        $titleArray[$dbNumLines]    = $lineArray[3];
-        $authorArray[$dbNumLines]   = $lineArray[2];
-        $entryArray[$dbNumLines]    = $lineArray[1];
-        $bibkeyArray[$dbNumLines]   = $lineArray[0];
-        $journalArray[$dbNumLines]  = $lineArray[4];
-        $yearArray[$dbNumLines]     = $lineArray[5];
-        $keywordsArray[$dbNumLines] = $lineArray[24];
+        $main::dbInArray[$main::dbNumLines] = $_;
+        my @lineArray = split( '@', $main::dbInArray[$main::dbNumLines] );
+        $titleArray[$main::dbNumLines]    = $lineArray[3];
+        $authorArray[$main::dbNumLines]   = $lineArray[2];
+        $entryArray[$main::dbNumLines]    = $lineArray[1];
+        $bibkeyArray[$main::dbNumLines]   = $lineArray[0];
+        $journalArray[$main::dbNumLines]  = $lineArray[4];
+        $yearArray[$main::dbNumLines]     = $lineArray[5];
+        $keywordsArray[$main::dbNumLines] = $lineArray[24];
 
-        $dbNumLines++;
+        $main::dbNumLines++;
     }
 
     close($dbInFile);

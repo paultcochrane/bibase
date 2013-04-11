@@ -16,10 +16,14 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub searchAll {
 
     print "Searching in all fields\n";
     print "What do you wish to search for? ";
+    my $answer;
     chop( $answer = <> );
     print "\n";
     if ( $answer eq '' ) {
@@ -27,13 +31,13 @@ sub searchAll {
         &searchAll;
     }
 
-    @grepArray = '';
-    @indArray  = '';
-    $ind       = 0;
-    for ( $i = 0 ; $i < $dbNumLines ; $i++ ) {
-        $matchFlag = grep( /$answer/i, @dbInArray[$i] );
+    my @grepArray = '';
+    my @indArray  = '';
+    my $ind       = 0;
+    for ( my $i = 0 ; $i < $main::dbNumLines ; $i++ ) {
+        my $matchFlag = grep( /$answer/i, @main::dbInArray[$i] );
         if ( $matchFlag != 0 ) {
-            @grepArray[$ind] = @dbInArray[$i];
+            @grepArray[$ind] = @main::dbInArray[$i];
             @indArray[$ind]  = $i;
             $ind++;
         }
