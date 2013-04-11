@@ -16,6 +16,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub mainMenu {
 
     print("\n\n");
@@ -26,6 +29,7 @@ sub mainMenu {
     print("(E)dit an entry\n");
     print("E(x)it\n\n");
 
+    my $answer;
     print("Please choose an option: ");
     chop( $answer = <> );
 
