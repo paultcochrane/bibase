@@ -16,9 +16,10 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
-sub add {
+use warnings;
+use strict;
 
-    local ($answer);
+sub add {
 
     print("\n\nDo you want to add:\n\n");
     print("A journal (a)rticle\n");
@@ -36,6 +37,7 @@ sub add {
     print("The (m)ain menu\n");
     print("E(x)it\n\n");
 
+    my $answer;
     print("Choose an option: ");
     chop( $answer = <> );
 
