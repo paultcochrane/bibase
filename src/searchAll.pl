@@ -31,15 +31,15 @@ sub searchAll {
         &searchAll;
     }
 
-    my @grepArray = '';
+    @main::grepArray = '';
     my @indArray  = '';
-    my $ind       = 0;
+    $main::ind       = 0;
     for ( my $i = 0 ; $i < $main::dbNumLines ; $i++ ) {
         my $matchFlag = grep( /$answer/i, $main::dbInArray[$i] );
         if ( $matchFlag != 0 ) {
-            $grepArray[$ind] = $main::dbInArray[$i];
-            $indArray[$ind]  = $i;
-            $ind++;
+            $main::grepArray[$main::ind] = $main::dbInArray[$i];
+            $indArray[$main::ind]  = $i;
+            $main::ind++;
         }
     }
 

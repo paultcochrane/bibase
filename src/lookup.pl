@@ -21,9 +21,9 @@ use strict;
 
 sub lookup {
 
-    my $searchFlag = 1;
-    my $removeFlag = 0;
-    my $editFlag   = 0;
+    $main::searchFlag = 1;
+    $main::removeFlag = 0;
+    $main::editFlag   = 0;
 
     &sortAndCompCheck;
 
@@ -35,7 +35,7 @@ sub lookup {
     my @journalArray  = '';
     my @yearArray     = '';
     my @keywordsArray = '';
-    my @grepArray     = '';
+    @main::grepArray     = '';
 
     open( my $dbInFile, "< $main::altDBFile" );
 

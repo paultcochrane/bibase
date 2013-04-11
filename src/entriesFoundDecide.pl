@@ -16,20 +16,23 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub entriesFoundDecide {
 
-    $grepCount = @grepArray;    # this construct gives the length of the array
+    my $grepCount = @main::grepArray;    # this construct gives the length of the array
 
-    if ( $ind == 0 ) {
+    if ( $main::ind == 0 ) {
         print "\n";
         print "No entries found\n";
-        if ( $searchFlag == 1 ) {
+        if ( $main::searchFlag == 1 ) {
             &lookup;
         }
-        elsif ( $removeFlag == 1 ) {
+        elsif ( $main::removeFlag == 1 ) {
             &remove;
         }
-        elsif ( $editFlag == 1 ) {
+        elsif ( $main::editFlag == 1 ) {
             &edit;
         }
         else {
@@ -38,13 +41,13 @@ sub entriesFoundDecide {
     }
     else {
 
-        if ( $searchFlag == 1 ) {
+        if ( $main::searchFlag == 1 ) {
             &printSearchResults;
         }
-        elsif ( $removeFlag == 1 ) {
+        elsif ( $main::removeFlag == 1 ) {
             &removeEntry;
         }
-        elsif ( $editFlag == 1 ) {
+        elsif ( $main::editFlag == 1 ) {
             &editEntry;
         }
         else {
