@@ -35,10 +35,10 @@ sub searchAll {
     my @indArray  = '';
     my $ind       = 0;
     for ( my $i = 0 ; $i < $main::dbNumLines ; $i++ ) {
-        my $matchFlag = grep( /$answer/i, @main::dbInArray[$i] );
+        my $matchFlag = grep( /$answer/i, $main::dbInArray[$i] );
         if ( $matchFlag != 0 ) {
-            @grepArray[$ind] = @main::dbInArray[$i];
-            @indArray[$ind]  = $i;
+            $grepArray[$ind] = $main::dbInArray[$i];
+            $indArray[$ind]  = $i;
             $ind++;
         }
     }
