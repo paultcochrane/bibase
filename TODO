@@ -1,0 +1,6 @@
+ - turn settings file into an ini file
+ - use IO::Prompt instead of my own implementation
+ - localise all variables!
+ - use warnings and strict!
+ - document subroutines with POD
+ - add codingstd tests
