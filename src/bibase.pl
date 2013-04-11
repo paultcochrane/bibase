@@ -19,8 +19,9 @@
 # USA.
 
 use warnings;
+use strict;
 
-$bibErrMsg = "field is required for BibTeX\n\n";
+$main::bibErrMsg = "field is required for BibTeX\n\n";
 
 print "This is bibase version 1.0 on $^O\n\n";
 
@@ -62,8 +63,8 @@ for ( my $i = 0 ; $i < $settingsFileLen ; $i++ ) {
 
 }
 
-$DBFile    = $bibFname ? join( '', $dbfilepath, $bibFname ) : "bibase.bib" ;
-$altDBFile = $dbFname ? join( '', $dbfilepath, $dbFname ) : "bibase.db";
+$main::DBFile    = $bibFname ? join( '', $dbfilepath, $bibFname ) : "bibase.bib" ;
+$main::altDBFile = $dbFname ? join( '', $dbfilepath, $dbFname ) : "bibase.db";
 
 require "mainMenu.pl";
 require "lookup.pl";
