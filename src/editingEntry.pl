@@ -41,7 +41,7 @@ sub editingEntry {
         }
         else {
             print "woah, something weird happened in editingEntry\n";
-            &editEntry;
+            &editEntry( 0 );
         }
     }
 
@@ -50,7 +50,7 @@ sub editingEntry {
     }
     else {
         print("woah, something strange happened in editingEntry\n");
-        &editEntry;
+        &editEntry( 0 );
     }
 
 }

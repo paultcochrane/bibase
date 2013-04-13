@@ -48,7 +48,7 @@ sub entriesFoundDecide {
             &removeEntry;
         }
         elsif ( $main::editFlag == 1 ) {
-            &editEntry;
+            &editEntry( $grepCount );
         }
         else {
             print "something went wrong in entriesFoundDecide";

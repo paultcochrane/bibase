@@ -16,18 +16,23 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub editEntry {
+
+    my $grepCount = shift;
 
     print("\n$grepCount entries found\n\n");
 
-    $i      = 0;
-    $answer = '';
+    my $i      = 0;
+    my $answer = '';
     while ($answer eq 'n'
         || $answer eq 'N'
         || $answer eq ''
         || $i < $grepCount )
     {
-        $num = $i + 1;
+        my $num = $i + 1;
         print("printing entry $num of $grepCount\n");
         &prettyPrintSearchResults;
         print("\nedit this entry? (y/n/x) ");
