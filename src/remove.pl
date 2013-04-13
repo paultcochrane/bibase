@@ -91,7 +91,7 @@ sub remove {
         &searchJournal;
     }
     elsif ( $answer eq 'E' || $answer eq 'e' ) {
-        &searchEntry;
+        &searchEntry( @entryArray );
     }
     elsif ( $answer eq 'B' || $answer eq 'b' ) {
         &searchBibkey( @bibkeyArray );
