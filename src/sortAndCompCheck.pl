@@ -26,17 +26,17 @@ sub sortAndCompCheck {
 
     my $altdbNumLines = 0;
     while (<$bibAltDBInFile>) {
-        @main::altdbInArray[$altdbNumLines] = $_;
+        $main::altdbInArray[$altdbNumLines] = $_;
         $altdbNumLines++;
     }
 
     my $bibNumLines = 0;
     while (<my bibDBInFile>) {
-        @main::bibInArray[$bibNumLines] = $_;
+        $main::bibInArray[$bibNumLines] = $_;
         $bibNumLines++;
     }
 
-    my $bibAtCount = grep( /\@/, @main::bibInArray );
+    my $bibAtCount = grep( /\@/, $main::bibInArray );
 
     # print("dbAtCount = $dbAtCount\n");
     # print("altdbNumLines = $altdbNumLines\n");
