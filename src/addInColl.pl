@@ -16,86 +16,96 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub addInColl {
 
-    local (
-        $bibFile,  $bibInFile, $title,    $author,    $booktitle,
-        $year,     $volume,    $number,   $publisher, $editor,
-        $series,   $type,      $chapter,  $address,   $edition,
-        $month,    $page,      $keywords, $dummy,     $dummyOld,
-        $NumLines, @InArray,   $checkNum, $answer,    $count,
-        $bibkey
-    );
-
-    open( bibFile,   ">> $DBFile" ) or die "$!";
-    open( bibInFile, "< $DBFile" )  or die "$!";
+    open( my $bibFile,   ">> $main::DBFile" ) or die "$!";
+    open( my $bibInFile, "< $main::DBFile" )  or die "$!";
     print("Choosing to add an article in a collection\n\n");
 
+    my $title;
     print("Title: ");
     chop( $title = <> );
 
     if ( $title eq "" ) {
-        print "Title $bibErrMsg";
+        print "Title $main::bibErrMsg";
         &add;
     }
 
+    my $author;
     print("Author(s): ");
     chop( $author = <> );
 
     if ( $author eq "" ) {
-        print "Author $bibErrMsg";
+        print "Author $main::bibErrMsg";
         &add;
     }
 
+    my $booktitle;
     print("Book title: ");
     chop( $booktitle = <> );
 
     if ( $booktitle eq "" ) {
-        print "Book title $bibErrMsg";
+        print "Book title $main::bibErrMsg";
         &add;
     }
 
+    my $year;
     print("Year: ");
     chop( $year = <> );
 
     if ( $year eq "" ) {
-        print "Year $bibErrMsg";
+        print "Year $main::bibErrMsg";
         &add;
     }
 
+    my $volume;
     print("Volume: ");
     chop( $volume = <> );
 
+    my $number;
     print("Number: ");
     chop( $number = <> );
 
+    my $publisher;
     print("Publisher: ");
     chop( $publisher = <> );
 
+    my $editor;
     print("Editor: ");
     chop( $editor = <> );
 
+    my $series;
     print("Series: ");
     chop( $series = <> );
 
+    my $type;
     print("Type: ");
     chop( $type = <> );
 
+    my $chapter;
     print("Chapter: ");
     chop( $chapter = <> );
 
+    my $address;
     print("Address: ");
     chop( $address = <> );
 
+    my $edition;
     print("Edition: ");
     chop( $edition = <> );
 
+    my $month;
     print("Month: ");
     chop( $month = <> );
 
+    my $page;
     print("Page: ");
     chop( $page = <> );
 
+    my $keywords;
     print("Keywords: ");
     chop( $keywords = <> );
 
@@ -104,25 +114,27 @@ sub addInColl {
         &add;
     }
 
-    $dummy = $author;
+    my $dummy = $author;
     $dummy =~ s/\sand[\w\W]*//;
-    $dummyOld = zzzzzzzz;
+    my $dummyOld = "zzzzzzzz";
     while ( $dummyOld ne $dummy ) {
         $dummyOld = $dummy;
         $dummy =~ s/[^\s]\S*\s//;
     }
 
-    $NumLines = 0;
-    while (<bibInFile>) {
+    my $NumLines = 0;
+    my @InArray;
+    while (<$bibInFile>) {
         @InArray[$NumLines] = $_;
         $NumLines++;
     }
 
-    $checkNum = grep( /\{$title\}/, @InArray );
+    my $checkNum = grep( /\{$title\}/, @InArray );
 
     if ( $checkNum > 0 ) {
         print "This title already exists in database\n";
         print "Add anyway? (y/n) ";
+        my $answer;
         chop( $answer = <> );
         if ( $answer eq "y" ) {
         }
@@ -134,55 +146,55 @@ sub addInColl {
         }
     }
 
-    $count = grep( /\{$dummy:$year/i, @InArray );
+    my $count = grep( /\{$dummy:$year/i, @InArray );
     $count++;
 
-    $bibkey = join( ":", $dummy, $year, $count );
+    my $bibkey = join( ":", $dummy, $year, $count );
 
-    print( bibFile "\@InCollection{$bibkey,\n" );
-    print( bibFile "author = {$author},\n" );
-    print( bibFile "title = {$title},\n" );
-    print( bibFile "booktitle = {$booktitle},\n" );
-    print( bibFile "year = {$year},\n" );
+    print( $bibFile "\@InCollection{$bibkey,\n" );
+    print( $bibFile "author = {$author},\n" );
+    print( $bibFile "title = {$title},\n" );
+    print( $bibFile "booktitle = {$booktitle},\n" );
+    print( $bibFile "year = {$year},\n" );
 
     if ( $volume ne "" ) {
-        print( bibFile "volume = {$volume},\n" );
+        print( $bibFile "volume = {$volume},\n" );
     }
     if ( $number ne "" ) {
-        print( bibFile "number = {$number},\n" );
+        print( $bibFile "number = {$number},\n" );
     }
     if ( $publisher ne "" ) {
-        print( bibFile "publisher = {$publisher},\n" );
+        print( $bibFile "publisher = {$publisher},\n" );
     }
     if ( $editor ne "" ) {
-        print( bibFile "editor = {$editor},\n" );
+        print( $bibFile "editor = {$editor},\n" );
     }
     if ( $series ne "" ) {
-        print( bibFile "series = {$series},\n" );
+        print( $bibFile "series = {$series},\n" );
     }
     if ( $type ne "" ) {
-        print( bibFile "type = {$type},\n" );
+        print( $bibFile "type = {$type},\n" );
     }
     if ( $chapter ne "" ) {
-        print( bibFile "chapter = {$chapter},\n" );
+        print( $bibFile "chapter = {$chapter},\n" );
     }
     if ( $address ne "" ) {
-        print( bibFile "address = {$address},\n" );
+        print( $bibFile "address = {$address},\n" );
     }
     if ( $edition ne "" ) {
-        print( bibFile "edition = {$edition},\n" );
+        print( $bibFile "edition = {$edition},\n" );
     }
     if ( $month ne "" ) {
-        print( bibFile "month = {$month},\n" );
+        print( $bibFile "month = {$month},\n" );
     }
     if ( $page ne "" ) {
-        print( bibFile "pages = {$page},\n" );
+        print( $bibFile "pages = {$page},\n" );
     }
-    print( bibFile "keywords = {$keywords}\n" );
-    print( bibFile "}\n\n" );
+    print( $bibFile "keywords = {$keywords}\n" );
+    print( $bibFile "}\n\n" );
 
-    close(bibFile);
-    close(bibInFile);
+    close($bibFile);
+    close($bibInFile);
 
     # @InCollection{,
     #   author =      {},
