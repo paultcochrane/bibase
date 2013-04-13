@@ -16,25 +16,34 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
-sub edit {
+use warnings;
+use strict;
 
-    local ( $dbInFile, $answer, @oldgrepArray, $grepCount, $i );
+sub edit {
 
     &sortAndCompCheck;
 
     print "\nChoosing to edit an entry\n";
     print "Please search for the entry to edit\n";
 
-    $searchFlag = 0;
-    $removeFlag = 0;
-    $editFlag   = 1;
+    my $searchFlag = 0;
+    my $removeFlag = 0;
+    my $editFlag   = 1;
 
-    open( dbInFile, "< $main::altDBFile" );
+    open( my $dbInFile, "< $main::altDBFile" );
 
-    $dbNumLines = 0;
-    while (<dbInFile>) {
+    my $dbNumLines = 0;
+    my @dbInArray;
+    my @titleArray;
+    my @authorArray;
+    my @entryArray;
+    my @bibkeyArray;
+    my @journalArray;
+    my @yearArray;
+    my @keywordsArray;
+    while (<$dbInFile>) {
         @dbInArray[$dbNumLines] = $_;
-        @lineArray = split( '@', @dbInArray[$dbNumLines] );
+        my @lineArray = split( '@', @dbInArray[$dbNumLines] );
         @titleArray[$dbNumLines]    = @lineArray[3];
         @authorArray[$dbNumLines]   = @lineArray[2];
         @entryArray[$dbNumLines]    = @lineArray[1];
@@ -46,7 +55,7 @@ sub edit {
         $dbNumLines++;
     }
 
-    close(dbInFile);
+    close($dbInFile);
 
     print "\nPossible search areas are:\n\n";
 
@@ -62,6 +71,7 @@ sub edit {
     print "\n";
     print "Enter an area within which to search: ";
 
+    my $answer;
     chop( $answer = <> );
 
     print "\n";
