@@ -86,7 +86,7 @@ sub addArticle {
         &add;
     }
 
-    &bibkeyMake($author);
+    &bibkeyMake($author, $year, $bibInFile);
 
     &titleCheck($title);
 

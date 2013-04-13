@@ -21,7 +21,11 @@ use strict;
 
 sub bibkeyMake {
 
-    my $dummy = $main::author;
+    my $author = shift;
+    my $year = shift;
+    my $bibInFile = shift;
+
+    my $dummy = $author;
     $dummy =~ s/\sand[\w\W]*//;    # deletes everything after first 'and'
     my $dummyOld = "zzzzzzzz";
     while ( $dummyOld ne $dummy ) {
@@ -32,15 +36,15 @@ sub bibkeyMake {
 
     my $NumLines = 0;
     my @InArray;
-    while (<$main::bibInFile>) {
+    while (<$bibInFile>) {
         $InArray[$NumLines] = $_;
         $NumLines++;
     }
 
-    my $count = grep( /\{$dummy:$main::year/i, @InArray );
+    my $count = grep( /\{$dummy:$year/i, @InArray );
     $count++;
 
-    my $bibkey = join( ":", $dummy, $main::year, $count );
+    my $bibkey = join( ":", $dummy, $year, $count );
 
 }
 1;
