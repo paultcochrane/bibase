@@ -209,7 +209,7 @@ sub bibCompile {
 
         if ( $lineStr =~ m/^[}]/ ) {
 
-            print( bibAltDBFile "$bibkey",    #0
+            print( $bibAltDBFile "$bibkey",    #0
                 "\@$entry",                   #1
                 "\@$authorValue",             #2
                 "\@$titleValue",              #3
