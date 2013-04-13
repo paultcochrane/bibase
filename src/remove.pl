@@ -88,7 +88,7 @@ sub remove {
         &searchYear;
     }
     elsif ( $answer eq 'J' || $answer eq 'j' ) {
-        &searchJournal;
+        &searchJournal( @journalArray );
     }
     elsif ( $answer eq 'E' || $answer eq 'e' ) {
         &searchEntry( @entryArray );
