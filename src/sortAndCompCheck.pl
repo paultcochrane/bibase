@@ -16,24 +16,27 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub sortAndCompCheck {
 
-    open( bibDBInFile,    "< $DBFile" )    or die "$!";
-    open( bibAltDBInFile, "< $altDBFile" ) or die "$!";
+    open( my $bibDBInFile,    "< $main::DBFile" )    or die "$!";
+    open( my $bibAltDBInFile, "< $main::altDBFile" ) or die "$!";
 
-    $altdbNumLines = 0;
-    while (<bibAltDBInFile>) {
-        @altdbInArray[$altdbNumLines] = $_;
+    my $altdbNumLines = 0;
+    while (<$bibAltDBInFile>) {
+        @main::altdbInArray[$altdbNumLines] = $_;
         $altdbNumLines++;
     }
 
-    $bibNumLines = 0;
-    while (<bibDBInFile>) {
-        @bibInArray[$bibNumLines] = $_;
+    my $bibNumLines = 0;
+    while (<my bibDBInFile>) {
+        @main::bibInArray[$bibNumLines] = $_;
         $bibNumLines++;
     }
 
-    $bibAtCount = grep( /\@/, @bibInArray );
+    my $bibAtCount = grep( /\@/, @main::bibInArray );
 
     # print("dbAtCount = $dbAtCount\n");
     # print("altdbNumLines = $altdbNumLines\n");
