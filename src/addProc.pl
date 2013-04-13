@@ -95,7 +95,7 @@ sub addProc {
     my $NumLines = 0;
     my @InArray;
     while (<$bibInFile>) {
-        @InArray[$NumLines] = $_;
+        $InArray[$NumLines] = $_;
         $NumLines++;
     }
 
