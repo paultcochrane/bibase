@@ -43,7 +43,7 @@ sub searchAll {
         }
     }
 
-    &entriesFoundDecide;
+    &entriesFoundDecide( $ind );
 
 }
 1;

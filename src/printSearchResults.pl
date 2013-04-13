@@ -16,15 +16,21 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub printSearchResults {
+
+    my $grepCount = shift;
 
     print("\n$grepCount entries found\n");
     print("showing results...\n\n");
 
-    for ( $i = 0 ; $i < $grepCount ; $i++ ) {
+    for ( my $i = 0 ; $i < $grepCount ; $i++ ) {
         &prettyPrintSearchResults;
         if ( $i != $grepCount - 1 ) {
 
+            my $answer;
             print("\nshow next entry? (y/n) ");
             chop( $answer = <> );
             if ( $answer eq 'n' || $answer eq 'N' ) {

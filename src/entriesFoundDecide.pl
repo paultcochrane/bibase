@@ -21,9 +21,11 @@ use strict;
 
 sub entriesFoundDecide {
 
+    my $numFoundEntries = shift;
+
     my $grepCount = @main::grepArray;    # this construct gives the length of the array
 
-    if ( $main::ind == 0 ) {
+    if ( $numFoundEntries == 0 ) {
         print "\n";
         print "No entries found\n";
         if ( $main::searchFlag == 1 ) {
@@ -42,7 +44,7 @@ sub entriesFoundDecide {
     else {
 
         if ( $main::searchFlag == 1 ) {
-            &printSearchResults;
+            &printSearchResults( $grepCount );
         }
         elsif ( $main::removeFlag == 1 ) {
             &removeEntry;
