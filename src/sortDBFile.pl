@@ -16,12 +16,15 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub sortDBFile {
 
-    print("Sorting $DBFile...");
+    print("Sorting $main::DBFile...");
 
     system(
-"/usr/local/bin/emacs -batch -q -l /usr/local/share/emacs/19.34/lisp/bibtex.el $DBFile -f bibtex-sort-entries -f save-buffer 2> /dev/null"
+"/usr/local/bin/emacs -batch -q -l /usr/local/share/emacs/19.34/lisp/bibtex.el $main::DBFile -f bibtex-sort-entries -f save-buffer 2> /dev/null"
     );
 
     print("done\n");
