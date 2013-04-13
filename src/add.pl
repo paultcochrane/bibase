@@ -41,9 +41,6 @@ sub add {
     print("Choose an option: ");
     chop( $answer = <> );
 
-    # clear any variables to stop corruption of .db database file
-    &cleanup;
-
     if ( $answer eq 'a' ) {
         &addArticle;
     }

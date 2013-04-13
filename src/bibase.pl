@@ -82,7 +82,6 @@ require "addManual.pl";
 require "addTechReport.pl";
 require "addBooklet.pl";
 require "sortDB.pl";
-require "cleanup.pl";
 require "bibCompile.pl";
 require "sortAndCompCheck.pl";
 require "startup.pl";
