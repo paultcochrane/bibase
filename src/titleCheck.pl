@@ -16,21 +16,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub titleCheck {
 
-    local ( $NumLines, @InArray, $checkNum, $answer );
+    my $title = shift;
 
-    $NumLines = 0;
-    while (<bibInFile>) {
-        @InArray[$NumLines] = $_;
+    my $NumLines = 0;
+    my @InArray;
+    while (<$main::bibInFile>) {
+        $InArray[$NumLines] = $_;
         $NumLines++;
     }
 
-    $checkNum = grep( /\{$title\}/, @InArray );
+    my $checkNum = grep( /\{$title\}/, @InArray );
 
     if ( $checkNum > 0 ) {
         print "This title already exists in database\n";
         print "Add anyway? (y/n) ";
+        my $answer;
         chop( $answer = <> );
         if ( $answer eq "y" ) {
         }
