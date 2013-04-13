@@ -30,7 +30,7 @@ sub bibCompile {
     my $numLines = 0;
     my @inArray;
     while (<$bibInFile>) {
-        @inArray[$numLines] = $_;
+        $inArray[$numLines] = $_;
         $numLines++;
     }
 
@@ -44,7 +44,7 @@ sub bibCompile {
     while ( $lineNum < $numLines ) {
 
         my $lineStr = '';
-        $lineStr = @inArray[$lineNum];
+        $lineStr = $inArray[$lineNum];
         $lineStr =~ s/^\s*//;
 
         my $field      = '';
@@ -61,9 +61,9 @@ sub bibCompile {
             $bibkey =~ s/,//;
         }
         elsif ( $lineStr =~ m/^[a-zA-Z]/ ) {
-            $field = @inArray[$lineNum];
+            $field = $inArray[$lineNum];
             $field =~ s/\s*=.*//;
-            $fieldValue = @inArray[$lineNum];
+            $fieldValue = $inArray[$lineNum];
             $fieldValue =~ s/^[a-zA-Z\s]*=[\s{]*//;
             $fieldValue =~ s/\s*[}]*\s*[,]*$//;
         }
