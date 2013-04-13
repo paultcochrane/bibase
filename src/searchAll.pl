@@ -33,13 +33,13 @@ sub searchAll {
 
     @main::grepArray = '';
     my @indArray  = '';
-    $main::ind       = 0;
+    my $ind       = 0;
     for ( my $i = 0 ; $i < $main::dbNumLines ; $i++ ) {
         my $matchFlag = grep( /$answer/i, $main::dbInArray[$i] );
         if ( $matchFlag != 0 ) {
-            $main::grepArray[$main::ind] = $main::dbInArray[$i];
-            $indArray[$main::ind]  = $i;
-            $main::ind++;
+            $main::grepArray[$ind] = $main::dbInArray[$i];
+            $indArray[$ind]  = $i;
+            $ind++;
         }
     }
 
