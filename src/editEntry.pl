@@ -34,7 +34,7 @@ sub editEntry {
     {
         my $num = $i + 1;
         print("printing entry $num of $grepCount\n");
-        &prettyPrintSearchResults;
+        &prettyPrintSearchResults( $main::grepArray[$i] );
         print("\nedit this entry? (y/n/x) ");
         chop( $answer = <> );
         if ( $answer eq 'n' || $answer eq 'N' || $answer eq '' ) {
