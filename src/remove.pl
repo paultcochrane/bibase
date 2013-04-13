@@ -72,7 +72,7 @@ sub remove {
         &searchAll;
     }
     elsif ( $answer eq 'T' || $answer eq 't' ) {
-        &searchTitle;
+        &searchTitle( @titleArray );
     }
     elsif ($answer eq 'Au'
         || $answer eq 'au'
