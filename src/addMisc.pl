@@ -16,48 +16,51 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub addMisc {
 
-    local (
-        $bibFile,  $bibInFile, $title,    $author, $howpub,
-        $year,     $month,     $keywords, $dummy,  $dummyOld,
-        $NumLines, @InArray,   $checkNum, $answer, $bibkey
-    );
-
-    open( bibFile,   ">> $DBFile" ) or die "$!";
-    open( bibInFile, "< $DBFile" )  or die "$!";
+    open( my $bibFile,   ">> $main::DBFile" ) or die "$!";
+    open( my $bibInFile, "< $main::DBFile" )  or die "$!";
     print("Choosing to add and a miscellaneous article\n\n");
 
+    my $title;
     print("Title: ");
     chop( $title = <> );
 
     if ( $title eq "" ) {
-        print "Title $bibErrMsg";
+        print "Title $main::bibErrMsg";
         &add;
     }
 
+    my $author;
     print("Author(s): ");
     chop( $author = <> );
 
     if ( $author eq "" ) {
-        print "Author $bibErrMsg";
+        print "Author $main::bibErrMsg";
         &add;
     }
 
+    my $howpub;
     print("How published: ");
     chop( $howpub = <> );
 
+    my $year;
     print("Year: ");
     chop( $year = <> );
 
     if ( $year eq "" ) {
-        print "Year $bibErrMsg";
+        print "Year $main::bibErrMsg";
         &add;
     }
 
+    my $month;
     print("Month: ");
     chop( $month = <> );
 
+    my $keywords;
     print("Keywords: ");
     chop( $keywords = <> );
 
@@ -66,25 +69,27 @@ sub addMisc {
         &add;
     }
 
-    $dummy = $author;
+    my $dummy = $author;
     $dummy =~ s/\sand[\w\W]*//;
-    $dummyOld = zzzzzzzz;
+    my $dummyOld = "zzzzzzzz";
     while ( $dummyOld ne $dummy ) {
         $dummyOld = $dummy;
         $dummy =~ s/[^\s]\S*\s//;
     }
 
-    $NumLines = 0;
-    while (<bibInFile>) {
+    my $NumLines = 0;
+    my @InArray;
+    while (<$bibInFile>) {
         @InArray[$NumLines] = $_;
         $NumLines++;
     }
 
-    $checkNum = grep( /\{$title\}/, @InArray );
+    my $checkNum = grep( /\{$title\}/, @InArray );
 
     if ( $checkNum > 0 ) {
         print "This title already exists in database\n";
         print "Add anyway? (y/n) ";
+        my $answer;
         chop( $answer = <> );
         if ( $answer eq "y" ) {
         }
@@ -96,27 +101,27 @@ sub addMisc {
         }
     }
 
-    $count = grep( /\{$dummy:$year/i, @InArray );
+    my $count = grep( /\{$dummy:$year/i, @InArray );
     $count++;
 
-    $bibkey = join( ":", $dummy, $year, $count );
+    my $bibkey = join( ":", $dummy, $year, $count );
 
-    print( bibFile "\@Misc{$bibkey,\n" );
-    print( bibFile "author = {$author},\n" );
-    print( bibFile "title = {$title},\n" );
-    print( bibFile "year = {$year},\n" );
+    print( $bibFile "\@Misc{$bibkey,\n" );
+    print( $bibFile "author = {$author},\n" );
+    print( $bibFile "title = {$title},\n" );
+    print( $bibFile "year = {$year},\n" );
 
-    if ( $volume ne "" ) {
-        print( bibFile "howpublished = {$howpub},\n" );
+    if ( $howpub ne "" ) {
+        print( $bibFile "howpublished = {$howpub},\n" );
     }
     if ( $month ne "" ) {
-        print( bibFile "month = {$month},\n" );
+        print( $bibFile "month = {$month},\n" );
     }
-    print( bibFile "keywords = {$keywords}\n" );
-    print( bibFile "}\n\n" );
+    print( $bibFile "keywords = {$keywords}\n" );
+    print( $bibFile "}\n\n" );
 
-    close(bibFile);
-    close(bibInFile);
+    close($bibFile);
+    close($bibInFile);
 
     # @Misc{,
     #   OPTkey =      {},
