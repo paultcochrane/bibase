@@ -93,7 +93,7 @@ sub lookup {
         &searchAuthor( @authorArray );
     }
     elsif ( $answer eq 'K' || $answer eq 'k' ) {
-        &searchKeywords;
+        &searchKeywords( @keywordsArray );
     }
     elsif ( $answer eq 'Y' || $answer eq 'y' ) {
         &searchYear;

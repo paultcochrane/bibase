@@ -16,10 +16,16 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub searchKeywords {
+
+    my @keywordsArray = @_;
 
     print "Searching in keywords field\n";
     print "What do you wish to search for? ";
+    my $answer;
     chop( $answer = <> );
     print "\n";
     if ( $answer eq '' ) {
@@ -27,14 +33,14 @@ sub searchKeywords {
         &searchKeywords(@keywordsArray);
     }
 
-    @grepArray = '';
-    @indArray  = '';
-    $ind       = 0;
-    for ( $i = 0 ; $i < $dbNumLines ; $i++ ) {
-        $matchFlag = grep( /$answer/i, @keywordsArray[$i] );
+    @main::grepArray = '';
+    my @indArray  = '';
+    my $ind       = 0;
+    for ( my $i = 0 ; $i < @keywordsArray ; $i++ ) {
+        my $matchFlag = grep( /$answer/i, $keywordsArray[$i] );
         if ( $matchFlag != 0 ) {
-            @grepArray[$ind] = @dbInArray[$i];
-            @indArray[$ind]  = $i;
+            $main::grepArray[$ind] = $main::dbInArray[$i];
+            $indArray[$ind]  = $i;
             $ind++;
         }
     }
