@@ -87,7 +87,7 @@ sub edit {
         &searchKeywords( @keywordsArray );
     }
     elsif ( $answer eq 'Y' || $answer eq 'y' ) {
-        &searchYear;
+        &searchYear( @yearArray );
     }
     elsif ( $answer eq 'J' || $answer eq 'j' ) {
         &searchJournal( @journalArray );
