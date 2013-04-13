@@ -16,42 +16,43 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub addUnpublished {
 
-    local (
-        $title,   $author,   $ref,    $year,     $keywords,
-        $dummy,   $dummyOld, $answer, $NumLines, $bibInFile,
-        @InArray, $checkNum, $count,  $bibkey,   $bibFile
-    );
-
-    open( bibFile,   ">> $DBFile" ) or die "$!";
-    open( bibInFile, "< $DBFile" )  or die "$!";
+    open( my $bibFile,   ">> $main::DBFile" ) or die "$!";
+    open( my $bibInFile, "< $main::DBFile" )  or die "$!";
     print("Choosing to add an unpublished work\n\n");
 
+    my $title;
     print("Title: ");
     chop( $title = <> );
 
     if ( $title eq "" ) {
-        print "Title $bibErrMsg";
+        print "Title $main::bibErrMsg";
         &add;
     }
 
+    my $author;
     print("Author(s): ");
     chop( $author = <> );
 
     if ( $author eq "" ) {
-        print "Author $bibErrMsg";
+        print "Author $main::bibErrMsg";
         &add;
     }
 
+    my $ref;
     print("Reference (eg: quant-ph/): ");
     chop( $ref = <> );
 
     if ( $ref eq "" ) {
-        print "Reference $bibErrMsg";
+        print "Reference $main::bibErrMsg";
         &add;
     }
 
+    my $year;
     print("Year: ");
     chop( $year = <> );
 
@@ -60,6 +61,7 @@ sub addUnpublished {
         &add;
     }
 
+    my $keywords;
     print("Keywords: ");
     chop( $keywords = <> );
 
@@ -68,25 +70,27 @@ sub addUnpublished {
         &add;
     }
 
-    $dummy = $author;
+    my $dummy = $author;
     $dummy =~ s/\sand[\w\W]*//;
-    $dummyOld = zzzzzzzz;
+    my $dummyOld = "zzzzzzzz";
     while ( $dummyOld ne $dummy ) {
         $dummyOld = $dummy;
         $dummy =~ s/[^\s]\S*\s//;
     }
 
-    $NumLines = 0;
-    while (<bibInFile>) {
+    my $NumLines = 0;
+    my @InArray;
+    while (<$bibInFile>) {
         @InArray[$NumLines] = $_;
         $NumLines++;
     }
 
-    $checkNum = grep( /\{$title\}/, @InArray );
+    my $checkNum = grep( /\{$title\}/, @InArray );
 
     if ( $checkNum > 0 ) {
         print "This title already exists in database\n";
         print "Add anyway? (y/n) ";
+        my $answer;
         chop( $answer = <> );
         if ( $answer eq "y" ) {
         }
@@ -98,21 +102,21 @@ sub addUnpublished {
         }
     }
 
-    $count = grep( /\{$dummy:$year/i, @InArray );
+    my $count = grep( /\{$dummy:$year/i, @InArray );
     $count++;
 
-    $bibkey = join( ":", $dummy, $year, $count );
+    my $bibkey = join( ":", $dummy, $year, $count );
 
-    print( bibFile "\@Unpublished{$bibkey,\n" );
-    print( bibFile "author = {$author},\n" );
-    print( bibFile "title = {$title},\n" );
-    print( bibFile "note = {$ref},\n" );
-    print( bibFile "year = {$year},\n" );
-    print( bibFile "keywords = {$keywords}\n" );
-    print( bibFile "}\n\n" );
+    print( $bibFile "\@Unpublished{$bibkey,\n" );
+    print( $bibFile "author = {$author},\n" );
+    print( $bibFile "title = {$title},\n" );
+    print( $bibFile "note = {$ref},\n" );
+    print( $bibFile "year = {$year},\n" );
+    print( $bibFile "keywords = {$keywords}\n" );
+    print( $bibFile "}\n\n" );
 
-    close(bibFile);
-    close(bibInFile);
+    close($bibFile);
+    close($bibInFile);
 
     # @Unpublished{,
     #   author =      {},
