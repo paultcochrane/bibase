@@ -16,36 +16,42 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub bibCompile {
 
     print("\nCompiling database file...");
 
-    open( bibAltDBFile, "> $altDBFile" );
+    open( my $bibAltDBFile, "> $main::altDBFile" );
 
-    open( bibInFile, "< $DBFile" );
+    open( my $bibInFile, "< $main::DBFile" );
 
-    $numLines = 0;
-    while (<bibInFile>) {
+    my $numLines = 0;
+    my @inArray;
+    while (<$bibInFile>) {
         @inArray[$numLines] = $_;
         $numLines++;
     }
 
-    close(bibInFile);
+    close($bibInFile);
 
     $numLines = $numLines - 1;
-    $lineNum  = 0;
-    $comp     = 0;
+    my $lineNum  = 0;
+    my $comp     = 0;
     chop(@inArray);
 
     while ( $lineNum < $numLines ) {
 
-        $lineStr = '';
+        my $lineStr = '';
         $lineStr = @inArray[$lineNum];
         $lineStr =~ s/^\s*//;
 
-        $field      = '';
-        $fieldValue = '';
+        my $field      = '';
+        my $fieldValue = '';
 
+        my $entry;
+        my $bibkey;
         if ( $lineStr =~ m/^\@/ ) {
             $entry = $lineStr;
             $entry =~ s/\@//;
@@ -62,6 +68,52 @@ sub bibCompile {
             $fieldValue =~ s/\s*[}]*\s*[,]*$//;
         }
 
+        my $author;
+        my $authorValue;
+        my $title;
+        my $titleValue;
+        my $journal;
+        my $journalValue;
+        my $year;
+        my $yearValue;
+        my $volume;
+        my $volumeValue;
+        my $number;
+        my $numberValue;
+        my $month;
+        my $monthValue;
+        my $pages;
+        my $pagesValue;
+        my $ref;
+        my $refValue;
+        my $publisher;
+        my $publisherValue;
+        my $editor;
+        my $editorValue;
+        my $series;
+        my $seriesValue;
+        my $address;
+        my $addressValue;
+        my $edition;
+        my $editionValue;
+        my $chapter;
+        my $chapterValue;
+        my $type;
+        my $typeValue;
+        my $school;
+        my $schoolValue;
+        my $organisation;
+        my $organisationValue;
+        my $booktitle;
+        my $booktitleValue;
+        my $crossref;
+        my $crossrefValue;
+        my $howpub;
+        my $howpubValue;
+        my $institution;
+        my $institutionValue;
+        my $keywords;
+        my $keywordsValue;
         if ( $field eq 'author' ) {
             $author      = $field;
             $authorValue = $fieldValue;
@@ -91,11 +143,11 @@ sub bibCompile {
             $monthValue = $fieldValue;
         }
         elsif ( $field eq 'pages' ) {
-            $pages      = page;
+            $pages      = $field;
             $pagesValue = $fieldValue;
         }
         elsif ( $field eq 'note' ) {
-            $ref      = ref;
+            $ref      = $field;
             $refValue = $fieldValue;
         }
         elsif ( $field eq 'publisher' ) {
@@ -131,7 +183,7 @@ sub bibCompile {
             $schoolValue = $fieldValue;
         }
         elsif ( $field eq 'organization' ) {
-            $organisation      = organisation;
+            $organisation      = $field;
             $organisationValue = $fieldValue;
         }
         elsif ( $field eq 'booktitle' ) {
@@ -143,7 +195,7 @@ sub bibCompile {
             $crossrefValue = $fieldValue;
         }
         elsif ( $field eq 'howpublished' ) {
-            $howpub      = howpub;
+            $howpub      = $field;
             $howpubValue = $fieldValue;
         }
         elsif ( $field eq 'institution' ) {
@@ -213,8 +265,8 @@ sub bibCompile {
 
         }
 
-        $pcThru = 100. * $lineNum / $numLines;
-        $rem = $comp - ( $pcThru / 10. );
+        my $pcThru = 100. * $lineNum / $numLines;
+        my $rem = $comp - ( $pcThru / 10. );
         if ( $rem < 0.0000000001 ) {
             printf( "%d%s completed\n", $pcThru, '%' );
             $comp++;
@@ -224,7 +276,7 @@ sub bibCompile {
 
     }
 
-    close(bibAltDBFile);
+    close($bibAltDBFile);
 
     print("done\n");
 
