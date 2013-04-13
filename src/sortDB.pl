@@ -16,28 +16,31 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub sortDB {
 
-    print("Sorting $altDBFile...");
+    print("Sorting $main::altDBFile...");
 
-    open( dbInFile, "< $altDBFile" );
+    open( my $dbInFile, "< $main::altDBFile" );
 
-    @dbInArray  = '';
-    $dbNumLines = 0;
-    while (<dbInFile>) {
-        @dbInArray[$dbNumLines] = $_;
+    my @dbInArray  = '';
+    my $dbNumLines = 0;
+    while (<$dbInFile>) {
+        $dbInArray[$dbNumLines] = $_;
         $dbNumLines++;
     }
 
-    close(dbInFile);
+    close($dbInFile);
 
-    @newDBArray = sort(@dbInArray);
+    my @newDBArray = sort(@dbInArray);
 
-    open( dbOutFile, "> $altDBFile" );
+    open( my $dbOutFile, "> $main::altDBFile" );
 
-    print( dbOutFile @newDBArray );
+    print( $dbOutFile @newDBArray );
 
-    close(dbOutFile);
+    close($dbOutFile);
 
     print("done\n");
 
