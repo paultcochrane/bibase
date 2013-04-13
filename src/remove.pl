@@ -94,7 +94,7 @@ sub remove {
         &searchEntry;
     }
     elsif ( $answer eq 'B' || $answer eq 'b' ) {
-        &searchBibkey;
+        &searchBibkey( @bibkeyArray );
     }
     elsif ( $answer eq 'm' || $answer eq 'M' ) {
         &mainMenu;
