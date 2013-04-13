@@ -31,12 +31,13 @@ sub sortAndCompCheck {
     }
 
     my $bibNumLines = 0;
-    while (<my bibDBInFile>) {
-        $main::bibInArray[$bibNumLines] = $_;
+    my @bibInArray;
+    while (<$bibDBInFile>) {
+        $bibInArray[$bibNumLines] = $_;
         $bibNumLines++;
     }
 
-    my $bibAtCount = grep( /\@/, $main::bibInArray );
+    my $bibAtCount = grep( /\@/, @bibInArray );
 
     # print("dbAtCount = $dbAtCount\n");
     # print("altdbNumLines = $altdbNumLines\n");
