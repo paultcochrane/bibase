@@ -19,7 +19,7 @@
 use warnings;
 use strict;
 
-sub addInColl {
+sub addBooklet {
 
     open( my $bibFile,   ">> $main::DBFile" ) or die "$!";
     open( my $bibInFile, "< $main::DBFile" )  or die "$!";
