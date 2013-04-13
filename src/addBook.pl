@@ -107,12 +107,13 @@ sub addBook {
     }
 
     my $numLines = 0;
+    my @InArray;
     while (<$bibInFile>) {
-        @main::InArray[$numLines] = $_;
+        $InArray[$numLines] = $_;
         $numLines++;
     }
 
-    my $checkNum = grep( /\{$title\}/, @main::InArray );
+    my $checkNum = grep( /\{$title\}/, @InArray );
 
     if ( $checkNum > 0 ) {
         print "This title already exists in database\n";
@@ -129,7 +130,7 @@ sub addBook {
         }
     }
 
-    my $count = grep( /\{$dummy:$year/i, @main::InArray );
+    my $count = grep( /\{$dummy:$year/i, @InArray );
     $count++;
 
     my $bibkey = join( ":", $dummy, $year, $count );
