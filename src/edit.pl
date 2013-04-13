@@ -29,7 +29,7 @@ sub edit {
     $removeFlag = 0;
     $editFlag   = 1;
 
-    open( dbInFile, "< $altDBFile" );
+    open( dbInFile, "< $main::altDBFile" );
 
     $dbNumLines = 0;
     while (<dbInFile>) {

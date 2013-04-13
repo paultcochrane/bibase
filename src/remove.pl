@@ -27,7 +27,7 @@ sub remove {
     $removeFlag = 1;
     $editFlag   = 0;
 
-    open( dbInFile, "< $altDBFile" );
+    open( dbInFile, "< $main::altDBFile" );
 
     $dbNumLines = 0;
     while (<dbInFile>) {
