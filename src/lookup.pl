@@ -90,7 +90,7 @@ sub lookup {
         || $answer eq 'AU'
         || $answer eq 'aU' )
     {
-        &searchAuthor;
+        &searchAuthor( @authorArray );
     }
     elsif ( $answer eq 'K' || $answer eq 'k' ) {
         &searchKeywords;
