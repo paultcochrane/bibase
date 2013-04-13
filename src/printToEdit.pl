@@ -16,12 +16,16 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use warnings;
+use strict;
+
 sub printToEdit {
 
     print("\nediting the following entry...\n");
     &printAllFields;
     print("\nwhich field do you wish to edit?\n");
     print("(enter the number beside the field you wish to edit) ");
+    my $fieldAns;
     chop( $fieldAns = <> );
 
 }
