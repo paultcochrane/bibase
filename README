@@ -1,5 +1,5 @@
 This is Bibase, a project I started in 1999, before I could actually write
-Perl.  The current project is actually to update the sources to actual Perl
+Perl.  The current project is actually to update the sources to current Perl
 programming standards and afterwards to add functionality for BibLaTeX, the
 most up to date way to create bibliographies in LaTeX.
 
