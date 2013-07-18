@@ -16,35 +16,39 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
-sub remove {
+use strict;
+use warnings;
 
-    local ( $dbInFile, $answer, @oldgrepArray, $grepCount, $i );
+sub remove {
 
     print "\nChoosing to remove an entry\n";
     print "Please search for the entry to remove\n";
 
-    $searchFlag = 0;
-    $removeFlag = 1;
-    $editFlag   = 0;
+    my $searchFlag = 0;
+    my $removeFlag = 1;
+    my $editFlag   = 0;
 
-    open( dbInFile, "< $main::altDBFile" );
+    my ( @titleArray, @authorArray, @entryArray, @bibkeyArray,
+        @journalArray, @yearArray, @keywordsArray );
 
-    $dbNumLines = 0;
+    open( my $dbInFile, "< $main::altDBFile" );
+
+    my $dbNumLines = 0;
     while (<dbInFile>) {
-        @dbInArray[$dbNumLines] = $_;
-        @lineArray = split( '@', @dbInArray[$dbNumLines] );
-        @titleArray[$dbNumLines]    = @lineArray[3];
-        @authorArray[$dbNumLines]   = @lineArray[2];
-        @entryArray[$dbNumLines]    = @lineArray[1];
-        @bibkeyArray[$dbNumLines]   = @lineArray[0];
-        @journalArray[$dbNumLines]  = @lineArray[4];
-        @yearArray[$dbNumLines]     = @lineArray[5];
-        @keywordsArray[$dbNumLines] = @lineArray[24];
+        $main::dbInArray[$dbNumLines] = $_;
+        my @lineArray = split( '@', $main::dbInArray[$dbNumLines] );
+        $titleArray[$dbNumLines]    = $lineArray[3];
+        $authorArray[$dbNumLines]   = $lineArray[2];
+        $entryArray[$dbNumLines]    = $lineArray[1];
+        $bibkeyArray[$dbNumLines]   = $lineArray[0];
+        $journalArray[$dbNumLines]  = $lineArray[4];
+        $yearArray[$dbNumLines]     = $lineArray[5];
+        $keywordsArray[$dbNumLines] = $lineArray[24];
 
         $dbNumLines++;
     }
 
-    close(dbInFile);
+    close($dbInFile);
 
     print "\nPossible search areas are:\n\n";
 
@@ -60,6 +64,7 @@ sub remove {
     print "\n";
     print "Enter an area within which to search: ";
 
+    my $answer;
     chop( $answer = <> );
 
     print "\n";
