@@ -20,6 +20,7 @@
 
 use warnings;
 use strict;
+use Bibase;
 
 $main::bibErrMsg = "field is required for BibTeX\n\n";
 
