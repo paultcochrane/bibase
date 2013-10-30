@@ -21,13 +21,14 @@ use strict;
 
 sub printSearchResults {
 
-    my $grepCount = shift;
+    my $grepArrayRef = shift;
+    my $grepCount = @$grepArrayRef;
 
     print("\n$grepCount entries found\n");
     print("showing results...\n\n");
 
     for ( my $i = 0 ; $i < $grepCount ; $i++ ) {
-        &prettyPrintSearchResults;
+        &prettyPrintSearchResults( ${$grepArrayRef}[$i] );
         if ( $i != $grepCount - 1 ) {
 
             my $answer;

@@ -32,19 +32,19 @@ sub searchAll {
         &searchAll($dbNumLines);
     }
 
-    @main::grepArray = '';
+    my @grepArray = '';
     my @indArray  = '';
     my $ind       = 0;
     for ( my $i = 0 ; $i < $dbNumLines ; $i++ ) {
         my $matchFlag = grep( /$answer/i, $main::dbInArray[$i] );
         if ( $matchFlag != 0 ) {
-            $main::grepArray[$ind] = $main::dbInArray[$i];
+            $grepArray[$ind] = $main::dbInArray[$i];
             $indArray[$ind]  = $i;
             $ind++;
         }
     }
 
-    &entriesFoundDecide( $ind );
+    &entriesFoundDecide( $ind, \@grepArray );
 
 }
 1;

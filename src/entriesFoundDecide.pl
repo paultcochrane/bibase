@@ -22,8 +22,9 @@ use strict;
 sub entriesFoundDecide {
 
     my $numFoundEntries = shift;
+    my $grepArrayRef = shift;
 
-    my $grepCount = @main::grepArray;    # this construct gives the length of the array
+    my $grepCount = @$grepArrayRef;    # this construct gives the length of the array
 
     if ( $numFoundEntries == 0 ) {
         print "\n";
@@ -44,7 +45,7 @@ sub entriesFoundDecide {
     else {
 
         if ( $main::searchFlag == 1 ) {
-            &printSearchResults( $grepCount );
+            &printSearchResults( $grepArrayRef );
         }
         elsif ( $main::removeFlag == 1 ) {
             &removeEntry;
