@@ -33,19 +33,19 @@ sub searchKeywords {
         &searchKeywords(@keywordsArray);
     }
 
-    @main::grepArray = '';
+    my @grepArray = '';
     my @indArray  = '';
     my $ind       = 0;
     for ( my $i = 0 ; $i < @keywordsArray ; $i++ ) {
         my $matchFlag = grep( /$answer/i, $keywordsArray[$i] );
         if ( $matchFlag != 0 ) {
-            $main::grepArray[$ind] = $main::dbInArray[$i];
+            $grepArray[$ind] = $main::dbInArray[$i];
             $indArray[$ind]  = $i;
             $ind++;
         }
     }
 
-    &entriesFoundDecide;
+    &entriesFoundDecide( $ind, \@grepArray );
 
 }
 1;
