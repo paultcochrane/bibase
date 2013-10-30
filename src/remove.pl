@@ -16,23 +16,27 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
-sub remove {
+use strict;
+use warnings;
 
-    local ( $dbInFile, $answer, @oldgrepArray, $grepCount, $i );
+sub remove {
 
     print "\nChoosing to remove an entry\n";
     print "Please search for the entry to remove\n";
 
-    $searchFlag = 0;
-    $removeFlag = 1;
-    $editFlag   = 0;
+    $main::searchFlag = 0;
+    $main::removeFlag = 1;
+    $main::editFlag   = 0;
 
-    open( dbInFile, "< $main::altDBFile" );
+    open( my $dbInFile, "< $main::altDBFile" );
 
-    $dbNumLines = 0;
-    while (<dbInFile>) {
-        @dbInArray[$dbNumLines] = $_;
-        @lineArray = split( '@', @dbInArray[$dbNumLines] );
+    my ( @titleArray, @authorArray, @entryArray, @bibkeyArray,
+        @journalArray, @yearArray, @keywordsArray );
+
+    my $dbNumLines = 0;
+    while (<$dbInFile>) {
+        @main::dbInArray[$dbNumLines] = $_;
+        my @lineArray = split( '@', @main::dbInArray[$dbNumLines] );
         @titleArray[$dbNumLines]    = @lineArray[3];
         @authorArray[$dbNumLines]   = @lineArray[2];
         @entryArray[$dbNumLines]    = @lineArray[1];
@@ -44,7 +48,7 @@ sub remove {
         $dbNumLines++;
     }
 
-    close(dbInFile);
+    close($dbInFile);
 
     print "\nPossible search areas are:\n\n";
 
@@ -60,7 +64,8 @@ sub remove {
     print "\n";
     print "Enter an area within which to search: ";
 
-    chop( $answer = <> );
+    my $answer = <>;
+    chop( $answer );
 
     print "\n";
 
