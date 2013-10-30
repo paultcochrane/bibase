@@ -35,15 +35,15 @@ sub remove {
 
     my $dbNumLines = 0;
     while (<$dbInFile>) {
-        @main::dbInArray[$dbNumLines] = $_;
-        my @lineArray = split( '@', @main::dbInArray[$dbNumLines] );
-        @titleArray[$dbNumLines]    = @lineArray[3];
-        @authorArray[$dbNumLines]   = @lineArray[2];
-        @entryArray[$dbNumLines]    = @lineArray[1];
-        @bibkeyArray[$dbNumLines]   = @lineArray[0];
-        @journalArray[$dbNumLines]  = @lineArray[4];
-        @yearArray[$dbNumLines]     = @lineArray[5];
-        @keywordsArray[$dbNumLines] = @lineArray[24];
+        $main::dbInArray[$dbNumLines] = $_;
+        my @lineArray = split( '@', $main::dbInArray[$dbNumLines] );
+        $titleArray[$dbNumLines]    = $lineArray[3];
+        $authorArray[$dbNumLines]   = $lineArray[2];
+        $entryArray[$dbNumLines]    = $lineArray[1];
+        $bibkeyArray[$dbNumLines]   = $lineArray[0];
+        $journalArray[$dbNumLines]  = $lineArray[4];
+        $yearArray[$dbNumLines]     = $lineArray[5];
+        $keywordsArray[$dbNumLines] = $lineArray[24];
 
         $dbNumLines++;
     }
