@@ -35,7 +35,6 @@ sub lookup {
     my @journalArray  = '';
     my @yearArray     = '';
     my @keywordsArray = '';
-    @main::grepArray     = '';
 
     open( my $dbInFile, "< $main::altDBFile" );
 
