@@ -33,7 +33,7 @@ sub edit {
     open( my $dbInFile, "< $main::altDBFile" );
 
     my $dbNumLines = 0;
-    @main::dbInArray;
+    @main::dbInArray = '';
     my @titleArray;
     my @authorArray;
     my @entryArray;
