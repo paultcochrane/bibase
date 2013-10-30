@@ -26,9 +26,9 @@ sub edit {
     print "\nChoosing to edit an entry\n";
     print "Please search for the entry to edit\n";
 
-    my $searchFlag = 0;
-    my $removeFlag = 0;
-    my $editFlag   = 1;
+    $main::searchFlag = 0;
+    $main::removeFlag = 0;
+    $main::editFlag   = 1;
 
     open( my $dbInFile, "< $main::altDBFile" );
 
