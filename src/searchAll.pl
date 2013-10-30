@@ -20,6 +20,7 @@ use warnings;
 use strict;
 
 sub searchAll {
+    my $dbNumLines = shift;
 
     print "Searching in all fields\n";
     print "What do you wish to search for? ";
@@ -28,13 +29,13 @@ sub searchAll {
     print "\n";
     if ( $answer eq '' ) {
         print "Please enter a search item\n";
-        &searchAll;
+        &searchAll($dbNumLines);
     }
 
     @main::grepArray = '';
     my @indArray  = '';
     my $ind       = 0;
-    for ( my $i = 0 ; $i < $main::dbNumLines ; $i++ ) {
+    for ( my $i = 0 ; $i < $dbNumLines ; $i++ ) {
         my $matchFlag = grep( /$answer/i, $main::dbInArray[$i] );
         if ( $matchFlag != 0 ) {
             $main::grepArray[$ind] = $main::dbInArray[$i];

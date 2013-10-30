@@ -39,19 +39,19 @@ sub lookup {
 
     open( my $dbInFile, "< $main::altDBFile" );
 
-    $main::dbNumLines = 0;
+    my $dbNumLines = 0;
     while (<$dbInFile>) {
-        $main::dbInArray[$main::dbNumLines] = $_;
-        my @lineArray = split( '@', $main::dbInArray[$main::dbNumLines] );
-        $titleArray[$main::dbNumLines]    = $lineArray[3];
-        $authorArray[$main::dbNumLines]   = $lineArray[2];
-        $entryArray[$main::dbNumLines]    = $lineArray[1];
-        $bibkeyArray[$main::dbNumLines]   = $lineArray[0];
-        $journalArray[$main::dbNumLines]  = $lineArray[4];
-        $yearArray[$main::dbNumLines]     = $lineArray[5];
-        $keywordsArray[$main::dbNumLines] = $lineArray[24];
+        $main::dbInArray[$dbNumLines] = $_;
+        my @lineArray = split( '@', $main::dbInArray[$dbNumLines] );
+        $titleArray[$dbNumLines]    = $lineArray[3];
+        $authorArray[$dbNumLines]   = $lineArray[2];
+        $entryArray[$dbNumLines]    = $lineArray[1];
+        $bibkeyArray[$dbNumLines]   = $lineArray[0];
+        $journalArray[$dbNumLines]  = $lineArray[4];
+        $yearArray[$dbNumLines]     = $lineArray[5];
+        $keywordsArray[$dbNumLines] = $lineArray[24];
 
-        $main::dbNumLines++;
+        $dbNumLines++;
     }
 
     close($dbInFile);
@@ -80,7 +80,7 @@ sub lookup {
         &lookup;
     }
     elsif ( $answer eq 'A' || $answer eq 'a' ) {
-        &searchAll;
+        &searchAll($dbNumLines);
     }
     elsif ( $answer eq 'T' || $answer eq 't' ) {
         &searchTitle( @titleArray );

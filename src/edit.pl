@@ -81,7 +81,7 @@ sub edit {
         &lookup;
     }
     elsif ( $answer eq 'A' || $answer eq 'a' ) {
-        &searchAll;
+        &searchAll($dbNumLines);
     }
     elsif ( $answer eq 'T' || $answer eq 't' ) {
         &searchTitle( @titleArray );
