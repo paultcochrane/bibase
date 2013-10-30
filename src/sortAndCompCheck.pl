@@ -21,8 +21,8 @@ use strict;
 
 sub sortAndCompCheck {
 
-    open( my $bibDBInFile,    "< $main::DBFile" )    or die "$!";
-    open( my $bibAltDBInFile, "< $main::altDBFile" ) or die "$!";
+    open  my $bibDBInFile,    "<", $main::DBFile    or die "$!";
+    open  my $bibAltDBInFile, "<", $main::altDBFile or die "$!";
 
     my $altdbNumLines = 0;
     while (<$bibAltDBInFile>) {

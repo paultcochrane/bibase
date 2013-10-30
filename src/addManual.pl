@@ -21,8 +21,8 @@ use strict;
 
 sub addManual {
 
-    open( my $bibFile,   ">> $main::DBFile" ) or die "$!";
-    open( my $bibInFile, "< $main::DBFile" )  or die "$!";
+    open my $bibFile,   ">>", $main::DBFile or die "$!";
+    open my $bibInFile, "<", $main::DBFile  or die "$!";
     print("Choosing to add a manual\n\n");
 
     my $title;

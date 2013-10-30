@@ -36,7 +36,7 @@ sub lookup {
     my @yearArray     = '';
     my @keywordsArray = '';
 
-    open( my $dbInFile, "< $main::altDBFile" );
+    open my $dbInFile, "<", $main::altDBFile;
 
     my $dbNumLines = 0;
     while (<$dbInFile>) {

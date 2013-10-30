@@ -26,9 +26,9 @@ sub dotBibWrite {
 
     print("\nKeeping a copy of old .bib file");
 
-    open( my $inFile, "< $main::DBFile" );
+    open my $inFile, "<", $main::DBFile;
     my $keepFname = join( '', "$main::DBFile", ".bak" );
-    open( my $keepFile, "> $keepFname" );
+    open my $keepFile, ">", $keepFname;
     while (<$inFile>) {
         print( $keepFile "$_" );
     }
@@ -37,7 +37,7 @@ sub dotBibWrite {
 
     print("\nWriting new (sorted) .bib file...");
 
-    open( my $outFile, "> $main::DBFile" );
+    open my $outFile, ">", $main::DBFile;
 
     my $sizeNewDBArray = @newDBArray;
     my $i              = 0;

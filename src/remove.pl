@@ -28,7 +28,7 @@ sub remove {
     $main::removeFlag = 1;
     $main::editFlag   = 0;
 
-    open( my $dbInFile, "< $main::altDBFile" );
+    open my $dbInFile, "<", $main::altDBFile;
 
     my ( @titleArray, @authorArray, @entryArray, @bibkeyArray,
         @journalArray, @yearArray, @keywordsArray );

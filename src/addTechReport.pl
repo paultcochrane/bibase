@@ -21,8 +21,8 @@ use strict;
 
 sub addTechReport {
 
-    open( my $bibFile,   ">> $main::DBFile" ) or die "$!";
-    open( my $bibInFile, "< $main::DBFile" )  or die "$!";
+    open my $bibFile,   ">>", $main::DBFile or die "$!";
+    open my $bibInFile, "<", $main::DBFile  or die "$!";
     print("Choosing to add a technical report\n\n");
 
     my $title;

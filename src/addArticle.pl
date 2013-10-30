@@ -21,8 +21,8 @@ use strict;
 
 sub addArticle {
 
-    open( my $bibFile,   ">> $main::DBFile" ) or die "$!";
-    open( my $bibInFile, "< $main::DBFile" )  or die "$!";
+    open my $bibFile,   ">>", $main::DBFile or die "$!";
+    open my $bibInFile, "<", $main::DBFile  or die "$!";
     print("Choosing to add and a journal article\n\n");
 
     my $title;

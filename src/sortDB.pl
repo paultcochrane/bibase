@@ -23,7 +23,7 @@ sub sortDB {
 
     print("Sorting $main::altDBFile...");
 
-    open( my $dbInFile, "< $main::altDBFile" );
+    open my $dbInFile, "<", $main::altDBFile;
 
     my @dbInArray  = '';
     my $dbNumLines = 0;
@@ -36,7 +36,7 @@ sub sortDB {
 
     my @newDBArray = sort(@dbInArray);
 
-    open( my $dbOutFile, "> $main::altDBFile" );
+    open my $dbOutFile, ">", $main::altDBFile;
 
     print( $dbOutFile @newDBArray );
 

@@ -21,8 +21,8 @@ use strict;
 
 sub addUnpublished {
 
-    open( my $bibFile,   ">> $main::DBFile" ) or die "$!";
-    open( my $bibInFile, "< $main::DBFile" )  or die "$!";
+    open my $bibFile,   ">>", $main::DBFile or die "$!";
+    open my $bibInFile, "<", $main::DBFile  or die "$!";
     print("Choosing to add an unpublished work\n\n");
 
     my $title;

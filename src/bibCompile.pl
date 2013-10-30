@@ -23,9 +23,9 @@ sub bibCompile {
 
     print("\nCompiling database file...");
 
-    open( my $bibAltDBFile, "> $main::altDBFile" );
+    open my $bibAltDBFile, ">", $main::altDBFile;
 
-    open( my $bibInFile, "< $main::DBFile" );
+    open my $bibInFile, "<", $main::DBFile;
 
     my $numLines = 0;
     my @inArray;

@@ -21,8 +21,8 @@ use strict;
 
 sub addBook {
 
-    open( my $bibFile,   ">> $main::DBFile" ) or die "$!";
-    open( my $bibInFile, "< $main::DBFile" )  or die "$!";
+    open my $bibFile,   ">>", $main::DBFile or die "$!";
+    open my $bibInFile, "<", $main::DBFile  or die "$!";
     print("Choosing to add a book\n\n");
 
     my $title;

@@ -30,7 +30,7 @@ sub edit {
     $main::removeFlag = 0;
     $main::editFlag   = 1;
 
-    open( my $dbInFile, "< $main::altDBFile" );
+    open my $dbInFile, "<", $main::altDBFile;
 
     my $dbNumLines = 0;
     @main::dbInArray = '';
