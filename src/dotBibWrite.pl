@@ -21,6 +21,9 @@ use strict;
 
 sub dotBibWrite {
 
+    my $newDBArrayRef = shift;
+    my @newDBArray = @$newDBArrayRef;
+
     print("\nKeeping a copy of old .bib file");
 
     open( my $inFile, "< $main::DBFile" );
@@ -36,12 +39,12 @@ sub dotBibWrite {
 
     open( my $outFile, "> $main::DBFile" );
 
-    my $sizeNewDBArray = @main::newDBArray;
+    my $sizeNewDBArray = @newDBArray;
     my $i              = 0;
 
     while ( $i < $sizeNewDBArray ) {
 
-        my @bibArray = split( /\@/, $main::newDBArray[$i] );
+        my @bibArray = split( /\@/, $newDBArray[$i] );
 
         my $bibkey       = $bibArray[0];
         my $entry        = $bibArray[1];
