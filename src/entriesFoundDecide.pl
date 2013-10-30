@@ -23,6 +23,7 @@ sub entriesFoundDecide {
 
     my $numFoundEntries = shift;
     my $grepArrayRef = shift;
+    my $indArrayRef = shift;
 
     if ( $numFoundEntries == 0 ) {
         print "\n";
@@ -46,7 +47,7 @@ sub entriesFoundDecide {
             &printSearchResults( $grepArrayRef );
         }
         elsif ( $main::removeFlag == 1 ) {
-            &removeEntry;
+            &removeEntry( $grepArrayRef, $indArrayRef );
         }
         elsif ( $main::editFlag == 1 ) {
             &editEntry( $grepArrayRef );

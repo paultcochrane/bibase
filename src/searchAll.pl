@@ -44,7 +44,7 @@ sub searchAll {
         }
     }
 
-    &entriesFoundDecide( $ind, \@grepArray );
+    &entriesFoundDecide( $ind, \@grepArray, \@indArray );
 
 }
 1;

@@ -16,27 +16,35 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use strict;
+use warnings;
+
 sub removeEntry {
+
+    my $grepArrayRef = shift;
+    my $indArrayRef = shift;
+
+    my $grepCount = @$grepArrayRef;
 
     print("\n$grepCount entries found\n\n");
 
-    $i      = 0;
-    $answer = '';
+    my $i      = 0;
+    my $answer = '';
     while ($answer eq 'n'
         || $answer eq 'N'
         || $answer eq ''
         || $i < $grepCount )
     {
-        $num = $i + 1;
+        my $num = $i + 1;
         print("printing entry $num of $grepCount\n");
-        &prettyPrintSearchResults;
+        &prettyPrintSearchResults( ${$grepArrayRef}[$i] );
         print("\nremove this entry? (y/n/x) ");
         chop( $answer = <> );
         if ( $answer eq 'n' || $answer eq 'N' || $answer eq '' ) {
         }
         elsif ( $answer eq 'y' || $answer eq 'Y' ) {
-            splice( @dbInArray, @indArray[$i], 1 );
-            @newDBArray = @dbInArray;
+            splice( @main::dbInArray, ${$indArrayRef}[$i], 1 );
+            my @newDBArray = @main::dbInArray;
             print "removing entry...\n";
             &dotBibWrite;
             &bibCompile;
