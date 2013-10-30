@@ -34,6 +34,7 @@ sub remove {
         @journalArray, @yearArray, @keywordsArray );
 
     my $dbNumLines = 0;
+    $main::dbInArray = '';
     while (<$dbInFile>) {
         $main::dbInArray[$dbNumLines] = $_;
         my @lineArray = split( '@', $main::dbInArray[$dbNumLines] );
@@ -74,7 +75,7 @@ sub remove {
         &lookup;
     }
     elsif ( $answer eq 'A' || $answer eq 'a' ) {
-        &searchAll;
+        &searchAll( $dbNumLines );
     }
     elsif ( $answer eq 'T' || $answer eq 't' ) {
         &searchTitle( @titleArray );
