@@ -33,19 +33,19 @@ sub searchAuthor {
         &searchAuthor(@authorArray);
     }
 
-    @main::grepArray = '';
+    my @grepArray = '';
     my @indArray  = '';
     my $ind       = 0;
     for ( my $i = 0 ; $i < @authorArray ; $i++ ) {
         my $matchFlag = grep( /$answer/i, $authorArray[$i] );
         if ( $matchFlag != 0 ) {
-            $main::grepArray[$ind] = $main::dbInArray[$i];
+            $grepArray[$ind] = $main::dbInArray[$i];
             $indArray[$ind]  = $i;
             $ind++;
         }
     }
 
-    &entriesFoundDecide;
+    &entriesFoundDecide( $ind, \@grepArray );
 
 }
 1;
