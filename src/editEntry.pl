@@ -21,7 +21,8 @@ use strict;
 
 sub editEntry {
 
-    my $grepCount = shift;
+    my $grepArrayRef = shift;
+    my $grepCount = @$grepArrayRef;
 
     print("\n$grepCount entries found\n\n");
 
@@ -34,7 +35,7 @@ sub editEntry {
     {
         my $num = $i + 1;
         print("printing entry $num of $grepCount\n");
-        &prettyPrintSearchResults( $main::grepArray[$i] );
+        &prettyPrintSearchResults( ${$grepArrayRef}[$i] );
         print("\nedit this entry? (y/n/x) ");
         chop( $answer = <> );
         if ( $answer eq 'n' || $answer eq 'N' || $answer eq '' ) {

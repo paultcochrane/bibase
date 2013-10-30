@@ -24,8 +24,6 @@ sub entriesFoundDecide {
     my $numFoundEntries = shift;
     my $grepArrayRef = shift;
 
-    my $grepCount = @$grepArrayRef;    # this construct gives the length of the array
-
     if ( $numFoundEntries == 0 ) {
         print "\n";
         print "No entries found\n";
@@ -51,7 +49,7 @@ sub entriesFoundDecide {
             &removeEntry;
         }
         elsif ( $main::editFlag == 1 ) {
-            &editEntry( $grepCount );
+            &editEntry( $grepArrayRef );
         }
         else {
             print "something went wrong in entriesFoundDecide";
