@@ -4,3 +4,4 @@
  - use warnings and strict!
  - document subroutines with POD
  - add codingstd tests
+ - replace menu code with IO::Prompt or something like it
