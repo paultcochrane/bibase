@@ -41,6 +41,54 @@ sub bibCompile {
     my $comp     = 0;
     chop(@inArray);
 
+    my $entry = '';
+    my $bibkey = '';
+    my $author = '';
+    my $authorValue = '';
+    my $title = '';
+    my $titleValue = '';
+    my $journal = '';
+    my $journalValue = '';
+    my $year = '';
+    my $yearValue = '';
+    my $volume = '';
+    my $volumeValue = '';
+    my $number = '';
+    my $numberValue = '';
+    my $month = '';
+    my $monthValue = '';
+    my $pages = '';
+    my $pagesValue = '';
+    my $ref = '';
+    my $refValue = '';
+    my $publisher = '';
+    my $publisherValue = '';
+    my $editor = '';
+    my $editorValue = '';
+    my $series = '';
+    my $seriesValue = '';
+    my $address = '';
+    my $addressValue = '';
+    my $edition = '';
+    my $editionValue = '';
+    my $chapter = '';
+    my $chapterValue = '';
+    my $type = '';
+    my $typeValue = '';
+    my $school = '';
+    my $schoolValue = '';
+    my $organisation = '';
+    my $organisationValue = '';
+    my $booktitle = '';
+    my $booktitleValue = '';
+    my $crossref = '';
+    my $crossrefValue = '';
+    my $howpub = '';
+    my $howpubValue = '';
+    my $institution = '';
+    my $institutionValue = '';
+    my $keywords = '';
+    my $keywordsValue = '';
     while ( $lineNum < $numLines ) {
 
         my $lineStr = '';
@@ -50,8 +98,6 @@ sub bibCompile {
         my $field      = '';
         my $fieldValue = '';
 
-        my $entry;
-        my $bibkey;
         if ( $lineStr =~ m/^\@/ ) {
             $entry = $lineStr;
             $entry =~ s/\@//;
@@ -68,52 +114,6 @@ sub bibCompile {
             $fieldValue =~ s/\s*[}]*\s*[,]*$//;
         }
 
-        my $author;
-        my $authorValue;
-        my $title;
-        my $titleValue;
-        my $journal;
-        my $journalValue;
-        my $year;
-        my $yearValue;
-        my $volume;
-        my $volumeValue;
-        my $number;
-        my $numberValue;
-        my $month;
-        my $monthValue;
-        my $pages;
-        my $pagesValue;
-        my $ref;
-        my $refValue;
-        my $publisher;
-        my $publisherValue;
-        my $editor;
-        my $editorValue;
-        my $series;
-        my $seriesValue;
-        my $address;
-        my $addressValue;
-        my $edition;
-        my $editionValue;
-        my $chapter;
-        my $chapterValue;
-        my $type;
-        my $typeValue;
-        my $school;
-        my $schoolValue;
-        my $organisation;
-        my $organisationValue;
-        my $booktitle;
-        my $booktitleValue;
-        my $crossref;
-        my $crossrefValue;
-        my $howpub;
-        my $howpubValue;
-        my $institution;
-        my $institutionValue;
-        my $keywords;
-        my $keywordsValue;
         if ( $field eq 'author' ) {
             $author      = $field;
             $authorValue = $fieldValue;
