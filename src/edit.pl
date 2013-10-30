@@ -33,7 +33,7 @@ sub edit {
     open( my $dbInFile, "< $main::altDBFile" );
 
     my $dbNumLines = 0;
-    my @dbInArray;
+    @main::dbInArray;
     my @titleArray;
     my @authorArray;
     my @entryArray;
@@ -42,8 +42,8 @@ sub edit {
     my @yearArray;
     my @keywordsArray;
     while (<$dbInFile>) {
-        $dbInArray[$dbNumLines] = $_;
-        my @lineArray = split( '@', $dbInArray[$dbNumLines] );
+        $main::dbInArray[$dbNumLines] = $_;
+        my @lineArray = split( '@', $main::dbInArray[$dbNumLines] );
         $titleArray[$dbNumLines]    = $lineArray[3];
         $authorArray[$dbNumLines]   = $lineArray[2];
         $entryArray[$dbNumLines]    = $lineArray[1];
