@@ -50,7 +50,7 @@ sub entriesFoundDecide {
             &removeEntry( $grepArrayRef, $indArrayRef );
         }
         elsif ( $main::editFlag == 1 ) {
-            &editEntry( $grepArrayRef );
+            &editEntry( $grepArrayRef, $indArrayRef );
         }
         else {
             print "something went wrong in entriesFoundDecide";
