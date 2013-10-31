@@ -22,12 +22,13 @@ use strict;
 sub printToEdit {
 
     print("\nediting the following entry...\n");
-    &printAllFields;
+    my ( $fieldArrayRef, $paperArrayRef ) = &printAllFields;
     print("\nwhich field do you wish to edit?\n");
     print("(enter the number beside the field you wish to edit) ");
     my $fieldAns;
     chop( $fieldAns = <> );
 
+    return ( $fieldArrayRef, $fieldAns, $paperArrayRef );
 }
 1;
 
