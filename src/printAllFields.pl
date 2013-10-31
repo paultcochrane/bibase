@@ -16,12 +16,17 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use strict;
+use warnings;
+
 sub printAllFields {
 
-    @paper = '';
-    @paper = split( '@', @grepArray[$i] );
+    my $entryLine = shift;
 
-    @fieldArray = (
+    my @paper = '';
+    @paper = split( '@', $entryLine );
+
+    my @fieldArray = (
         "Bibkey: ",
         "Kind: ",
         "Author: ",
@@ -53,14 +58,15 @@ sub printAllFields {
 ----------------------------------------------------------------
 .
 
+my ($j, $field, $fieldVal);
     format STDOUT=
 (@##) @<<<<<<<<<<<<<<^<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 $j,$field,$fieldVal    
 .
 
     for ( $j = 0 ; $j < 25 ; $j++ ) {
-        $fieldVal = @paper[$j];
-        $field    = @fieldArray[$j];
+        $fieldVal = $paper[$j];
+        $field    = $fieldArray[$j];
         if ( $fieldVal ne '' ) {
             write;
         }
