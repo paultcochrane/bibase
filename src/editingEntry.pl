@@ -18,7 +18,9 @@
 
 sub editingEntry {
 
-    my ( $fieldArrayRef, $fieldAns, $paperArrayRef ) = &printToEdit;
+    my $entryLine = shift;
+
+    my ( $fieldArrayRef, $fieldAns, $paperArrayRef ) = &printToEdit( $entryLine );
     my @paper = @$paperArrayRef;
     &editField( $fieldArrayRef, $fieldAns, $paperArrayRef );
     if ( $checkAns eq 'y' || $checkAns eq 'Y' || $checkAns eq '' ) {
