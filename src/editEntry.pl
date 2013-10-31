@@ -22,6 +22,7 @@ use strict;
 sub editEntry {
 
     my $grepArrayRef = shift;
+    my $indArrayRef = shift;
     my $grepCount = @$grepArrayRef;
 
     print("\n$grepCount entries found\n\n");
@@ -41,7 +42,7 @@ sub editEntry {
         if ( $answer eq 'n' || $answer eq 'N' || $answer eq '' ) {
         }
         elsif ( $answer eq 'y' || $answer eq 'Y' ) {
-            &editingEntry( ${$grepArrayRef}[$i] );
+            &editingEntry( ${$grepArrayRef}[$i], ${$indArrayRef}[$i] );
         }
         elsif ($answer eq 'x'
             || $answer eq 'X'
