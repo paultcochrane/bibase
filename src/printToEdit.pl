@@ -21,8 +21,10 @@ use strict;
 
 sub printToEdit {
 
+    my $entryLine = shift;
+
     print("\nediting the following entry...\n");
-    my ( $fieldArrayRef, $paperArrayRef ) = &printAllFields;
+    my ( $fieldArrayRef, $paperArrayRef ) = &printAllFields( $entryLine );
     print("\nwhich field do you wish to edit?\n");
     print("(enter the number beside the field you wish to edit) ");
     my $fieldAns;
