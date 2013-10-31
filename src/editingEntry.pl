@@ -18,8 +18,9 @@
 
 sub editingEntry {
 
-    &printToEdit;
-    &editField;
+    my ( $fieldArrayRef, $fieldAns, $paperArrayRef ) = &printToEdit;
+    my @paper = @$paperArrayRef;
+    &editField( $fieldArrayRef, $fieldAns, $paperArrayRef );
     if ( $checkAns eq 'y' || $checkAns eq 'Y' || $checkAns eq '' ) {
         print("\nDo you wish to edit another field? (y/n) ");
         chop( $newFieldAns = <> );
@@ -46,7 +47,7 @@ sub editingEntry {
     }
 
     elsif ( $checkAns eq 'n' || $checkAns eq 'N' ) {
-        &editField;
+        &editField( $fieldArrayRef, $fieldAns, $paperArrayRef );
     }
     else {
         print("woah, something strange happened in editingEntry\n");
