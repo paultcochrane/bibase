@@ -25,7 +25,6 @@ sub editingEntry {
     my $indArrayElem = shift;
 
     my ( $fieldArrayRef, $fieldAns, $paperArrayRef ) = &printToEdit( $entryLine );
-    my @paper = @$paperArrayRef;
     my $checkAns = &editField( $fieldArrayRef, $fieldAns, $paperArrayRef );
     if ( $checkAns eq 'y' || $checkAns eq 'Y' || $checkAns eq '' ) {
         print("\nDo you wish to edit another field? (y/n) ");
@@ -37,7 +36,7 @@ sub editingEntry {
         elsif ( $newFieldAns eq 'n' || $newFieldAns eq 'N' ) {
             my @addedArray = '';
             for ( my $j = 0 ; $j < 25 ; $j++ ) {
-                @addedArray = join( '', @addedArray, $paper[$j], "\@" );
+                @addedArray = join( '', @addedArray, ${$paperArrayRef}[$j], "\@" );
             }
             @addedArray = join( '', @addedArray, "\n" );
             push( @main::dbInArray, @addedArray );

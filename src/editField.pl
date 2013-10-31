@@ -25,15 +25,14 @@ sub editField {
     my $fieldAns = shift;
     my $paperArrayRef = shift;
     my @fieldArray = @$fieldArrayRef;
-    my @paper = @$paperArrayRef;
 
     print("\nEditing $fieldArray[$fieldAns] field...\n");
     print("Enter new value for field:\n");
     print("$fieldArray[$fieldAns]");    # this acts as a prompt
     my $newEditVal = <>;
     chop( $newEditVal );
-    $paper[$fieldAns] = $newEditVal;
-    print("\n$fieldArray[$fieldAns] $paper[$fieldAns] (y/n) ");
+    ${$paperArrayRef}[$fieldAns] = $newEditVal;
+    print("\n$fieldArray[$fieldAns] ${$paperArrayRef}[$fieldAns] (y/n) ");
     my $checkAns = <>;
     chop( $checkAns );
 
