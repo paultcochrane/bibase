@@ -11,58 +11,57 @@ most up to date way to create bibliographies in LaTeX.
 
 What is Bibase?
 
-Bibase (pronounced Bib-ace - short for bibliography database) is a program 
-that enables one to maintain a database of your journal articles, books, theses, 
-and other types of document in a form readily accessible and readible by BibTeX, 
-a package for formatting bibliographies in LaTeX typeset documents.  One only 
-needs to enter the information into Bibase and it automatically puts the 
-information into BibTeX's .bib file format.
+Bibase (pronounced Bib-ace - short for bibliography database) is a program
+that enables one to maintain a database of your journal articles, books,
+theses, and other types of document in a form readily accessible and
+readible by BibTeX, a package for formatting bibliographies in LaTeX typeset
+documents.  One only needs to enter the information into Bibase and it
+automatically puts the information into BibTeX's .bib file format.
 
 
 Who should use Bibase?
 
-Anyone who wants to make writing BibTeX .bib files easier and/or anyone who 
-wants to keep track of all of their papers and such like in an easy to use 
+Anyone who wants to make writing BibTeX .bib files easier and/or anyone who
+wants to keep track of all of their papers and such like in an easy to use
 package.
 
 
 What versions of Bibase exist?
 
-I have sort of three packages floating around for each of the Text 
-Interface (TI) and Graphical User Interface (GUI) versions.  The two types 
-of interface are split up as follows:
+I have sort of three packages floating around for each of the Text Interface
+(TI) and Graphical User Interface (GUI) versions.  The two types of
+interface are split up as follows:
 
-Macintosh: a stand alone binary (plus other helpful stuff once I get around 
+Macintosh: a stand alone binary (plus other helpful stuff once I get around
 to it)
 
-Unix: a .tar.gz file with the source code and (soon) a Bourne shell script 
-that helps install it and get it going (plus helpful stuff).  To install 
-the unix version read the INSTALL file included in the distribution.
+Unix: a .tar.gz file with the source code and (soon) a Bourne shell script
+that helps install it and get it going (plus helpful stuff).  To install the
+unix version read the INSTALL file included in the distribution.
 
-Source: a .sit.hqx file for macs, a .tar.gz file for unix and a .zip file 
+Source: a .sit.hqx file for macs, a .tar.gz file for unix and a .zip file
 for pcs
 
-PC: sorry, I don't have a pc, and hence no perl or python distribution to 
-be agle to get a package here.  Unfortunately, you will have to download 
-the source and try to get it going.  You will need a perl distribution for 
-the TI version and a python distribution with Tkinter for the GUI version.
+PC: sorry, I don't have a pc, and hence no perl or python distribution to be
+agle to get a package here.  Unfortunately, you will have to download the
+source and try to get it going.  You will need a perl distribution for the
+TI version and a python distribution with Tkinter for the GUI version.
 
 
 Do I have to pay for Bibase?
 
-No.  In fact, if you are reading this, then you have a fully functional 
+No.  In fact, if you are reading this, then you have a fully functional
 version floating around somewhere.  Bibase is, however, postcardware.
 
 
 What is postcardware?
 
-Postcardware is something not heard of much anymore, but it used to be used a 
-bit in the early 90's.  What it entails is this:  for the use of the 
-software (which you now have) instead of me asking you for some kind of 
-fee, all I ask is that you send me a postcard of where you are from.  This 
-could be from where you were born, where you live now (if that is a 
-different place), or where you currently happen to be.  Just send the 
-postcard to:
+Postcardware is something not heard of much anymore, but it used to be used
+a bit in the early 90's.  What it entails is this:  for the use of the
+software (which you now have) instead of me asking you for some kind of fee,
+all I ask is that you send me a postcard of where you are from.  This could
+be from where you were born, where you live now (if that is a different
+place), or where you currently happen to be.  Just send the postcard to:
 
 Paul Cochrane
 Physics Department
@@ -84,8 +83,8 @@ and any other information as well.
 
 Is Bibase documented?
 
-Yes, but only slightly at this stage.  A proper version won't be out for a 
-while, but should be out sometime soon.  When the docs do come out, they 
+Yes, but only slightly at this stage.  A proper version won't be out for a
+while, but should be out sometime soon.  When the docs do come out, they
 will be put onto the web page above.
 
 

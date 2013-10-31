@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 
 # Bibase - Basic command line BibTeX database manager
 # Copyright (C) 1999-2013  Paul Cochrane
@@ -20,6 +20,7 @@
 
 use warnings;
 use strict;
+use Bibase;
 
 $main::bibErrMsg = "field is required for BibTeX\n\n";
 
