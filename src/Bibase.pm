@@ -29,21 +29,17 @@ Create the default BibTeX and database files if they do not already exist.
 
 sub startup {
 
-    my $error = open my $startHandle, "<", $main::DBFile;
-
-    if ( !$error ) {
-        open $startHandle, ">", $main::DBFile;
+    if ( not -e $main::DBFile ) {
+        open my $startHandle, ">", $main::DBFile;
         print("opening new file $main::DBFile\n");
+        close $startHandle;
     }
-    close $startHandle;
 
-    $error = open $startHandle, "<", $main::altDBFile;
-
-    if ( !$error ) {
-        open $startHandle, ">", $main::altDBFile;
+    if ( not -e $main::altDBFile ) {
+        open my $startHandle, ">", $main::altDBFile;
         print("opening new file $main::altDBFile\n");
+        close $startHandle;
     }
-    close $startHandle;
 
 }
 1;
