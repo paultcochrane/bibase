@@ -16,15 +16,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use strict;
+use warnings;
+
 sub editField {
 
-    print("\nEditing @fieldArray[$fieldAns] field...\n");
+    my $fieldArrayRef = shift;
+    my $fieldAns = shift;
+    my $paperArrayRef = shift;
+    my @fieldArray = @$fieldArrayRef;
+    my @paper = @$paperArrayRef;
+
+    print("\nEditing $fieldArray[$fieldAns] field...\n");
     print("Enter new value for field:\n");
-    print("@fieldArray[$fieldAns]");    # this acts as a prompt
-    chop( $newEditVal = <> );
-    @paper[$fieldAns] = $newEditVal;
-    print("\n@fieldArray[$fieldAns] @paper[$fieldAns] (y/n) ");
-    chop( $checkAns = <> );
+    print("$fieldArray[$fieldAns]");    # this acts as a prompt
+    my $newEditVal = <>;
+    chop( $newEditVal );
+    $paper[$fieldAns] = $newEditVal;
+    print("\n$fieldArray[$fieldAns] $paper[$fieldAns] (y/n) ");
+    my $checkAns = <>;
+    chop( $checkAns );
 
 }
 1;
