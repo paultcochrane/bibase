@@ -41,7 +41,7 @@ sub editEntry {
         if ( $answer eq 'n' || $answer eq 'N' || $answer eq '' ) {
         }
         elsif ( $answer eq 'y' || $answer eq 'Y' ) {
-            &editingEntry;
+            &editingEntry( ${$grepArrayRef}[$i] );
         }
         elsif ($answer eq 'x'
             || $answer eq 'X'
