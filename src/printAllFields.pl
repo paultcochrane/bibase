@@ -66,6 +66,7 @@ $j,$field,$fieldVal
         }
     }
 
+    return ( \@fieldArray, \@paper );
 }
 1;
 
