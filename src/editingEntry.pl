@@ -16,44 +16,49 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+use strict;
+use warnings;
+
 sub editingEntry {
 
     my $entryLine = shift;
+    my $indArrayElem = shift;
 
     my ( $fieldArrayRef, $fieldAns, $paperArrayRef ) = &printToEdit( $entryLine );
     my @paper = @$paperArrayRef;
-    &editField( $fieldArrayRef, $fieldAns, $paperArrayRef );
+    my $checkAns = &editField( $fieldArrayRef, $fieldAns, $paperArrayRef );
     if ( $checkAns eq 'y' || $checkAns eq 'Y' || $checkAns eq '' ) {
         print("\nDo you wish to edit another field? (y/n) ");
-        chop( $newFieldAns = <> );
+        my $newFieldAns = <>;
+        chop( $newFieldAns );
         if ( $newFieldAns eq 'y' || $newFieldAns eq 'Y' ) {
-            &editingEntry;
+            &editingEntry( $entryLine, $indArrayElem );
         }
         elsif ( $newFieldAns eq 'n' || $newFieldAns eq 'N' ) {
-            @addedArray = '';
-            for ( $j = 0 ; $j < 25 ; $j++ ) {
-                @addedArray = join( '', @addedArray, @paper[$j], "\@" );
+            my @addedArray = '';
+            for ( my $j = 0 ; $j < 25 ; $j++ ) {
+                @addedArray = join( '', @addedArray, $paper[$j], "\@" );
             }
             @addedArray = join( '', @addedArray, "\n" );
-            push( @dbInArray, @addedArray );
-            splice( @dbInArray, @indArray[$i], 1 );
-            @newDBArray = sort(@dbInArray);
-            &dotBibWrite;
+            push( @main::dbInArray, @addedArray );
+            splice( @main::dbInArray, $indArrayElem, 1 );
+            my @newDBArray = sort(@main::dbInArray);
+            &dotBibWrite( \@newDBArray );
             &bibCompile;
             &mainMenu;
         }
         else {
             print "woah, something weird happened in editingEntry\n";
-            &editEntry( 0 );
+            &editEntry( 0, 0 );
         }
     }
 
     elsif ( $checkAns eq 'n' || $checkAns eq 'N' ) {
-        &editField( $fieldArrayRef, $fieldAns, $paperArrayRef );
+        $checkAns = &editField( $fieldArrayRef, $fieldAns, $paperArrayRef );
     }
     else {
         print("woah, something strange happened in editingEntry\n");
-        &editEntry( 0 );
+        &editEntry( 0, 0 );
     }
 
 }
