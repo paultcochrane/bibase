@@ -37,6 +37,7 @@ sub editField {
     my $checkAns = <>;
     chop( $checkAns );
 
+    return $checkAns;
 }
 1;
 
