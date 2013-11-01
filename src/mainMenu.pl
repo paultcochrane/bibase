@@ -21,6 +21,8 @@ use strict;
 
 sub mainMenu {
 
+    my $config = shift;
+
     print("\n\n");
     print("Would you like to:\n\n");
     print("(S)earch for an entry\n");
@@ -55,12 +57,12 @@ sub mainMenu {
         || $answer eq 'q'
         || $answer eq 'Q' )
     {
-        &sortAndCompCheck;
+        sortAndCompCheck( $config );
         exit(0);
     }
     else {
         print("woah, something weird must have happened\n");
-        &mainMenu;
+        mainMenu( $config );
     }
 
 }

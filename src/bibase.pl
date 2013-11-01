@@ -77,7 +77,7 @@ sub run {
 
     my $bibase = Bibase->new();
     $bibase->init_db_files( $config );
-    &mainMenu;
+    mainMenu( $config );
 
 }
 
