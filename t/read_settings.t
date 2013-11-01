@@ -8,13 +8,13 @@ use lib qw( ../src ./src );
 use Test::More tests => 11;
 use Capture::Tiny ':all';
 
-use_ok( 'Bibase' );
+use_ok( 'Bibase::Config' );
 
 # it barfs with error message when settings file doesn't exist
 {
-    my $bibase = Bibase->new();
+    my $config = Bibase::Config->new();
     eval {
-        $bibase->read_settings( "blah.settings" );
+        $config->read_settings( "blah.settings" );
     };
     my $test_stderr = $@;
     my $expected = "No such file or directory";
@@ -24,9 +24,9 @@ use_ok( 'Bibase' );
 
 # it sets default settings filename when none is given
 {
-    my $bibase = Bibase->new();
+    my $config = Bibase::Config->new();
     eval {
-        $bibase->read_settings();
+        $config->read_settings();
     };
     my $test_stdout = $@;
     my $expected = "";
@@ -36,8 +36,8 @@ use_ok( 'Bibase' );
 
 # it sets DBFile and altDBFile to the expected default values
 {
-    my $bibase = Bibase->new();
-    $bibase->read_settings();
+    my $config = Bibase::Config->new();
+    $config->read_settings();
     my $expected_dot_bib = "bibase.bib";
     my $expected_dot_db = "bibase.db";
 
@@ -62,8 +62,8 @@ EOF
     print $fh $settings;
     close $fh;
 
-    my $bibase = Bibase->new();
-    $bibase->read_settings( $settings_fname);
+    my $config = Bibase::Config->new();
+    $config->read_settings( $settings_fname);
 
     my $bibFname = $main::DBFile;
     my $dbFname = $main::altDBFile;
@@ -94,8 +94,8 @@ EOF
     print $fh $settings;
     close $fh;
 
-    my $bibase = Bibase->new();
-    $bibase->read_settings( $settings_fname);
+    my $config = Bibase::Config->new();
+    $config->read_settings( $settings_fname);
 
     my $bibFname = $main::DBFile;
     my $dbFname = $main::altDBFile;
@@ -125,8 +125,8 @@ EOF
     print $fh $settings;
     close $fh;
 
-    my $bibase = Bibase->new();
-    $bibase->read_settings( $settings_fname);
+    my $config = Bibase::Config->new();
+    $config->read_settings( $settings_fname);
 
     my $bibFname = $main::DBFile;
     my $dbFname = $main::altDBFile;

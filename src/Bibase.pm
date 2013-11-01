@@ -45,47 +45,6 @@ sub init_db_files {
 
 }
 
-=item read_settings
-
-Read in the configuration file and set the relevant config variables.
-
-=cut
-
-sub read_settings {
-
-    my ( $self, $settingsFname ) = @_;
-
-    $settingsFname = "bibase.settings" if not $settingsFname;
-    open my $setFH, "<", $settingsFname or die $!;
-    my @settingsArray = <$setFH>;
-    close $setFH;
-    chomp @settingsArray;
-
-    my $dbfilepath;
-    my $dbFname;
-    my $bibFname;
-    for my $line ( @settingsArray ) {
-        my @lineData = split( '=', $line );
-
-        if ( grep /dbfilepath/i,  @lineData ) {
-            $dbfilepath = $lineData[1] ? $lineData[1] : '';
-            $dbfilepath =~ s/\s+//g;
-        }
-        elsif ( grep /bibfilename/i, @lineData ) {
-            $bibFname = $lineData[1] ? $lineData[1] : '';
-            $bibFname =~ s/\s+//g;
-        }
-        elsif ( grep /dbfilename/i,  @lineData ) {
-            $dbFname = $lineData[1] ? $lineData[1] : '';
-            $dbFname =~ s/\s+//g;
-        }
-    }
-
-    $main::DBFile    = $bibFname ? join( '', $dbfilepath, $bibFname ) : "bibase.bib" ;
-    $main::altDBFile = $dbFname ? join( '', $dbfilepath, $dbFname ) : "bibase.db";
-
-}
-
 1;
 
 # vim: expandtab shiftwidth=4:
