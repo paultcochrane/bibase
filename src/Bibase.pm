@@ -31,17 +31,17 @@ Create the default BibTeX and database files if they do not already exist.
 
 sub init_db_files {
 
-    my ( $self, $config );
+    my ( $self, $config ) = @_;
 
-    if ( not -e $main::DBFile ) {
-        open my $startHandle, ">", $main::DBFile;
-        print("opening new file $main::DBFile\n");
+    if ( not -e $config->bibFname ) {
+        open my $startHandle, ">", $config->bibFname;
+        print "opening new file ", $config->bibFname, "\n";
         close $startHandle;
     }
 
-    if ( not -e $main::altDBFile ) {
-        open my $startHandle, ">", $main::altDBFile;
-        print("opening new file $main::altDBFile\n");
+    if ( not -e $config->dbFname ) {
+        open my $startHandle, ">", $config->dbFname;
+        print "opening new file ", $config->dbFname, "\n";
         close $startHandle;
     }
 
