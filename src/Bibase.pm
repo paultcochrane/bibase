@@ -55,7 +55,7 @@ sub read_settings {
 
     my ( $self, $settingsFname ) = @_;
 
-    $settingsFname = "bibase.settings" if not defined($settingsFname);
+    $settingsFname = "bibase.settings" if not $settingsFname;
     open my $setFH, "<", $settingsFname or die $!;
     my $numLines = 0;
     my @settingsArray;
