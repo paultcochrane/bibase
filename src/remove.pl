@@ -109,7 +109,7 @@ sub remove {
     }
     else {
         print "something went wrong in remove.pl\n";
-        &remove;
+        remove( $config );
     }
 
     mainMenu( $config );

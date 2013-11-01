@@ -30,7 +30,7 @@ sub entriesFoundDecide {
             lookup( $config );
         }
         elsif ( $main::removeFlag == 1 ) {
-            &remove;
+            remove( $config );
         }
         elsif ( $main::editFlag == 1 ) {
             &edit;

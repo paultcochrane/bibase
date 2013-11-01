@@ -43,7 +43,7 @@ sub mainMenu {
         &add;
     }
     elsif ( $answer eq 'r' || $answer eq 'R' ) {
-        &remove;
+        remove( $config );
     }
     elsif ($answer eq 'c'
         || $answer eq 'C'
