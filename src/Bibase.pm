@@ -65,9 +65,9 @@ sub mainMenu {
     print("(E)dit an entry\n");
     print("E(x)it\n\n");
 
-    my $answer;
     print("Please choose an option: ");
-    chop( $answer = <> );
+    my $answer = <>;
+    chomp $answer;
 
     if ( $answer eq 'l' || $answer eq 'L' || $answer eq 's' || $answer eq 'S' )
     {
