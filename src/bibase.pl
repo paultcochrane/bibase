@@ -26,46 +26,8 @@ $main::bibErrMsg = "field is required for BibTeX\n\n";
 
 print "This is bibase version 1.0 on $^O\n\n";
 
-my $settingsFname = "bibase.settings";
-open my $setFH, "<", $settingsFname or die $!;
-my $numLines = 0;
-my @settingsArray;
-while (<$setFH>) {
-    $settingsArray[$numLines] = $_;
-    $numLines++;
-}
-close $setFH;
-
-my $settingsFileLen = @settingsArray;
-my $dbfilepath;
-my $dbFname;
-my $bibFname;
-for ( my $i = 0 ; $i < $settingsFileLen ; $i++ ) {
-    my @line = split( '=', $settingsArray[$i] );
-    my $dbpathMatch  = grep( /dbfilepath/i,  @line );
-    my $bibfileMatch = grep( /bibfilename/i, @line );
-    my $dbfileMatch  = grep( /dbfilename/i,  @line );
-
-    if ( $dbpathMatch != 0 ) {
-        $dbfilepath = $line[1];
-        $dbfilepath =~ s/ //g;
-        chomp $dbfilepath;
-    }
-    elsif ( $bibfileMatch != 0 ) {
-        $bibFname = $line[1];
-        $bibFname =~ s/ //g;
-        chomp $bibFname;
-    }
-    elsif ( $dbfileMatch != 0 ) {
-        $dbFname = $line[1];
-        $dbFname =~ s/ //g;
-        chomp $dbFname;
-    }
-
-}
-
-$main::DBFile    = $bibFname ? join( '', $dbfilepath, $bibFname ) : "bibase.bib" ;
-$main::altDBFile = $dbFname ? join( '', $dbfilepath, $dbFname ) : "bibase.db";
+my $bibase = Bibase->new();
+$bibase->read_settings();
 
 require "mainMenu.pl";
 require "lookup.pl";
@@ -108,7 +70,6 @@ require "editField.pl";
 require "entriesFoundDecide.pl";
 require "editingEntry.pl";
 
-my $bibase = Bibase->new();
 $bibase->init_db_files();
 &mainMenu;
 

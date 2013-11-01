@@ -20,7 +20,6 @@ package Bibase;
 
 use warnings;
 use strict;
-use autodie;
 
 use Moose;
 
@@ -45,6 +44,59 @@ sub init_db_files {
     }
 
 }
+
+=item read_settings
+
+Read in the configuration file and set the relevant config variables.
+
+=cut
+
+sub read_settings {
+
+    my ( $self, $settingsFname ) = @_;
+
+    $settingsFname = "bibase.settings" if not defined($settingsFname);
+    open my $setFH, "<", $settingsFname or die $!;
+    my $numLines = 0;
+    my @settingsArray;
+    while (<$setFH>) {
+        $settingsArray[$numLines] = $_;
+        $numLines++;
+    }
+    close $setFH;
+
+    my $settingsFileLen = @settingsArray;
+    my $dbfilepath;
+    my $dbFname;
+    my $bibFname;
+    for ( my $i = 0 ; $i < $settingsFileLen ; $i++ ) {
+        my @line = split( '=', $settingsArray[$i] );
+        my $dbpathMatch  = grep( /dbfilepath/i,  @line );
+        my $bibfileMatch = grep( /bibfilename/i, @line );
+        my $dbfileMatch  = grep( /dbfilename/i,  @line );
+
+        if ( $dbpathMatch != 0 ) {
+            $dbfilepath = $line[1];
+            $dbfilepath =~ s/ //g;
+            chomp $dbfilepath;
+        }
+        elsif ( $bibfileMatch != 0 ) {
+            $bibFname = $line[1];
+            $bibFname =~ s/ //g;
+            chomp $bibFname;
+        }
+        elsif ( $dbfileMatch != 0 ) {
+            $dbFname = $line[1];
+            $dbFname =~ s/ //g;
+            chomp $dbFname;
+        }
+    }
+
+    $main::DBFile    = $bibFname ? join( '', $dbfilepath, $bibFname ) : "bibase.bib" ;
+    $main::altDBFile = $dbFname ? join( '', $dbfilepath, $dbFname ) : "bibase.db";
+
+}
+
 1;
 
 # vim: expandtab shiftwidth=4:
