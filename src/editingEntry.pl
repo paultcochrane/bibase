@@ -41,7 +41,7 @@ sub editingEntry {
             push( @main::dbInArray, @addedArray );
             splice( @main::dbInArray, $indArrayElem, 1 );
             my @newDBArray = sort(@main::dbInArray);
-            &dotBibWrite( \@newDBArray );
+            dotBibWrite( \@newDBArray, $config );
             &bibCompile;
             mainMenu( $config );
         }

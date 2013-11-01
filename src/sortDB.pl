@@ -46,7 +46,7 @@ sub sortDB {
 
     print("done\n");
 
-    &dotBibWrite;
+    dotBibWrite( \@newDBArray, $config );
 
 }
 1;

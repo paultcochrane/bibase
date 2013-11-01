@@ -45,7 +45,7 @@ sub removeEntry {
             splice( @main::dbInArray, ${$indArrayRef}[$i], 1 );
             my @newDBArray = @main::dbInArray;
             print "removing entry...\n";
-            &dotBibWrite( \@newDBArray );
+            dotBibWrite( \@newDBArray, $config );
             &bibCompile;
             mainMenu( $config );
         }
