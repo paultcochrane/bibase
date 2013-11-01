@@ -47,6 +47,60 @@ sub init_db_files {
 
 }
 
+=item mainMenu
+
+Show the main menu of the application.
+
+=cut
+
+sub mainMenu {
+
+    my ( $self, $config ) = @_;
+
+    print("\n\n");
+    print("Would you like to:\n\n");
+    print("(S)earch for an entry\n");
+    print("(A)dd an entry\n");
+    print("(R)emove an entry\n");
+    print("(E)dit an entry\n");
+    print("E(x)it\n\n");
+
+    my $answer;
+    print("Please choose an option: ");
+    chop( $answer = <> );
+
+    if ( $answer eq 'l' || $answer eq 'L' || $answer eq 's' || $answer eq 'S' )
+    {
+        main::lookup( $config );
+    }
+    elsif ( $answer eq 'a' || $answer eq 'A' ) {
+        main::add( $config );
+    }
+    elsif ( $answer eq 'r' || $answer eq 'R' ) {
+        main::remove( $config );
+    }
+    elsif ($answer eq 'c'
+        || $answer eq 'C'
+        || $answer eq 'e'
+        || $answer eq 'E' )
+    {
+        main::edit( $config );
+    }
+    elsif ($answer eq 'x'
+        || $answer eq 'X'
+        || $answer eq 'q'
+        || $answer eq 'Q' )
+    {
+        main::sortAndCompCheck( $config );
+        exit(0);
+    }
+    else {
+        print("woah, something weird must have happened\n");
+        $self->mainMenu( $config );
+    }
+
+}
+
 1;
 
 # vim: expandtab shiftwidth=4:

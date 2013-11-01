@@ -25,7 +25,6 @@ use lib qw( src );
 use Bibase;
 use Bibase::Config;
 
-require "mainMenu.pl";
 require "lookup.pl";
 require "add.pl";
 require "addThesis.pl";
@@ -77,7 +76,7 @@ sub run {
 
     my $bibase = Bibase->new();
     $bibase->init_db_files( $config );
-    mainMenu( $config );
+    $bibase->mainMenu( $config );
 
 }
 
