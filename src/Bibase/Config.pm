@@ -28,6 +28,11 @@ has 'bibFname' => (
     isa => 'Str',
 );
 
+has 'dbFname' => (
+    is => 'rw',
+    isa => 'Str',
+);
+
 =item read_settings
 
 Read in the configuration file and set the relevant config variables.
@@ -65,7 +70,7 @@ sub read_settings {
     }
 
     $self->bibFname( $bibFname ? join( '', $dbfilepath, $bibFname ) : "bibase.bib" );
-    $main::altDBFile = $dbFname ? join( '', $dbfilepath, $dbFname ) : "bibase.db";
+    $self->dbFname( $dbFname ? join( '', $dbfilepath, $dbFname ) : "bibase.db" );
 
 }
 

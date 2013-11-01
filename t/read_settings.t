@@ -42,7 +42,7 @@ use_ok( 'Bibase::Config' );
     my $expected_dot_db = "bibase.db";
 
     my $bibFname = $config->bibFname;
-    my $dbFname = $main::altDBFile;
+    my $dbFname = $config->dbFname;
 
     is( $bibFname, $expected_dot_bib,
         "sets default .bib filename correctly" );
@@ -66,7 +66,7 @@ EOF
     $config->read_settings( $settings_fname);
 
     my $bibFname = $config->bibFname;
-    my $dbFname = $main::altDBFile;
+    my $dbFname = $config->dbFname;
 
     my $expected_dot_bib = "blah.bib";
     my $expected_dot_db = "blah.db";
@@ -98,7 +98,7 @@ EOF
     $config->read_settings( $settings_fname);
 
     my $bibFname = $config->bibFname;
-    my $dbFname = $main::altDBFile;
+    my $dbFname = $config->dbFname;
 
     my $expected_dot_bib = $settings_dir . "blah.bib";
     my $expected_dot_db = $settings_dir . "blah.db";
@@ -129,7 +129,7 @@ EOF
     $config->read_settings( $settings_fname);
 
     my $bibFname = $config->bibFname;
-    my $dbFname = $main::altDBFile;
+    my $dbFname = $config->dbFname;
 
     my $expected_dot_bib = "bibase.bib";
     my $expected_dot_db = "bibase.db";
