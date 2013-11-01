@@ -5,7 +5,7 @@ use warnings;
 
 use lib qw( ../src ./src );
 
-use Test::More tests => 9;
+use Test::More tests => 11;
 use Capture::Tiny ':all';
 
 use_ok( 'Bibase' );
@@ -111,6 +111,36 @@ EOF
     # clean up
     unlink $settings_fname;
     rmdir $settings_dir;
+}
+
+# it sets DBFile and altDBFile to default values with null settings
+{
+    my $settings =<<"EOF";
+dbfilepath =
+bibfilename =
+dbfilename =
+EOF
+    my $settings_fname = "blah.settings";
+    open my $fh, ">", $settings_fname or die "$!";
+    print $fh $settings;
+    close $fh;
+
+    my $bibase = Bibase->new();
+    $bibase->read_settings( $settings_fname);
+
+    my $bibFname = $main::DBFile;
+    my $dbFname = $main::altDBFile;
+
+    my $expected_dot_bib = "bibase.bib";
+    my $expected_dot_db = "bibase.db";
+
+    is( $bibFname, $expected_dot_bib,
+        "sets default .bib filename from null setting correctly" );
+    is( $dbFname, $expected_dot_db,
+        "sets default .db filename from null setting correctly" );
+
+    # clean up
+    unlink $settings_fname;
 }
 
 # vim: expandtab shiftwidth=4:
