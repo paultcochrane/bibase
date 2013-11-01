@@ -21,9 +21,11 @@ use strict;
 
 sub bibCompile {
 
+    my $config = shift;
+
     print("\nCompiling database file...");
 
-    open my $bibAltDBFile, ">", $main::altDBFile;
+    open my $bibAltDBFile, ">", $config->dbFname;
 
     open my $bibInFile, "<", $main::DBFile;
 

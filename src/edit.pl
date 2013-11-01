@@ -21,6 +21,8 @@ use strict;
 
 sub edit {
 
+    my $config = shift;
+
     &sortAndCompCheck;
 
     print "\nChoosing to edit an entry\n";
@@ -30,7 +32,7 @@ sub edit {
     $main::removeFlag = 0;
     $main::editFlag   = 1;
 
-    open my $dbInFile, "<", $main::altDBFile;
+    open my $dbInFile, "<", $config->dbFname;
 
     my $dbNumLines = 0;
     @main::dbInArray = '';

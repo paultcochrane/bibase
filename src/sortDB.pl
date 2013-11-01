@@ -21,9 +21,11 @@ use strict;
 
 sub sortDB {
 
-    print("Sorting $main::altDBFile...");
+    my $config = shift;
 
-    open my $dbInFile, "<", $main::altDBFile;
+    print("Sorting ", $config->dbFname, "...");
+
+    open my $dbInFile, "<", $config->dbFname;
 
     my @dbInArray  = '';
     my $dbNumLines = 0;
@@ -36,7 +38,7 @@ sub sortDB {
 
     my @newDBArray = sort(@dbInArray);
 
-    open my $dbOutFile, ">", $main::altDBFile;
+    open my $dbOutFile, ">", $config->dbFname;
 
     print( $dbOutFile @newDBArray );
 

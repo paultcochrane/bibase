@@ -21,6 +21,8 @@ use warnings;
 
 sub remove {
 
+    my $config = shift;
+
     print "\nChoosing to remove an entry\n";
     print "Please search for the entry to remove\n";
 
@@ -28,7 +30,7 @@ sub remove {
     $main::removeFlag = 1;
     $main::editFlag   = 0;
 
-    open my $dbInFile, "<", $main::altDBFile;
+    open my $dbInFile, "<", $config->dbFname;
 
     my ( @titleArray, @authorArray, @entryArray, @bibkeyArray,
         @journalArray, @yearArray, @keywordsArray );

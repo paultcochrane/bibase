@@ -21,6 +21,8 @@ use strict;
 
 sub lookup {
 
+    my $config = shift;
+
     $main::searchFlag = 1;
     $main::removeFlag = 0;
     $main::editFlag   = 0;
@@ -36,7 +38,7 @@ sub lookup {
     my @yearArray     = '';
     my @keywordsArray = '';
 
-    open my $dbInFile, "<", $main::altDBFile;
+    open my $dbInFile, "<", $config->dbFname;
 
     my $dbNumLines = 0;
     while (<$dbInFile>) {
