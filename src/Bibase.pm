@@ -65,21 +65,18 @@ sub read_settings {
     my $bibFname;
     for my $line ( @settingsArray ) {
         my @lineData = split( '=', $line );
-        my $dbpathMatch  = grep( /dbfilepath/i,  @lineData );
-        my $bibfileMatch = grep( /bibfilename/i, @lineData );
-        my $dbfileMatch  = grep( /dbfilename/i,  @lineData );
 
-        if ( $dbpathMatch != 0 ) {
+        if ( grep /dbfilepath/i,  @lineData ) {
             $dbfilepath = $lineData[1];
             $dbfilepath =~ s/\s+//g;
             chomp $dbfilepath;
         }
-        elsif ( $bibfileMatch != 0 ) {
+        elsif ( grep /bibfilename/i, @lineData ) {
             $bibFname = $lineData[1];
             $bibFname =~ s/\s+//g;
             chomp $bibFname;
         }
-        elsif ( $dbfileMatch != 0 ) {
+        elsif ( grep /dbfilename/i,  @lineData ) {
             $dbFname = $lineData[1];
             $dbFname =~ s/\s+//g;
             chomp $dbFname;
