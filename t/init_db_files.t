@@ -5,7 +5,7 @@ use warnings;
 
 use lib qw( ../src ./src );
 
-use Test::More tests => 4;
+use Test::More tests => 5;
 use IO::Capture::Stdout;
 use IO::Capture::Stderr;
 
@@ -17,7 +17,8 @@ use_ok( 'Bibase' );
     $main::altDBFile = "blah.db";
     my $capture = IO::Capture::Stdout->new();
     $capture->start();
-    Bibase->init_db_files();
+    my $bibase = Bibase->new();
+    $bibase->init_db_files();
     $capture->stop();
 
     my $test_stdout = join "", ($capture->read());
@@ -38,6 +39,29 @@ EOT
 }
 
 # test that when bibase.bib *is* there, that the file is left alone
-# test that when bibase.db *is* there, that the file is left alone
+{
+    $main::DBFile = "blah.bib";
+    $main::altDBFile = "blah.db";
+
+    # touch the files so that they exist
+    open my $bib_fh, ">", $main::DBFile; close $bib_fh;
+    open my $db_fh, ">", $main::altDBFile; close $db_fh;
+
+    my $capture = IO::Capture::Stdout->new();
+    $capture->start();
+    my $bibase = Bibase->new();
+    $bibase->init_db_files();
+    $capture->stop();
+
+    my $test_stdout = join "", ($capture->read());
+
+    my $expected = '';
+    is( $test_stdout, $expected,
+	"No output expected when db files already exist" );
+
+    # clean up
+    unlink $main::DBFile;
+    unlink $main::altDBFile;
+}
 
 # vim: expandtab shiftwidth=4:
