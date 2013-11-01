@@ -57,12 +57,7 @@ sub read_settings {
 
     $settingsFname = "bibase.settings" if not $settingsFname;
     open my $setFH, "<", $settingsFname or die $!;
-    my $numLines = 0;
-    my @settingsArray;
-    while (<$setFH>) {
-        $settingsArray[$numLines] = $_;
-        $numLines++;
-    }
+    my @settingsArray = <$setFH>;
     close $setFH;
 
     my $settingsFileLen = @settingsArray;
