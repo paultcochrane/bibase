@@ -55,6 +55,8 @@ Show the main menu of the application.
 
 sub mainMenu {
 
+    use IO::Prompt;
+
     my ( $self, $config ) = @_;
 
     print("\n\n");
@@ -65,9 +67,7 @@ sub mainMenu {
     print("(E)dit an entry\n");
     print("E(x)it\n\n");
 
-    print("Please choose an option: ");
-    my $answer = <>;
-    chomp $answer;
+    my $answer = prompt "Please choose an option: ";
 
     if ( $answer eq 'l' || $answer eq 'L' || $answer eq 's' || $answer eq 'S' )
     {
