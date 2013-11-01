@@ -71,17 +71,17 @@ sub read_settings {
 
         if ( $dbpathMatch != 0 ) {
             $dbfilepath = $lineData[1];
-            $dbfilepath =~ s/ //g;
+            $dbfilepath =~ s/\s+//g;
             chomp $dbfilepath;
         }
         elsif ( $bibfileMatch != 0 ) {
             $bibFname = $lineData[1];
-            $bibFname =~ s/ //g;
+            $bibFname =~ s/\s+//g;
             chomp $bibFname;
         }
         elsif ( $dbfileMatch != 0 ) {
             $dbFname = $lineData[1];
-            $dbFname =~ s/ //g;
+            $dbFname =~ s/\s+//g;
             chomp $dbFname;
         }
     }
