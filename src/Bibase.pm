@@ -60,28 +60,27 @@ sub read_settings {
     my @settingsArray = <$setFH>;
     close $setFH;
 
-    my $settingsFileLen = @settingsArray;
     my $dbfilepath;
     my $dbFname;
     my $bibFname;
-    for ( my $i = 0 ; $i < $settingsFileLen ; $i++ ) {
-        my @line = split( '=', $settingsArray[$i] );
-        my $dbpathMatch  = grep( /dbfilepath/i,  @line );
-        my $bibfileMatch = grep( /bibfilename/i, @line );
-        my $dbfileMatch  = grep( /dbfilename/i,  @line );
+    for my $line ( @settingsArray ) {
+        my @lineData = split( '=', $line );
+        my $dbpathMatch  = grep( /dbfilepath/i,  @lineData );
+        my $bibfileMatch = grep( /bibfilename/i, @lineData );
+        my $dbfileMatch  = grep( /dbfilename/i,  @lineData );
 
         if ( $dbpathMatch != 0 ) {
-            $dbfilepath = $line[1];
+            $dbfilepath = $lineData[1];
             $dbfilepath =~ s/ //g;
             chomp $dbfilepath;
         }
         elsif ( $bibfileMatch != 0 ) {
-            $bibFname = $line[1];
+            $bibFname = $lineData[1];
             $bibFname =~ s/ //g;
             chomp $bibFname;
         }
         elsif ( $dbfileMatch != 0 ) {
-            $dbFname = $line[1];
+            $dbFname = $lineData[1];
             $dbFname =~ s/ //g;
             chomp $dbFname;
         }
