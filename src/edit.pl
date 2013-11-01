@@ -115,7 +115,7 @@ sub edit {
     }
     else {
         print "something went wrong in edit.pl\n";
-        &edit;
+        edit( $config );
     }
 
     mainMenu( $config );

@@ -33,7 +33,7 @@ sub entriesFoundDecide {
             remove( $config );
         }
         elsif ( $main::editFlag == 1 ) {
-            &edit;
+            edit( $config );
         }
         else {
             print "something went wrong in entriesFoundDecide";

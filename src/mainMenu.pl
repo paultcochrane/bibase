@@ -50,7 +50,7 @@ sub mainMenu {
         || $answer eq 'e'
         || $answer eq 'E' )
     {
-        &edit;
+        edit( $config );
     }
     elsif ($answer eq 'x'
         || $answer eq 'X'
