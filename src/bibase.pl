@@ -23,13 +23,14 @@ use strict;
 
 use lib qw( src );
 use Bibase;
+use Bibase::Config;
 
 $main::bibErrMsg = "field is required for BibTeX\n\n";
 
 print "This is bibase version 1.0 on $^O\n\n";
 
-my $bibase = Bibase->new();
-$bibase->read_settings();
+my $config = Bibase::Config->new();
+$config->read_settings();
 
 require "mainMenu.pl";
 require "lookup.pl";
@@ -72,6 +73,7 @@ require "editField.pl";
 require "entriesFoundDecide.pl";
 require "editingEntry.pl";
 
+my $bibase = Bibase->new();
 $bibase->init_db_files();
 &mainMenu;
 
