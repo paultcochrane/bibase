@@ -31,6 +31,8 @@ Create the default BibTeX and database files if they do not already exist.
 
 sub init_db_files {
 
+    my ( $self, $config );
+
     if ( not -e $main::DBFile ) {
         open my $startHandle, ">", $main::DBFile;
         print("opening new file $main::DBFile\n");

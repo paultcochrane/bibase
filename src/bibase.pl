@@ -76,7 +76,7 @@ sub run {
     $config->read_settings();
 
     my $bibase = Bibase->new();
-    $bibase->init_db_files();
+    $bibase->init_db_files( $config );
     &mainMenu;
 
 }

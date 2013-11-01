@@ -23,6 +23,11 @@ use strict;
 
 use Moose;
 
+has 'bibFname' => (
+    is => 'rw',
+    isa => 'Str',
+);
+
 =item read_settings
 
 Read in the configuration file and set the relevant config variables.
@@ -59,7 +64,7 @@ sub read_settings {
         }
     }
 
-    $main::DBFile    = $bibFname ? join( '', $dbfilepath, $bibFname ) : "bibase.bib" ;
+    $self->bibFname( $bibFname ? join( '', $dbfilepath, $bibFname ) : "bibase.bib" );
     $main::altDBFile = $dbFname ? join( '', $dbfilepath, $dbFname ) : "bibase.db";
 
 }
