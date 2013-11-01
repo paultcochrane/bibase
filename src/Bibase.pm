@@ -72,11 +72,11 @@ sub read_settings {
             $dbfilepath =~ s/\s+//g;
         }
         elsif ( grep /bibfilename/i, @lineData ) {
-            $bibFname = $lineData[1];
+            $bibFname = $lineData[1] ? $lineData[1] : '';
             $bibFname =~ s/\s+//g;
         }
         elsif ( grep /dbfilename/i,  @lineData ) {
-            $dbFname = $lineData[1];
+            $dbFname = $lineData[1] ? $lineData[1] : '';
             $dbFname =~ s/\s+//g;
         }
     }
