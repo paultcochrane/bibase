@@ -44,7 +44,7 @@ sub editingEntry {
             my @newDBArray = sort(@main::dbInArray);
             &dotBibWrite( \@newDBArray );
             &bibCompile;
-            &mainMenu;
+            mainMenu( $config );
         }
         else {
             print "woah, something weird happened in editingEntry\n";

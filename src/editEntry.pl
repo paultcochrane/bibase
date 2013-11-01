@@ -51,11 +51,11 @@ sub editEntry {
             || $answer eq 'm'
             || $answer eq 'M' )
         {
-            &mainMenu;
+            mainMenu( $config );
         }
         else {
             print "whoops, something weird happened in editEntry\n";
-            &mainMenu;
+            mainMenu( $config );
         }
         $i++;
     }

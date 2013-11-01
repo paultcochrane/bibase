@@ -111,14 +111,14 @@ sub edit {
         &searchBibkey( @bibkeyArray );
     }
     elsif ( $answer eq 'm' || $answer eq 'M' ) {
-        &mainMenu;
+        mainMenu( $config );
     }
     else {
         print "something went wrong in edit.pl\n";
         &edit;
     }
 
-    &mainMenu;
+    mainMenu( $config );
 
 }
 1;

@@ -35,14 +35,14 @@ sub printSearchResults {
             print("\nshow next entry? (y/n) ");
             chop( $answer = <> );
             if ( $answer eq 'n' || $answer eq 'N' ) {
-                &mainMenu;
+                mainMenu( $config );
             }
             elsif ( $answer eq 'y' || $answer eq 'Y' || $answer eq '' ) {
             }
             else {
                 print
                   "whoops, something weird happened in printSearchResults\n";
-                &mainMenu;
+                mainMenu( $config );
             }
         }
     }

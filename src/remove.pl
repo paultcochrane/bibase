@@ -105,14 +105,14 @@ sub remove {
         &searchBibkey( @bibkeyArray );
     }
     elsif ( $answer eq 'm' || $answer eq 'M' ) {
-        &mainMenu;
+        mainMenu( $config );
     }
     else {
         print "something went wrong in remove.pl\n";
         &remove;
     }
 
-    &mainMenu;
+    mainMenu( $config );
 
 }
 1;

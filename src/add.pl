@@ -80,7 +80,7 @@ sub add {
         &addTechReport;
     }
     elsif ( $answer eq 'm' ) {
-        &mainMenu;
+        mainMenu( $config );
     }
     elsif ($answer eq 'x'
         || $answer eq 'X'

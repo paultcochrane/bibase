@@ -109,14 +109,14 @@ sub lookup {
         &searchBibkey( @bibkeyArray );
     }
     elsif ( $answer eq 'm' || $answer eq 'M' ) {
-        &mainMenu;
+        mainMenu( $config );
     }
     else {
         print "something went wrong in lookup.pl\n";
         lookup( $config );
     }
 
-    &mainMenu;
+    mainMenu( $config );
 }
 1;
 

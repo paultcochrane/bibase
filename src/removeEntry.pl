@@ -48,7 +48,7 @@ sub removeEntry {
             print "removing entry...\n";
             &dotBibWrite( \@newDBArray );
             &bibCompile;
-            &mainMenu;
+            mainMenu( $config );
         }
         elsif ($answer eq 'x'
             || $answer eq 'X'
@@ -57,11 +57,11 @@ sub removeEntry {
             || $answer eq 'm'
             || $answer eq 'M' )
         {
-            &mainMenu;
+            mainMenu( $config );
         }
         else {
             print "whoops, something weird happened in removeEntry\n";
-            &mainMenu;
+            mainMenu( $config );
         }
         $i++;
     }
