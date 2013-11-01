@@ -59,6 +59,7 @@ sub read_settings {
     open my $setFH, "<", $settingsFname or die $!;
     my @settingsArray = <$setFH>;
     close $setFH;
+    chomp @settingsArray;
 
     my $dbfilepath;
     my $dbFname;
@@ -67,19 +68,16 @@ sub read_settings {
         my @lineData = split( '=', $line );
 
         if ( grep /dbfilepath/i,  @lineData ) {
-            $dbfilepath = $lineData[1];
+            $dbfilepath = $lineData[1] ? $lineData[1] : '';
             $dbfilepath =~ s/\s+//g;
-            chomp $dbfilepath;
         }
         elsif ( grep /bibfilename/i, @lineData ) {
             $bibFname = $lineData[1];
             $bibFname =~ s/\s+//g;
-            chomp $bibFname;
         }
         elsif ( grep /dbfilename/i,  @lineData ) {
             $dbFname = $lineData[1];
             $dbFname =~ s/\s+//g;
-            chomp $dbFname;
         }
     }
 
