@@ -46,7 +46,7 @@ sub removeEntry {
             my @newDBArray = @main::dbInArray;
             print "removing entry...\n";
             dotBibWrite( \@newDBArray, $config );
-            &bibCompile;
+            bibCompile( $config );
             mainMenu( $config );
         }
         elsif ($answer eq 'x'

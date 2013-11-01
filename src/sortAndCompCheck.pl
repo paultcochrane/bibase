@@ -45,7 +45,7 @@ sub sortAndCompCheck {
     # print("altdbNumLines = $altdbNumLines\n");
 
     if ( $bibAtCount != $altdbNumLines ) {
-        &bibCompile;
+        bibCompile( $config );
         sortDB( $config );
     }
 
