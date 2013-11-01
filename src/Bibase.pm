@@ -69,19 +69,19 @@ sub mainMenu {
 
     my $answer = prompt "Please choose an option: ";
 
-    if ( $answer =~ m/(l|s)/i ) {
+    if ( $answer =~ m/^(l|s)$/i ) {
         main::lookup( $config );
     }
-    elsif ( $answer =~ m/a/i ) {
+    elsif ( $answer =~ m/^a$/i ) {
         main::add( $config );
     }
-    elsif ( $answer =~ m/r/i ) {
+    elsif ( $answer =~ m/^r$/i ) {
         main::remove( $config );
     }
-    elsif ( $answer =~ m/(c|e)/i ) {
+    elsif ( $answer =~ m/^(c|e)$/i ) {
         main::edit( $config );
     }
-    elsif ( $answer =~ m/(x|q)/i ) {
+    elsif ( $answer =~ m/^(x|q)$/i ) {
         main::sortAndCompCheck( $config );
         exit(0);
     }
