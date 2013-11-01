@@ -22,6 +22,8 @@ use warnings;
 use strict;
 use autodie;
 
+use Moose;
+
 =item startup
 
 Create the default BibTeX and database files if they do not already exist.

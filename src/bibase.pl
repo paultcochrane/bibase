@@ -85,7 +85,6 @@ require "addBooklet.pl";
 require "sortDB.pl";
 require "bibCompile.pl";
 require "sortAndCompCheck.pl";
-require "startup.pl";
 require "bibkeyMake.pl";
 require "titleCheck.pl";
 require "dotBibWrite.pl";
@@ -109,7 +108,8 @@ require "editField.pl";
 require "entriesFoundDecide.pl";
 require "editingEntry.pl";
 
-&startup;
+my $bibase = Bibase->new();
+$bibase->startup();
 &mainMenu;
 
 # vim: expandtab shiftwidth=4:
