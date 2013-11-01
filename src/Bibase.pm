@@ -20,6 +20,7 @@ package Bibase;
 
 use warnings;
 use strict;
+use autodie;
 
 =item startup
 
