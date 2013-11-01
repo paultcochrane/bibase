@@ -21,8 +21,7 @@ use strict;
 
 sub editEntry {
 
-    my $grepArrayRef = shift;
-    my $indArrayRef = shift;
+    my ( $grepArrayRef, $indArrayRef, $config ) = @_;
     my $grepCount = @$grepArrayRef;
 
     print("\n$grepCount entries found\n\n");

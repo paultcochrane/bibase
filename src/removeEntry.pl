@@ -21,8 +21,7 @@ use warnings;
 
 sub removeEntry {
 
-    my $grepArrayRef = shift;
-    my $indArrayRef = shift;
+    my ( $grepArrayRef, $indArrayRef, $config ) = @_;
 
     my $grepCount = @$grepArrayRef;
 

@@ -21,9 +21,7 @@ use strict;
 
 sub entriesFoundDecide {
 
-    my $numFoundEntries = shift;
-    my $grepArrayRef = shift;
-    my $indArrayRef = shift;
+    my ( $numFoundEntries, $grepArrayRef, $indArrayRef, $config ) = @_;
 
     if ( $numFoundEntries == 0 ) {
         print "\n";

@@ -21,8 +21,7 @@ use warnings;
 
 sub editingEntry {
 
-    my $entryLine = shift;
-    my $indArrayElem = shift;
+    my ( $entryLine, $indArrayElem, $config ) = @_;
 
     my ( $fieldArrayRef, $fieldAns, $paperArrayRef ) = &printToEdit( $entryLine );
     my $checkAns = &editField( $fieldArrayRef, $fieldAns, $paperArrayRef );

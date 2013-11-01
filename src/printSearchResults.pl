@@ -21,7 +21,7 @@ use strict;
 
 sub printSearchResults {
 
-    my $grepArrayRef = shift;
+    my ( $grepArrayRef, $config ) = @_;
     my $grepCount = @$grepArrayRef;
 
     print("\n$grepCount entries found\n");
