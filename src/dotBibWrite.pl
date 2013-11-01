@@ -21,13 +21,13 @@ use strict;
 
 sub dotBibWrite {
 
-    my $newDBArrayRef = shift;
+    my ( $newDBArrayRef, $config ) = @_;
     my @newDBArray = @$newDBArrayRef;
 
     print("\nKeeping a copy of old .bib file");
 
-    open my $inFile, "<", $main::DBFile;
-    my $keepFname = join( '', "$main::DBFile", ".bak" );
+    open my $inFile, "<", $config->bibFname;
+    my $keepFname = join( '', "$config->bibFname", ".bak" );
     open my $keepFile, ">", $keepFname;
     while (<$inFile>) {
         print( $keepFile "$_" );
@@ -37,7 +37,7 @@ sub dotBibWrite {
 
     print("\nWriting new (sorted) .bib file...");
 
-    open my $outFile, ">", $main::DBFile;
+    open my $outFile, ">", $config->bibFname;
 
     my $sizeNewDBArray = @newDBArray;
     my $i              = 0;

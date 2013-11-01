@@ -23,8 +23,8 @@ sub addInBook {
 
     my $config = shift;
 
-    open my $bibFile,   ">>", $main::DBFile or die "$!";
-    open my $bibInFile, "<", $main::DBFile  or die "$!";
+    open my $bibFile,   ">>", $config->bibFname or die "$!";
+    open my $bibInFile, "<", $config->bibFname  or die "$!";
     print("Choosing to add and a page or chaper in a book\n\n");
 
     my $title;

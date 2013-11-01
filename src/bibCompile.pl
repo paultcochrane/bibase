@@ -27,7 +27,7 @@ sub bibCompile {
 
     open my $bibAltDBFile, ">", $config->dbFname;
 
-    open my $bibInFile, "<", $main::DBFile;
+    open my $bibInFile, "<", $config->bibFname;
 
     my $numLines = 0;
     my @inArray;
