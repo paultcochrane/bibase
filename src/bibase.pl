@@ -25,56 +25,62 @@ use lib qw( src );
 use Bibase;
 use Bibase::Config;
 
-$main::bibErrMsg = "field is required for BibTeX\n\n";
+sub run {
 
-print "This is bibase version 1.0 on $^O\n\n";
+    $main::bibErrMsg = "field is required for BibTeX\n\n";
 
-my $config = Bibase::Config->new();
-$config->read_settings();
+    print "This is bibase version 1.0 on $^O\n\n";
 
-require "mainMenu.pl";
-require "lookup.pl";
-require "add.pl";
-require "addThesis.pl";
-require "addUnpublished.pl";
-require "addBook.pl";
-require "addArticle.pl";
-require "addInProc.pl";
-require "addMisc.pl";
-require "addProc.pl";
-require "addInBook.pl";
-require "addInColl.pl";
-require "addManual.pl";
-require "addTechReport.pl";
-require "addBooklet.pl";
-require "sortDB.pl";
-require "bibCompile.pl";
-require "sortAndCompCheck.pl";
-require "bibkeyMake.pl";
-require "titleCheck.pl";
-require "dotBibWrite.pl";
-require "searchAll.pl";
-require "searchAuthor.pl";
-require "searchBibkey.pl";
-require "searchEntry.pl";
-require "searchJournal.pl";
-require "searchKeywords.pl";
-require "searchTitle.pl";
-require "searchYear.pl";
-require "printSearchResults.pl";
-require "prettyPrintSearchResults.pl";
-require "remove.pl";
-require "removeEntry.pl";
-require "edit.pl";
-require "editEntry.pl";
-require "printAllFields.pl";
-require "printToEdit.pl";
-require "editField.pl";
-require "entriesFoundDecide.pl";
-require "editingEntry.pl";
+    my $config = Bibase::Config->new();
+    $config->read_settings();
 
-my $bibase = Bibase->new();
-$bibase->init_db_files();
-&mainMenu;
+    require "mainMenu.pl";
+    require "lookup.pl";
+    require "add.pl";
+    require "addThesis.pl";
+    require "addUnpublished.pl";
+    require "addBook.pl";
+    require "addArticle.pl";
+    require "addInProc.pl";
+    require "addMisc.pl";
+    require "addProc.pl";
+    require "addInBook.pl";
+    require "addInColl.pl";
+    require "addManual.pl";
+    require "addTechReport.pl";
+    require "addBooklet.pl";
+    require "sortDB.pl";
+    require "bibCompile.pl";
+    require "sortAndCompCheck.pl";
+    require "bibkeyMake.pl";
+    require "titleCheck.pl";
+    require "dotBibWrite.pl";
+    require "searchAll.pl";
+    require "searchAuthor.pl";
+    require "searchBibkey.pl";
+    require "searchEntry.pl";
+    require "searchJournal.pl";
+    require "searchKeywords.pl";
+    require "searchTitle.pl";
+    require "searchYear.pl";
+    require "printSearchResults.pl";
+    require "prettyPrintSearchResults.pl";
+    require "remove.pl";
+    require "removeEntry.pl";
+    require "edit.pl";
+    require "editEntry.pl";
+    require "printAllFields.pl";
+    require "printToEdit.pl";
+    require "editField.pl";
+    require "entriesFoundDecide.pl";
+    require "editingEntry.pl";
+
+    my $bibase = Bibase->new();
+    $bibase->init_db_files();
+    &mainMenu;
+
+}
+
+run() unless caller();
 
 # vim: expandtab shiftwidth=4:
