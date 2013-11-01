@@ -74,7 +74,7 @@ sub remove {
 
     if ( $answer eq '' ) {
         print "Please make a selection\n";
-        &lookup;
+        lookup( $config );
     }
     elsif ( $answer eq 'A' || $answer eq 'a' ) {
         &searchAll( $dbNumLines );

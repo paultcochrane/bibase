@@ -37,7 +37,7 @@ sub mainMenu {
 
     if ( $answer eq 'l' || $answer eq 'L' || $answer eq 's' || $answer eq 'S' )
     {
-        &lookup;
+        lookup( $config );
     }
     elsif ( $answer eq 'a' || $answer eq 'A' ) {
         &add;

@@ -29,7 +29,7 @@ sub entriesFoundDecide {
         print "\n";
         print "No entries found\n";
         if ( $main::searchFlag == 1 ) {
-            &lookup;
+            lookup( $config );
         }
         elsif ( $main::removeFlag == 1 ) {
             &remove;

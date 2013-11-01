@@ -78,7 +78,7 @@ sub lookup {
 
     if ( $answer eq '' ) {
         print "Please make a selection\n";
-        &lookup;
+        lookup( $config );
     }
     elsif ( $answer eq 'A' || $answer eq 'a' ) {
         &searchAll($dbNumLines);
@@ -113,7 +113,7 @@ sub lookup {
     }
     else {
         print "something went wrong in lookup.pl\n";
-        &lookup;
+        lookup( $config );
     }
 
     &mainMenu;
