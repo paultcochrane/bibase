@@ -21,7 +21,7 @@ use strict;
 
 sub titleCheck {
 
-    my $title = shift;
+    my ( $title, $config ) = @_;
 
     my $NumLines = 0;
     my @InArray;

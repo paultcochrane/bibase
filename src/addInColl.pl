@@ -21,6 +21,8 @@ use strict;
 
 sub addInColl {
 
+    my $config = shift;
+
     open my $bibFile,   ">>", $main::DBFile or die "$!";
     open my $bibInFile, "<", $main::DBFile  or die "$!";
     print("Choosing to add an article in a collection\n\n");
