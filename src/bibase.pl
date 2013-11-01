@@ -109,7 +109,7 @@ require "entriesFoundDecide.pl";
 require "editingEntry.pl";
 
 my $bibase = Bibase->new();
-$bibase->startup();
+$bibase->init_db_files();
 &mainMenu;
 
 # vim: expandtab shiftwidth=4:

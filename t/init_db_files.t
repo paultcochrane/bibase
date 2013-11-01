@@ -17,7 +17,7 @@ use_ok( 'Bibase' );
     $main::altDBFile = "blah.db";
     my $capture = IO::Capture::Stdout->new();
     $capture->start();
-    Bibase->startup();
+    Bibase->init_db_files();
     $capture->stop();
 
     my $test_stdout = join "", ($capture->read());
@@ -27,7 +27,7 @@ opening new file blah.bib
 opening new file blah.db
 EOT
     is( $test_stdout, $expected,
-	"Correct startup output when db files don't yet exist" );
+	"Correct init_db_files output when db files don't yet exist" );
 
     ok( -e $main::DBFile, ".bib file created" );
     ok( -e $main::altDBFile, ".db file created" );

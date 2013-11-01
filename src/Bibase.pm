@@ -24,13 +24,13 @@ use autodie;
 
 use Moose;
 
-=item startup
+=item init_db_files
 
 Create the default BibTeX and database files if they do not already exist.
 
 =cut
 
-sub startup {
+sub init_db_files {
 
     if ( not -e $main::DBFile ) {
         open my $startHandle, ">", $main::DBFile;
