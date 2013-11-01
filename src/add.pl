@@ -44,40 +44,40 @@ sub add {
     chop( $answer = <> );
 
     if ( $answer eq 'a' ) {
-        &addArticle;
+        addArticle( $config );
     }
     elsif ( $answer eq 'b' ) {
-        &addBook;
+        addBook( $config );
     }
     elsif ( $answer eq 'u' ) {
-        &addUnpublished;
+        addUnpublished( $config );
     }
     elsif ( $answer eq 'p' ) {
-        &addInProc;
+        addInProc( $config );
     }
     elsif ( $answer eq 't' ) {
-        &addThesis;
+        addThesis( $config );
     }
     elsif ( $answer eq 'c' ) {
-        &addProc;
+        addProc( $config );
     }
     elsif ( $answer eq 'i' ) {
-        &addInBook;
+        addInBook( $config );
     }
     elsif ( $answer eq 'misc' ) {
-        &addMisc;
+        addMisc( $config );
     }
     elsif ( $answer eq 'o' ) {
-        &addInColl;
+        addInColl( $config );
     }
     elsif ( $answer eq 'booklet' ) {
-        &addBooklet;
+        addBooklet( $config );
     }
     elsif ( $answer eq 'man' ) {
-        &addManual;
+        addManual( $config );
     }
     elsif ( $answer eq 'tech' ) {
-        &addTechReport;
+        addTechReport( $config );
     }
     elsif ( $answer eq 'm' ) {
         mainMenu( $config );
