@@ -31,7 +31,7 @@ sub addThesis {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $author;
@@ -40,7 +40,7 @@ sub addThesis {
 
     if ( $author eq "" ) {
         print "Author $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $school;
@@ -49,7 +49,7 @@ sub addThesis {
 
     if ( $school eq "" ) {
         print "University $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $year;
@@ -58,7 +58,7 @@ sub addThesis {
 
     if ( $year eq "" ) {
         print "Year $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $address;
@@ -79,7 +79,7 @@ sub addThesis {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     my $dummy = $author;
@@ -107,7 +107,7 @@ sub addThesis {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";
@@ -152,7 +152,7 @@ sub addThesis {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;

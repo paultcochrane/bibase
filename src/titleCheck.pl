@@ -40,7 +40,7 @@ sub titleCheck {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";

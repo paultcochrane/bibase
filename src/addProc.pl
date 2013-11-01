@@ -31,7 +31,7 @@ sub addProc {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $year;
@@ -40,7 +40,7 @@ sub addProc {
 
     if ( $year eq "" ) {
         print "Year $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $editor;
@@ -81,7 +81,7 @@ sub addProc {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     my $dummy = $editor;
@@ -109,7 +109,7 @@ sub addProc {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";
@@ -171,7 +171,7 @@ sub addProc {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;

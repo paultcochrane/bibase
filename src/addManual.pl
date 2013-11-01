@@ -31,7 +31,7 @@ sub addManual {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $author;
@@ -40,7 +40,7 @@ sub addManual {
 
     if ( $author eq "" ) {
         print "Author $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $organisation;
@@ -53,7 +53,7 @@ sub addManual {
 
     if ( $year eq "" ) {
         print "Year $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $address;
@@ -74,7 +74,7 @@ sub addManual {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     my $dummy = $author;
@@ -102,7 +102,7 @@ sub addManual {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";
@@ -148,7 +148,7 @@ sub addManual {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;

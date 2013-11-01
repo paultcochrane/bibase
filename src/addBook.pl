@@ -31,7 +31,7 @@ sub addBook {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $author;
@@ -40,7 +40,7 @@ sub addBook {
 
     if ( $author eq "" ) {
         print "Author $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $publisher;
@@ -49,7 +49,7 @@ sub addBook {
 
     if ( $publisher eq "" ) {
         print "Publisher $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $year;
@@ -58,7 +58,7 @@ sub addBook {
 
     if ( $year eq "" ) {
         print "Year $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $editor;
@@ -95,7 +95,7 @@ sub addBook {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     my $dummy = $author;
@@ -123,7 +123,7 @@ sub addBook {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";
@@ -185,7 +185,7 @@ sub addBook {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;

@@ -31,7 +31,7 @@ sub addMisc {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $author;
@@ -40,7 +40,7 @@ sub addMisc {
 
     if ( $author eq "" ) {
         print "Author $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $howpub;
@@ -53,7 +53,7 @@ sub addMisc {
 
     if ( $year eq "" ) {
         print "Year $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $month;
@@ -66,7 +66,7 @@ sub addMisc {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     my $dummy = $author;
@@ -94,7 +94,7 @@ sub addMisc {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";
@@ -134,7 +134,7 @@ sub addMisc {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;

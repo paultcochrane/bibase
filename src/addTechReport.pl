@@ -31,7 +31,7 @@ sub addTechReport {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $author;
@@ -40,7 +40,7 @@ sub addTechReport {
 
     if ( $author eq "" ) {
         print "Author $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $institution;
@@ -49,7 +49,7 @@ sub addTechReport {
 
     if ( $institution eq "" ) {
         print "Institution $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $year;
@@ -58,7 +58,7 @@ sub addTechReport {
 
     if ( $year eq "" ) {
         print "Year $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $number;
@@ -83,7 +83,7 @@ sub addTechReport {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     my $dummy = $author;
@@ -111,7 +111,7 @@ sub addTechReport {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";
@@ -161,7 +161,7 @@ sub addTechReport {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;

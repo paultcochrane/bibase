@@ -31,7 +31,7 @@ sub addInColl {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $author;
@@ -40,7 +40,7 @@ sub addInColl {
 
     if ( $author eq "" ) {
         print "Author $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $booktitle;
@@ -49,7 +49,7 @@ sub addInColl {
 
     if ( $booktitle eq "" ) {
         print "Book title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $year;
@@ -58,7 +58,7 @@ sub addInColl {
 
     if ( $year eq "" ) {
         print "Year $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $volume;
@@ -111,7 +111,7 @@ sub addInColl {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     my $dummy = $author;
@@ -139,7 +139,7 @@ sub addInColl {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";
@@ -218,7 +218,7 @@ sub addInColl {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;

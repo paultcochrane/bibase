@@ -31,7 +31,7 @@ sub addUnpublished {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $author;
@@ -40,7 +40,7 @@ sub addUnpublished {
 
     if ( $author eq "" ) {
         print "Author $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $ref;
@@ -49,7 +49,7 @@ sub addUnpublished {
 
     if ( $ref eq "" ) {
         print "Reference $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $year;
@@ -58,7 +58,7 @@ sub addUnpublished {
 
     if ( $year eq "" ) {
         print "Year needed for proper referencing\n";
-        &add;
+        add( $config )
     }
 
     my $keywords;
@@ -67,7 +67,7 @@ sub addUnpublished {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     my $dummy = $author;
@@ -95,7 +95,7 @@ sub addUnpublished {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";
@@ -128,7 +128,7 @@ sub addUnpublished {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;

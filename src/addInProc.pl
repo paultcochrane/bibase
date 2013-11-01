@@ -31,7 +31,7 @@ sub addInProc {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $author;
@@ -40,7 +40,7 @@ sub addInProc {
 
     if ( $author eq "" ) {
         print "Author $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $booktitle;
@@ -49,7 +49,7 @@ sub addInProc {
 
     if ( $booktitle eq "" ) {
         print "Booktitle $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $year;
@@ -58,7 +58,7 @@ sub addInProc {
 
     if ( $year eq "" ) {
         print "Year is required for proper referencing";
-        &add;
+        add( $config )
     }
 
     my $crossref;
@@ -107,7 +107,7 @@ sub addInProc {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     my $dummy = $author;
@@ -135,7 +135,7 @@ sub addInProc {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";
@@ -222,7 +222,7 @@ sub addInProc {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;

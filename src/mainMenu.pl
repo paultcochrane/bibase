@@ -40,7 +40,7 @@ sub mainMenu {
         lookup( $config );
     }
     elsif ( $answer eq 'a' || $answer eq 'A' ) {
-        &add;
+        add( $config );
     }
     elsif ( $answer eq 'r' || $answer eq 'R' ) {
         remove( $config );

@@ -31,7 +31,7 @@ sub addBooklet {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $author;
@@ -40,7 +40,7 @@ sub addBooklet {
 
     if ( $author eq "" ) {
         print "Author $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $year;
@@ -49,7 +49,7 @@ sub addBooklet {
 
     if ( $year eq "" ) {
         print "Year $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $howpub;
@@ -70,7 +70,7 @@ sub addBooklet {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     my $dummy = $author;
@@ -98,7 +98,7 @@ sub addBooklet {
         if ( $answer eq "y" ) {
         }
         elsif ( $answer eq "n" ) {
-            &add;
+            add( $config )
         }
         else {
             print "something weird happened\n";
@@ -140,7 +140,7 @@ sub addBooklet {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;

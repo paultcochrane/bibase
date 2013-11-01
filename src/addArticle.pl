@@ -31,7 +31,7 @@ sub addArticle {
 
     if ( $title eq "" ) {
         print "Title $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $author;
@@ -40,7 +40,7 @@ sub addArticle {
 
     if ( $author eq "" ) {
         print "Author $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $journal;
@@ -49,7 +49,7 @@ sub addArticle {
 
     if ( $journal eq "" ) {
         print "Journal $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $year;
@@ -58,7 +58,7 @@ sub addArticle {
 
     if ( $year eq "" ) {
         print "Year $main::bibErrMsg";
-        &add;
+        add( $config )
     }
 
     my $volume;
@@ -83,7 +83,7 @@ sub addArticle {
 
     if ( $keywords eq "" ) {
         print "you need to add a keyword or keywords";
-        &add;
+        add( $config )
     }
 
     &bibkeyMake($author, $year, $bibInFile);
@@ -129,7 +129,7 @@ sub addArticle {
     #   OPTannote =      {}
     # }
 
-    &add;
+    add( $config )
 
 }
 1;
