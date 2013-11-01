@@ -21,6 +21,8 @@ use strict;
 
 sub add {
 
+    my $config = shift;
+
     print("\n\nDo you want to add:\n\n");
     print("A journal (a)rticle\n");
     print("A (b)ook\n");
@@ -85,7 +87,7 @@ sub add {
         || $answer eq 'q'
         || $answer eq 'Q' )
     {
-        &sortAndCompCheck;
+        sortAndCompCheck( $config );
         exit(0);
     }
     else {

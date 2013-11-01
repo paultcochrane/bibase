@@ -27,7 +27,7 @@ sub lookup {
     $main::removeFlag = 0;
     $main::editFlag   = 0;
 
-    &sortAndCompCheck;
+    sortAndCompCheck( $config );
 
     @main::dbInArray     = '';
     my @titleArray    = '';

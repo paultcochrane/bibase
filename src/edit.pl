@@ -23,7 +23,7 @@ sub edit {
 
     my $config = shift;
 
-    &sortAndCompCheck;
+    sortAndCompCheck( $config );
 
     print "\nChoosing to edit an entry\n";
     print "Please search for the entry to edit\n";
